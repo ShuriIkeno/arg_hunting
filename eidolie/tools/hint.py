@@ -10,7 +10,7 @@ with sync_playwright() as p:
     pg.bring_to_front()
     pg.goto("https://yoryormary.com/eidoLie/hint/index.html")
     for label in sys.argv[1:]:
-        pg.get_by_text(label, exact=True).first.click()
+        pg.get_by_text(label, exact=True).locator("visible=true").first.click()
         pg.wait_for_timeout(700)
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     pg.screenshot(path=str(ROOT / "data" / "screenshots" / f"{ts}-hint.png"))

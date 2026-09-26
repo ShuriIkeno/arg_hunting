@@ -79,6 +79,9 @@ def main():
             page.click(f"#win-{arg} .close-btn, #win-{arg} [onclick*=close]")
         elif cmd == "search":
             fr = next(f for f in page.frames if "console.html" in f.url)
+            if not fr.locator("#url-input").is_visible():
+                page.get_by_text(APPS["browser"], exact=True).first.dblclick()
+                page.wait_for_timeout(500)
             fr.fill("#url-input", arg)
             fr.press("#url-input", "Enter")
         elif cmd == "sitesearch":
