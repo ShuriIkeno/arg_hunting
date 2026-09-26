@@ -1,0 +1,371 @@
+<title>EIDOLie 調査ログ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#f6f5f8; --surface:#fdfcfe; --ink:#16141c; --ink-2:#4d4958; --ink-3:#7d7889; --rule:#e3e0ea; --rule-2:#eeecf2;
+  --accent:#9b3d6e; --accent-soft:#f6e6ef;
+  --s-web:#2a78d6; --s-site:#eb6834; --s-login:#1baf7a; --s-link:#b9b5c4;
+  --band:#f0eef4; --band-2:#f8f7fa; --warn:#fab219; --good:#0ca30c; --crit:#d03b3b;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131218; --surface:#1b1a21; --ink:#f4f2f8; --ink-2:#c3bfcd; --ink-3:#8f8a9c; --rule:#2e2c37; --rule-2:#25232d;
+    --accent:#e28ab6; --accent-soft:#3a2331;
+    --s-web:#3987e5; --s-site:#d95926; --s-login:#199e70; --s-link:#5b5767;
+    --band:#211f28; --band-2:#1e1c24;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131218; --surface:#1b1a21; --ink:#f4f2f8; --ink-2:#c3bfcd; --ink-3:#8f8a9c; --rule:#2e2c37; --rule-2:#25232d;
+  --accent:#e28ab6; --accent-soft:#3a2331;
+  --s-web:#3987e5; --s-site:#d95926; --s-login:#199e70; --s-link:#5b5767;
+  --band:#211f28; --band-2:#1e1c24;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;margin:0;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:.01em}
+h2{font-size:19px;font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.lede{color:var(--ink-2);max-width:62ch;margin:6px 0 0}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.endchip{display:inline-flex;align-items:center;gap:10px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}
+.endchip b{font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.tile .k{font-size:12.5px;color:var(--ink-3)}
+.tile .v{font-family:var(--mono);font-size:28px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile .v small{font-size:14px;color:var(--ink-3);font-weight:400;margin-left:2px}
+.tile .n{font-size:12px;color:var(--ink-2)}
+section.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:12px}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
+.sechead p{margin:0;color:var(--ink-2);font-size:13.5px;max-width:70ch}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.chart .lbl{font-family:var(--sans);font-size:11.5px;fill:var(--ink-2);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 10px;font-size:12.5px;line-height:1.5;max-width:280px;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.18);opacity:0;transition:opacity .08s}
+.tip b{font-family:var(--mono);font-weight:600}
+.tip .m{opacity:.75}
+.map{display:flex;flex-direction:column;gap:10px}
+.maprow{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start}
+.maprow .ch{font-size:13px;font-weight:700;padding-top:8px}
+.maprow .ch span{display:block;font-weight:400;font-size:11.5px;color:var(--ink-3);font-family:var(--mono)}
+.cells{display:flex;flex-wrap:wrap;gap:6px}
+.cell{position:relative;width:52px;height:44px;border-radius:7px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px;color:#fff;cursor:default;padding:0}
+.cell small{font-size:9.5px;font-weight:400;opacity:.9;letter-spacing:.02em}
+.cell.link{color:var(--ink)}
+.cell .h{position:absolute;top:-5px;right:-5px;width:17px;height:17px;border-radius:50%;background:var(--warn);color:#16141c;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)}
+.cell:focus-visible,.row-focus:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);font-weight:500;background:var(--band-2)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.kw{font-weight:700}
+.pill{display:inline-block;font-size:11px;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.pill.web{background:color-mix(in srgb,var(--s-web) 16%,transparent);color:var(--ink)}
+.pill.site{background:color-mix(in srgb,var(--s-site) 18%,transparent);color:var(--ink)}
+.pill.login{background:color-mix(in srgb,var(--s-login) 20%,transparent);color:var(--ink)}
+.pill.hint{background:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--ink)}
+.pill.human{background:var(--accent-soft);color:var(--accent)}
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;counter-reset:step;list-style:none;padding:0;margin:0}
+.route li{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:var(--surface)}
+.route li .t{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.route li .s{font-weight:700;font-size:14px}
+.route li .d{font-size:12.5px;color:var(--ink-2)}
+.route li.fail{border-style:dashed;background:var(--band-2)}
+.route li.fail .s{color:var(--crit)}
+.route li.ok .s::before{content:"✓ ";color:var(--good)}
+.route li.fail .s::before{content:"✕ ";}
+.notes{font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px;padding-left:18px;margin:0}
+.toggle{font:inherit;font-size:12.5px;background:transparent;border:1px solid var(--rule);color:var(--ink-2);border-radius:999px;padding:4px 12px;cursor:pointer}
+.toggle:hover{border-color:var(--ink-3);color:var(--ink)}
+@media (max-width:560px){.maprow{grid-template-columns:1fr}.maprow .ch{padding-top:0}.cell{width:46px;height:40px}}
+@media (prefers-reduced-motion:reduce){.tip{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Play log · 2026-09-26 · UI-only headless run</div>
+      <h1>EIDOLie 調査ログ</h1>
+      <p class="lede">第四境界 GUEST ARG「三人組アイドルEIDOLieは■■なのか」を、画面操作だけで攻略した記録。<code>data/actions.jsonl</code> の1,002件の操作から集計しています。</p>
+    </div>
+    <div class="endchip"><b>END A</b> EIDOLie is Alive で調査完了</div>
+  </header>
+
+  <div class="tiles" aria-label="概要">
+    <div class="tile"><span class="k">到達ページ</span><span class="v">44<small>/44</small></span><span class="n">本編43 + EX</span></div>
+    <div class="tile"><span class="k">プレイ時間</span><span class="v">2:39</span><span class="n">07:45 → 10:24（待ち時間込み）</span></div>
+    <div class="tile"><span class="k">試したキーワード</span><span class="v">127<small>種</small></span><span class="n">結果が出たのは約29種（23%）</span></div>
+    <div class="tile"><span class="k">公式ヒント</span><span class="v">12<small>項目</small></span><span class="n">ヒントページの開閉35回</span></div>
+    <div class="tile"><span class="k">やり直し</span><span class="v">1<small>回</small></span><span class="n">V-Guard 50番 → ロード → 11番</span></div>
+  </div>
+
+  <section class="card" id="progress">
+    <div class="sechead">
+      <div><div class="eyebrow">Progress</div><h2>いつ、どのページにたどり着いたか</h2></div>
+      <p>ページを見つけるたびに1段上がる階段グラフ。平らな区間が詰まっていた時間です。点にカーソルを合わせるとページ名が出ます。</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s-web)"></i>累計到達ページ数</span>
+      <span><svg width="12" height="12" aria-hidden="true"><path d="M6 1 L11 11 L1 11 Z" fill="var(--warn)"></path></svg>公式ヒントを参照</span>
+      <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--accent)"></circle></svg>人の手助け（YouTube許可・動画・歌詞）</span>
+    </div>
+    <div class="chart" id="progressChart"></div>
+  </section>
+
+  <section class="card" id="activity">
+    <div class="sechead">
+      <div><div class="eyebrow">Search activity</div><h2>5分ごとの検索回数</h2></div>
+      <p>ブラウザ検索とEIDOLieサイト内検索の合計。序盤は総当たりで回数が多く、手がかりがつながってからは少ない検索で進めています。</p>
+    </div>
+    <div class="chart" id="activityChart"></div>
+  </section>
+
+  <section class="card" id="map">
+    <div class="sechead">
+      <div><div class="eyebrow">Page map</div><h2>44ページを何で見つけたか</h2></div>
+      <p>章ごとに並べた全ページ。色は見つけ方、右上の「?」は公式ヒントを見てから見つけたページ。セルにカーソルを合わせると入力した語と、その語をどこから得たかが出ます。</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s-web)"></i>ブラウザ検索</span>
+      <span><i class="sw" style="background:var(--s-site)"></i>EIDOLieサイト内検索</span>
+      <span><i class="sw" style="background:var(--s-login)"></i>ログイン・入力</span>
+      <span><i class="sw" style="background:var(--s-link)"></i>リンク・ブックマーク</span>
+      <span><i class="sw" style="background:var(--warn);border-radius:50%"></i>ヒント使用</span>
+    </div>
+    <div class="map" id="pageMap"></div>
+  </section>
+
+  <section class="card" id="keys">
+    <div class="sechead">
+      <div><div class="eyebrow">Breakthroughs</div><h2>突破口になったキーワード</h2></div>
+      <p>新しいページを開いた検索語と、その語をどこで拾ったか。</p>
+    </div>
+    <div class="tablewrap"><table id="kwTable">
+      <thead><tr><th>時刻</th><th>入力した語</th><th>検索窓</th><th>語の出どころ</th><th>開いたページ</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" id="ending">
+    <div class="sechead">
+      <div><div class="eyebrow">Ending route</div><h2>エンドAまでの手順</h2></div>
+      <p>分岐は「行動の順番」で決まります。取り返しのつかない操作の前にセーブし、失敗した1回はロードでやり直しました。</p>
+    </div>
+    <ol class="route">
+      <li><span class="t">10:01</span><span class="s">セーブ</span><span class="d">分岐前の状態をファイルに保存</span></li>
+      <li class="fail"><span class="t">10:05</span><span class="s">V-Guardへ50番</span><span class="d">依頼文の「50」から推測。NO RESPONSE</span></li>
+      <li><span class="t">10:07</span><span class="s">ロード</span><span class="d">セーブデータで分岐前に戻る</span></li>
+      <li class="ok"><span class="t">10:08</span><span class="s">V-Guardへ11番</span><span class="d">和歌ブログの「エールの歌」。来未が前を向く</span></li>
+      <li class="ok"><span class="t">10:16</span><span class="s">二階堂に報告</span><span class="d">依頼主＝在原来未、居場所＝中芽黒総合病院</span></li>
+      <li class="ok"><span class="t">10:19</span><span class="s">taskに反論</span><span class="d">目的＝復讐、悪い人物＝御子谷佑、証拠＝39番</span></li>
+      <li class="ok"><span class="t">10:23</span><span class="s">首謀者を報告</span><span class="d">御子谷佑 → END A</span></li>
+    </ol>
+  </section>
+
+  <section class="card" id="caveats">
+    <div class="sechead"><div><div class="eyebrow">Caveats</div><h2>データを読むときの注意</h2></div></div>
+    <ul class="notes">
+      <li>時刻は実時間です。07:59〜08:15 はYouTubeが再生できず、ネットワーク許可と動画の提供を待っていた時間を含みます。</li>
+      <li>プレイ前の下調べでページのファイル名一覧を見ていたため、07:54 の「在原業平」はその影響を受けた可能性があります。</li>
+      <li>MVの手がかり（「ドキュメントマチ」）は、提供された動画をフレーム解析して見つけました。歌詞は人の書き起こしです。</li>
+      <li>キーワード数には、サイトへ移動するための定型検索（「エイドリー」など）も1種として含みます。</li>
+      <li>15・17・19番はタイトルの記録漏れがあり、クリック時刻で補っています。</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+const T0 = "07:45:29";
+const toMin = t => { const [h,m,s] = t.split(":").map(Number); return h*60 + m + (s||0)/60; };
+// id, chapter, time, method(web|site|login|link), short title, keyword, source, hint
+const PAGES = [
+  ["1","序盤","07:45:29","link","ゲーム内ブラウザ","—","起動時の画面",false],
+  ["4","序盤","07:46:52","link","Twintter","—","ブックマーク",false],
+  ["3","序盤","07:46:59","link","EIDOLie公式サイト","—","Twintterの投稿のリンク",false],
+  ["7","序盤","07:47:12","web","スティレットプロモーション","スティレットプロモーション","公式サイトの©表記",false],
+  ["37","序盤","07:47:19","link","パートナーログイン","—","事務所サイトのPARTNERS",false],
+  ["10","序盤","07:47:54","web","クルミ応援スレ","クルミ","メンバー名",false],
+  ["2","序盤","07:48:03","link","JN News","—","ブックマーク",false],
+  ["12","序盤","07:54:58","web","在原業平（J-Pedia）","在原業平","「ナリさん」＋社長の姓（事前情報の影響あり）",false],
+  ["8","序盤","07:55:35","web","小倉百人一首一覧","百人一首","業平のページ",false],
+  ["9","序盤","07:55:49","web","ゆるっと和歌ライフ","百人一首","同上",false],
+  ["5","マチ","08:15:46","site","マチ独占インタビュー","ドキュメントマチ","MVの155秒に一瞬出る文字",true],
+  ["15","マチ","08:17:44","site","ひだまりの少女（音源）","ひだまりの少女","インタビューのデビュー曲",false],
+  ["16","マチ","08:17:54","web","マチちゃん捜索隊","ひだまりの少女","同上",false],
+  ["13","マチ","08:19:33","site","FC会報 Vol.5","ひだまり通信","ファンサイトの会報名",false],
+  ["17","マチ","08:19:49","site","週刊誌記事","天城丈","『伊豆の踊子』の峠＋「丈」",false],
+  ["18","マチ","08:20:15","web","天城丈（J-Pedia）","天城丈","同上",false],
+  ["19","マチ","08:20:32","site","デモテープ","妖精のくちづけ","会報「妖精の◯◯◯◯」×週刊誌「◯◯のくちづけ」",false],
+  ["20","マチ","08:21:48","site","新聞記事（1985）","小野田町子","デモテープの本名",false],
+  ["11","アヤ","08:23:54","site","アヤの記事","ドキュメントアヤ","「ドキュメントマチ」からの類推",false],
+  ["21","アヤ","08:25:01","site","コンテスト審査講評","新時代ドリームシンガーコンテスト","アヤの記事",false],
+  ["14","クルミ","08:26:55","site","クルミの記事","ドキュメントクルミ","同じ類推",false],
+  ["23","アヤ","08:27:23","site","Aya's Diary 1","V-Guard","審査講評の付箋画像",false],
+  ["22","アヤ","08:30:24","web","V-Guard紹介記事","V-Guard","同上",false],
+  ["24","アヤ","08:30:46","site","プラチナスカイ（音源）","プラチナスカイ","日記1のデビュー曲",false],
+  ["25","アヤ","08:31:50","site","内部調査記録","南野英二","V-Guard記事の人名",false],
+  ["26","アヤ","08:32:11","site","Aya's Diary 2","南野英二","同上",false],
+  ["27","アヤ","08:44:16","site","手術パンフレット","田山医科大学附属病院","日記2の写真の看板（拡大して判読）",true],
+  ["29","アヤ","08:49:32","site","警備の業務日誌","小野田文","パンフの「◯田文」＋マチの姓",false],
+  ["28","アヤ","08:51:01","site","見つかったノート","小野田文","同上",false],
+  ["30","アヤ","09:00:07","site","Aya's Diary 最終","マスターピース","ノートの言葉",false],
+  ["31","アヤ","09:01:29","site","ネットニュース・礼状","マスターピース","同上",false],
+  ["32","クルミ","09:10:16","site","母子健康手帳","在原文","礼状の名前",false],
+  ["33","クルミ","09:16:14","site","鍵アカ過去ログ","在原来未","母子手帳の子の氏名",false],
+  ["34","クルミ","09:16:35","web","港区ニュース","在原来未","同上",false],
+  ["35","クルミ","09:18:16","web","くるみんラジオ","くるらじ","鍵アカのファンの言葉",false],
+  ["36","クルミ","09:25:14","site","鍵アカ過去ログ2","もっちゅむっちゅグミ","ラジオで紹介したお菓子",false],
+  ["6","マチ","09:27:46","site","Secret Voice 歌詞","ナリさん","公式サイトTOPの名前（文字化けした結果）",true],
+  ["38","核心","09:40:57","login","クルミのポータル","39865 / kimigatame","腕時計写真のS-ID＋百人一首15・50の共通句",true],
+  ["40","核心","09:41:55","link","個人フォルダ","—","ポータル",false],
+  ["41","核心","09:42:08","link","調査報告書","—","個人フォルダ",false],
+  ["42","核心","09:42:34","link","来未へ.txt","—","個人フォルダ",false],
+  ["39","核心","09:43:08","link","V-Guard管理画面","—","ポータル",false],
+  ["43","核心","09:46:36","web","中芽黒総合病院","中芽黒総合病院","V-GuardのGPS表示",false],
+  ["EX","核心","09:51:53","web","二階堂探偵事務所","二階堂探偵事務所","調査報告書の調査機関",false],
+];
+const HINTS = [["07:58:48","新人調査員へのアドバイス・5"],["08:34:28","27（病院）"],["09:25:40","6"],["09:29:45","37〜38（ログイン）"],["09:52:02","二階堂への回答・43・42以降"],["10:03:43","エンド分岐条件"],["10:12:49","エンドA〜F"],["10:14:14","39〜42"]];
+const HUMAN = [["07:59:30","YouTube不可 → 許可を依頼"],["08:13:40","MV動画の提供"],["08:24:30","歌詞の提供"]];
+const BANDS = [["序盤","07:45:29","08:00:00"],["MV待ち","08:00:00","08:15:00"],["マチ","08:15:00","08:23:00"],["アヤ","08:23:00","09:05:00"],["クルミ","09:05:00","09:28:00"],["ログイン","09:28:00","09:40:30"],["核心","09:40:30","09:55:00"],["結末","09:55:00","10:24:30"]];
+const SEARCH5 = [[465,26],[470,44],[475,27],[480,2],[485,0],[490,0],[495,44],[500,27],[505,37],[510,33],[515,6],[520,9],[525,19],[530,17],[535,19],[540,14],[545,19],[550,15],[555,17],[560,18],[565,4],[570,6],[575,5],[580,2],[585,14],[590,7],[595,0],[600,1],[605,2],[610,1],[615,0],[620,0]];
+const METHOD = {web:"ブラウザ検索",site:"サイト内検索",login:"ログイン・入力",link:"リンク・ブックマーク"};
+const CHAPTERS = [["序盤","07:45–08:00"],["マチ","08:15–09:27"],["アヤ","08:23–09:01"],["クルミ","08:26–09:25"],["核心","09:40–09:51"]];
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs={}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const hhmm = m => { const h = Math.floor(m/60), mm = Math.floor(m%60); return `${String(h).padStart(2,"0")}:${String(mm).padStart(2,"0")}`; };
+
+function makeTip(host){ const t = document.createElement("div"); t.className = "tip"; t.setAttribute("role","status"); host.appendChild(t); return t; }
+function showTip(tip, host, x, y, html){
+  tip.innerHTML = html; tip.style.opacity = 1;
+  const hw = host.clientWidth, tw = tip.offsetWidth;
+  let left = x + 14; if (left + tw > hw) left = x - tw - 14; if (left < 0) left = 4;
+  tip.style.left = left + "px"; tip.style.top = Math.max(0, y - 10) + "px";
+}
+function hideTip(tip){ tip.style.opacity = 0; }
+
+/* ---------- progress step chart ---------- */
+(function(){
+  const host = document.getElementById("progressChart");
+  const W = 1000, H = 380, m = {l:40, r:16, t:34, b:58};
+  const x0 = toMin("07:45:00"), x1 = toMin("10:25:00");
+  const X = t => m.l + (toMin(t) - x0) / (x1 - x0) * (W - m.l - m.r);
+  const Y = n => H - m.b - n / 44 * (H - m.t - m.b);
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":"累計到達ページ数の推移。07:45に開始し09:51に44ページすべてに到達。"}, host);
+  BANDS.forEach(([name,a,b],i) => {
+    el("rect", {x:X(a), y:m.t, width:X(b)-X(a), height:H-m.t-m.b, fill: i%2 ? "var(--band)" : "var(--band-2)"}, svg);
+    const tx = el("text", {x:(X(a)+X(b))/2, y:m.t-10, "text-anchor":"middle", class:"lbl"}, svg); tx.textContent = name;
+  });
+  [0,11,22,33,44].forEach(v => {
+    el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:"var(--rule)", "stroke-width":1}, svg);
+    const t = el("text", {x:m.l-8, y:Y(v)+4, "text-anchor":"end"}, svg); t.textContent = v;
+  });
+  for (let mm = toMin("08:00:00"); mm <= x1; mm += 30) {
+    const t = el("text", {x:m.l + (mm-x0)/(x1-x0)*(W-m.l-m.r), y:H-m.b+18, "text-anchor":"middle"}, svg); t.textContent = hhmm(mm);
+  }
+  const pts = PAGES.slice().sort((a,b) => toMin(a[2]) - toMin(b[2]));
+  let d = `M${X(pts[0][2])},${Y(1)}`;
+  pts.forEach((p,i) => { if (i) d += ` H${X(p[2])} V${Y(i+1)}`; });
+  d += ` H${X("10:24:24")}`;
+  el("path", {d: d + ` V${Y(0)} H${X(pts[0][2])} Z`, fill:"var(--s-web)", "fill-opacity":0.08}, svg);
+  el("path", {d, fill:"none", stroke:"var(--s-web)", "stroke-width":2, "stroke-linejoin":"round"}, svg);
+  const endLbl = el("text", {x:X("09:51:53")-10, y:Y(44)+18, class:"lbl", "text-anchor":"end"}, svg); endLbl.textContent = "09:51 全44ページ";
+  const endLbl2 = el("text", {x:X("10:23:00"), y:Y(44)+18, class:"lbl", "text-anchor":"end"}, svg); endLbl2.textContent = "10:23 END A";
+  HINTS.forEach(([t,label]) => { const x = X(t), y = H-m.b+32; el("path", {d:`M${x},${y-6} L${x+6},${y+5} L${x-6},${y+5} Z`, fill:"var(--warn)", "data-tip":`<b>${t.slice(0,5)}</b> 公式ヒント<br>${label}`}, svg); });
+  HUMAN.forEach(([t,label]) => { el("circle", {cx:X(t), cy:H-m.b+46, r:5, fill:"var(--accent)", "data-tip":`<b>${t.slice(0,5)}</b> 人の手助け<br>${label}`}, svg); });
+  const hintT = el("text", {x:m.l-8, y:H-m.b+36, "text-anchor":"end"}, svg); hintT.textContent = "ヒント";
+  const humT = el("text", {x:m.l-8, y:H-m.b+50, "text-anchor":"end"}, svg); humT.textContent = "支援";
+  const tip = makeTip(host);
+  pts.forEach((p,i) => {
+    const cx = X(p[2]), cy = Y(i+1);
+    el("circle", {cx, cy, r:4, fill:`var(--s-${p[3]})`, stroke:"var(--surface)", "stroke-width":2}, svg);
+    el("circle", {cx, cy, r:11, fill:"transparent", "data-tip":`<b>${p[2].slice(0,5)}</b> · ${i+1}/44<br><b>#${p[0]}</b> ${p[4]}<br><span class="m">${METHOD[p[3]]}${p[5] !== "—" ? "：「"+p[5]+"」" : ""}</span>`}, svg);
+  });
+  svg.addEventListener("mousemove", e => {
+    const tgt = e.target.closest("[data-tip]"); const r = host.getBoundingClientRect();
+    if (tgt) showTip(tip, host, e.clientX - r.left, e.clientY - r.top, tgt.getAttribute("data-tip")); else hideTip(tip);
+  });
+  svg.addEventListener("mouseleave", () => hideTip(tip));
+})();
+
+/* ---------- search activity bars ---------- */
+(function(){
+  const host = document.getElementById("activityChart");
+  const W = 1000, H = 220, m = {l:40, r:16, t:14, b:30};
+  const n = SEARCH5.length, bw = (W - m.l - m.r) / n;
+  const max = 50, Y = v => H - m.b - v / max * (H - m.t - m.b);
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":"5分ごとの検索回数。最大は07:50台と08:15台の44回。"}, host);
+  [0,25,50].forEach(v => { el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:"var(--rule)"}, svg); const t = el("text", {x:m.l-8, y:Y(v)+4, "text-anchor":"end"}, svg); t.textContent = v; });
+  const tip = makeTip(host);
+  SEARCH5.forEach(([mm,v],i) => {
+    const x = m.l + i*bw + 1, w = bw - 2, y = Y(v), h = Y(0) - y;
+    if (v > 0) {
+      const r = Math.min(4, w/2, h);
+      el("path", {d:`M${x},${Y(0)} V${y+r} Q${x},${y} ${x+r},${y} H${x+w-r} Q${x+w},${y} ${x+w},${y+r} V${Y(0)} Z`, fill:"var(--s-web)"}, svg);
+    }
+    el("rect", {x:m.l + i*bw, y:m.t, width:bw, height:H-m.t-m.b, fill:"transparent", "data-tip":`<b>${hhmm(mm)}–${hhmm(mm+5)}</b><br>検索 ${v}回`}, svg);
+    if (mm % 30 === 0) { const t = el("text", {x:m.l + i*bw, y:H-m.b+18, "text-anchor":"middle"}, svg); t.textContent = hhmm(mm); }
+  });
+  [["470","総当たり"],["495","MV後に一気に進行"]].forEach(([mm,label]) => {
+    const i = SEARCH5.findIndex(s => s[0] == mm); const t = el("text", {x:m.l + i*bw + bw/2, y:Y(44)-6, class:"lbl", "text-anchor":"middle"}, svg); t.textContent = label;
+  });
+  svg.addEventListener("mousemove", e => { const tgt = e.target.closest("[data-tip]"); const r = host.getBoundingClientRect(); if (tgt) showTip(tip, host, e.clientX - r.left, e.clientY - r.top, tgt.getAttribute("data-tip")); else hideTip(tip); });
+  svg.addEventListener("mouseleave", () => hideTip(tip));
+})();
+
+/* ---------- page map ---------- */
+(function(){
+  const host = document.getElementById("pageMap"); host.style.position = "relative";
+  const tip = makeTip(host);
+  const order = p => p[0] === "EX" ? 99 : Number(p[0]);
+  CHAPTERS.forEach(([ch, span]) => {
+    const row = document.createElement("div"); row.className = "maprow";
+    const items = PAGES.filter(p => p[1] === ch).sort((a,b) => order(a) - order(b));
+    row.innerHTML = `<div class="ch">${ch}<span>${items.length}ページ</span></div>`;
+    const cells = document.createElement("div"); cells.className = "cells";
+    items.forEach(p => {
+      const b = document.createElement("button");
+      b.className = "cell" + (p[3] === "link" ? " link" : "");
+      b.style.background = `var(--s-${p[3]})`;
+      b.innerHTML = `${p[0]}<small>${p[2].slice(0,5)}</small>` + (p[7] ? `<span class="h" aria-label="ヒント使用">?</span>` : "");
+      const html = `<b>#${p[0]}</b> ${p[4]}<br><span class="m">${p[2].slice(0,5)} · ${METHOD[p[3]]}${p[7] ? " · ヒント使用" : ""}</span>` + (p[5] !== "—" ? `<br>入力：「${p[5]}」` : "") + `<br><span class="m">出どころ：${p[6]}</span>`;
+      b.setAttribute("aria-label", `${p[0]}番 ${p[4]}、${METHOD[p[3]]}`);
+      const show = () => { const r = host.getBoundingClientRect(), c = b.getBoundingClientRect(); showTip(tip, host, c.right - r.left, c.top - r.top, html); };
+      b.addEventListener("mouseenter", show); b.addEventListener("focus", show);
+      b.addEventListener("mouseleave", () => hideTip(tip)); b.addEventListener("blur", () => hideTip(tip));
+      cells.appendChild(b);
+    });
+    row.appendChild(cells); host.appendChild(row);
+  });
+})();
+
+/* ---------- keyword table ---------- */
+(function(){
+  const tb = document.querySelector("#kwTable tbody");
+  const seen = new Set();
+  PAGES.slice().sort((a,b) => toMin(a[2]) - toMin(b[2])).forEach(p => {
+    if (p[5] === "—" || p[3] === "link") return;
+    const key = p[5] + p[3];
+    const pages = PAGES.filter(q => q[5] === p[5] && q[3] === p[3]).map(q => `#${q[0]} ${q[4]}`);
+    if (seen.has(key)) return; seen.add(key);
+    const tags = `<span class="pill ${p[3]}">${METHOD[p[3]]}</span>` + (p[7] ? ` <span class="pill hint">ヒント</span>` : "") + (p[0] === "5" ? ` <span class="pill human">提供動画</span>` : "");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="num">${p[2].slice(0,5)}</td><td class="kw">${p[5]}</td><td>${tags}</td><td>${p[6]}</td><td>${pages.join("<br>")}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+</script>
