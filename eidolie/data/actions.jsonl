@@ -1000,3 +1000,13 @@
 {"time": "2026-09-26T10:22:41", "cmd": "click", "arg": "件名：調査の報告について", "result": "ok", "browser_title": null, "frames": ["https://yoryormary.com/eidoLie/docs/top.html", "https://yoryormary.com/eidoLie/docs/app/mail.html"], "screenshot": "20260926-102238-click.png"}
 {"time": "2026-09-26T10:23:06", "cmd": "final_report", "arg": "御子谷佑"}
 {"time": "2026-09-26T10:24:24", "cmd": "ending", "arg": "https://yoryormary.com/eidoLie/docs/app/enda2.html"}
+{"time": "2026-09-26T11:25:05", "cmd": "ending_run", "arg": "A vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:御子谷佑", "result": null}
+{"time": "2026-09-26T11:29:39", "cmd": "ending_run", "arg": "A vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:御子谷佑", "result": "END：Aにて調査完了"}
+{"time": "2026-09-26T11:32:59", "cmd": "ending_run", "arg": "B vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 norebut report:御子谷佑", "result": "END：Bにて調査終了"}
+{"time": "2026-09-26T11:37:15", "cmd": "ending_run", "arg": "C vguard:11 readdm news rebut:御子谷佑:39 nikaido:在原来未:中芽黒総合病院 report:御子谷佑", "result": "END：Aにて調査完了"}
+{"time": "2026-09-26T11:41:31", "cmd": "ending_run", "arg": "C vguard:11 readdm news rebut:御子谷佑:39 report:御子谷佑", "result": "END：Cにて調査終了"}
+{"time": "2026-09-26T11:45:48", "cmd": "ending_run", "arg": "D vguard:50 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:御子谷佑", "result": "END：Dにて調査終了"}
+{"time": "2026-09-26T11:50:07", "cmd": "ending_run", "arg": "E vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:南野英二", "result": "END：Eにて調査終了"}
+{"time": "2026-09-26T11:54:25", "cmd": "ending_run", "arg": "F vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:在原憂次郎", "result": "END：Eにて調査終了"}
+{"time": "2026-09-26T11:58:48", "cmd": "ending_run", "arg": "F vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:在原来未", "result": "END：Eにて調査終了"}
+{"time": "2026-09-26T12:03:20", "cmd": "ending_run", "arg": "F vguard:11 readdm news nikaido:在原来未:中芽黒総合病院 rebut:御子谷佑:39 report:二階堂玲", "result": "END：Fにて調査終了"}

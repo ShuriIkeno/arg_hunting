@@ -92,6 +92,18 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:now
 .notes{font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px;padding-left:18px;margin:0}
 .toggle{font:inherit;font-size:12.5px;background:transparent;border:1px solid var(--rule);color:var(--ink-2);border-radius:999px;padding:4px 12px;cursor:pointer}
 .toggle:hover{border-color:var(--ink-3);color:var(--ink)}
+.tree{display:flex;flex-direction:column;gap:8px}
+.q{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;border:1px solid var(--rule);border-radius:10px;padding:10px 14px;background:var(--band-2)}
+.q .qq{font-size:13.5px}
+.q .qq b{font-weight:700}
+.q .yes{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2)}
+.endtag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-weight:600;font-size:12.5px;border-radius:999px;padding:3px 10px;white-space:nowrap;border:1px solid var(--rule);background:var(--surface);color:var(--ink)}
+.endtag i{font-style:normal;width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#fff}
+.endtag.good i{background:var(--good)} .endtag.bad i{background:var(--crit)} .endtag.gray i{background:var(--ink-3)}
+.fate{font-size:12.5px;color:var(--ink-2)}
+td .step{display:inline-block;font-size:11.5px;border:1px solid var(--rule);border-radius:6px;padding:0 6px;margin:1px 2px 1px 0;white-space:nowrap}
+td .step.off{color:var(--ink-3);border-style:dashed}
+tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
 @media (max-width:560px){.maprow{grid-template-columns:1fr}.maprow .ch{padding-top:0}.cell{width:46px;height:40px}}
 @media (prefers-reduced-motion:reduce){.tip{transition:none}}
 </style>
@@ -112,6 +124,7 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:now
     <div class="tile"><span class="k">試したキーワード</span><span class="v">127<small>種</small></span><span class="n">結果が出たのは約29種（23%）</span></div>
     <div class="tile"><span class="k">公式ヒント</span><span class="v">12<small>項目</small></span><span class="n">ヒントページの開閉35回</span></div>
     <div class="tile"><span class="k">やり直し</span><span class="v">1<small>回</small></span><span class="n">V-Guard 50番 → ロード → 11番</span></div>
+    <div class="tile"><span class="k">回収したエンド</span><span class="v">6<small>/6</small></span><span class="n">A〜F、リプレイ9回</span></div>
   </div>
 
   <section class="card" id="progress">
@@ -175,6 +188,24 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:now
       <li class="ok"><span class="t">10:19</span><span class="s">taskに反論</span><span class="d">目的＝復讐、悪い人物＝御子谷佑、証拠＝39番</span></li>
       <li class="ok"><span class="t">10:23</span><span class="s">首謀者を報告</span><span class="d">御子谷佑 → END A</span></li>
     </ol>
+  </section>
+
+
+  <section class="card" id="endings">
+    <div class="sechead">
+      <div><div class="eyebrow">Ending comparison</div><h2>6つのエンドの比較</h2></div>
+      <p>分岐前のセーブデータから、行動を1か所ずつ変えて9回リプレイした結果。条件を2つ同時に満たした場合の優先順位は未検証です。</p>
+    </div>
+    <div class="tree" id="endTree"></div>
+    <div class="tablewrap"><table id="endTable">
+      <thead><tr><th>試行</th><th>V-Guard</th><th>行動の順番</th><th>首謀者の報告</th><th>結果</th><th>クルミの結末</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <ul class="notes">
+      <li>公式ヒントでは「taskに反論した後で二階堂に伝える」とエンドCになるはずでしたが、実際にはエンドAになりました（黄色の行）。今回の検証では、Cになったのは二階堂に伝えなかった場合だけです。</li>
+      <li>二階堂の「調査状況の確認」メールは、taskのDMを開いてからニュース速報を見たあとに届きます。</li>
+      <li>各リプレイは約3〜4分。記録は <code>data/endings/*.json</code> とスクリーンショットです。</li>
+    </ul>
   </section>
 
   <section class="card" id="caveats">
@@ -365,6 +396,32 @@ function hideTip(tip){ tip.style.opacity = 0; }
     const tags = `<span class="pill ${p[3]}">${METHOD[p[3]]}</span>` + (p[7] ? ` <span class="pill hint">ヒント</span>` : "") + (p[0] === "5" ? ` <span class="pill human">提供動画</span>` : "");
     const tr = document.createElement("tr");
     tr.innerHTML = `<td class="num">${p[2].slice(0,5)}</td><td class="kw">${p[5]}</td><td>${tags}</td><td>${p[6]}</td><td>${pages.join("<br>")}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- ending comparison ---------- */
+const ENDS = {A:["EIDOLie is Alive","good","生存・活動再開。御子谷は現行犯で逮捕"],B:["EIDOLie is Bait","bad","入院先で殺害される。御子谷は国外逃亡"],C:["EIDOLie is Curse","bad","入院先で殺害される。御子谷は国外逃亡"],D:["EIDOLie is Deleted","bad","海で自ら命を絶つ。御子谷は国外逃亡"],E:["EIDOLie is Enigma","gray","死亡と報道。真相は闇の中"],F:["EIDOLie is Forsaken","gray","二階堂が契約を解除。結末は語られない"]};
+const RUNS = [
+  ["A","11",["励ます","二階堂に伝える","反論する"],"御子谷佑","A",false],
+  ["B","11",["励ます","二階堂に伝える","反論しない"],"御子谷佑","B",false],
+  ["C（1回目）","11",["励ます","反論する","二階堂に伝える"],"御子谷佑","A",true],
+  ["C","11",["励ます","反論する","（伝えない）"],"御子谷佑","C",false],
+  ["D","50",["励ます（失敗）","二階堂に伝える","反論する"],"御子谷佑","D",false],
+  ["E","11",["励ます","二階堂に伝える","反論する"],"南野英二","E",false],
+  ["F（1回目）","11",["励ます","二階堂に伝える","反論する"],"在原憂次郎","E",false],
+  ["F（2回目）","11",["励ます","二階堂に伝える","反論する"],"在原来未","E",false],
+  ["F","11",["励ます","二階堂に伝える","反論する"],"二階堂玲","F",false],
+];
+const endTag = k => `<span class="endtag ${ENDS[k][1]}"><i>${ENDS[k][1]==="good"?"✓":ENDS[k][1]==="bad"?"✕":"–"}</i>END ${k} · ${ENDS[k][0]}</span>`;
+(function(){
+  const tree = document.getElementById("endTree");
+  [["首謀者として<b>二階堂玲</b>を報告した","F"],["首謀者として<b>御子谷佑以外</b>を報告した（南野英二・在原憂次郎・在原来未で確認）","E"],["V-Guardの励ましに<b>失敗</b>した（50番 → NO RESPONSE）","D"],["taskに<b>反論しなかった</b>","B"],["二階堂にクルミの居場所を<b>伝えなかった</b>","C"],["上のどれにも当てはまらない（11番で励まし、伝え、反論し、御子谷佑を報告）","A"]]
+  .forEach(([q,k],i) => { const d = document.createElement("div"); d.className = "q"; d.innerHTML = `<div class="qq">${i<5?"":"✓ "}${q}</div><div class="yes">${i<5?"→":""} ${endTag(k)}</div>`; tree.appendChild(d); });
+  const tb = document.querySelector("#endTable tbody");
+  RUNS.forEach(([label,track,steps,name,end,surprise]) => {
+    const tr = document.createElement("tr"); if (surprise) tr.className = "surprise";
+    tr.innerHTML = `<td class="num">${label}</td><td class="num">${track}番</td><td>${steps.map(x=>`<span class="step${x.startsWith("（")?" off":""}">${x}</span>`).join("→ ")}</td><td class="kw">${name}</td><td>${endTag(end)}</td><td class="fate">${ENDS[end][2]}</td>`;
     tb.appendChild(tr);
   });
 })();
