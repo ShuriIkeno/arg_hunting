@@ -1,3 +1,5 @@
 .profile/
 .state.json
 __pycache__/
+data/video/frames/
+data/video/mv_*.png

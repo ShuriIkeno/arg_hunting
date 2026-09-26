@@ -133,7 +133,7 @@ def main():
                         break
                 if result == "ok":
                     break
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(2500)
         ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         shot = SHOTS / f"{ts}-{cmd}.png"
         page.screenshot(path=str(shot))

@@ -25,6 +25,12 @@ URL: https://yoryormary.com/eidoLie/index.html
   - yt-dlpでは、動画の情報（「EIDOLie - Secret Voice [Official Music Video]」/ いさかわ）は取れたが、本体は「Sign in to confirm you're not a bot」で拒否された。
 - ニュースサイト（JN News）の検索窓は入力できない（飾り）。
 
+## MV（ユーザー提供の動画から解析）
+- ユーザーがダウンロードしてリポジトリに置いた `videoplayback.mp4`（640x360、約194秒）をフレームごとに解析した（`data/video/sheet_*.jpg`）。
+- 基準の一枚絵との差分を取り、大きく変わる区間は 0–4.5s（ロゴ）、155.5–157.3s、192–194s（ロゴ）の3つだけだった。
+- 155.5s の赤い画面に「ドキュメントマチ」と表示される。これをEIDOLieのサイト内検索に入れると、ページ5へ進めた。
+- 音声は解析していない。
+
 ## 使い方
 ```
 chrome --headless=new --no-sandbox --remote-debugging-port=9222 --user-data-dir=.profile ...
