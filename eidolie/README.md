@@ -21,6 +21,8 @@ URL: https://yoryormary.com/eidoLie/index.html
 ## 環境上の制約
 - ゲーム内のMV（YouTube埋め込み）は、この環境のネットワークポリシーで `www.youtube.com` が遮断されていて再生できない。
   ヒント5によると、進行にはMVの視聴が必要。
+  - ネットワークでYouTubeを許可した後も、埋め込みプレイヤーは「Video unavailable」になった（User-Agentを通常のChromeにしても同じ）。
+  - yt-dlpでは、動画の情報（「EIDOLie - Secret Voice [Official Music Video]」/ いさかわ）は取れたが、本体は「Sign in to confirm you're not a bot」で拒否された。
 - ニュースサイト（JN News）の検索窓は入力できない（飾り）。
 
 ## 使い方
