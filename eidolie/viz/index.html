@@ -104,6 +104,32 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:now
 td .step{display:inline-block;font-size:11.5px;border:1px solid var(--rule);border-radius:6px;padding:0 6px;margin:1px 2px 1px 0;white-space:nowrap}
 td .step.off{color:var(--ink-3);border-style:dashed}
 tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.gwrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--band-2)}
+.gwrap svg{display:block;min-width:1180px;width:100%;height:auto}
+.gwrap text{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+.gwrap .col{font-family:var(--mono);font-size:10px;fill:var(--ink-3)}
+.gnode rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.2}
+.gnode.end rect{fill:var(--accent-soft);stroke:var(--accent)}
+.gnode.pre rect{fill:color-mix(in srgb,var(--s-web) 22%,var(--surface));stroke:var(--s-web)}
+.gnode.post rect{fill:color-mix(in srgb,var(--s-site) 22%,var(--surface));stroke:var(--s-site)}
+.gnode.sel rect{fill:var(--ink);stroke:var(--ink)}
+.gnode.sel text{fill:var(--bg)}
+.gnode.dim{opacity:.28}
+.gnode{cursor:pointer}
+.gnode:focus-visible rect{stroke:var(--accent);stroke-width:2.5}
+.gedge{fill:none;stroke:var(--ink-3);stroke-opacity:.45;stroke-width:1.2}
+.gedge.gate{stroke:var(--warn);stroke-opacity:.95;stroke-width:2.2}
+.gedge.dim{stroke-opacity:.08}
+.gedge.hot{stroke:var(--ink);stroke-opacity:.9}
+.gedge.gate.hot{stroke:var(--warn)}
+.detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:13.5px}
+.detail>div{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.detail h3{font-size:14px}
+.detail ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.detail .muted{color:var(--ink-3);font-size:12.5px}
+.gatebar{display:flex;align-items:center;gap:8px}
+.gatebar .bar{flex:1;height:8px;border-radius:4px;background:var(--rule);overflow:hidden;min-width:60px}
+.gatebar .bar i{display:block;height:100%;background:var(--s-web);border-radius:4px}
 @media (max-width:560px){.maprow{grid-template-columns:1fr}.maprow .ch{padding-top:0}.cell{width:46px;height:40px}}
 @media (prefers-reduced-motion:reduce){.tip{transition:none}}
 </style>
@@ -161,6 +187,33 @@ tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
       <span><i class="sw" style="background:var(--warn);border-radius:50%"></i>ヒント使用</span>
     </div>
     <div class="map" id="pageMap"></div>
+  </section>
+
+
+  <section class="card" id="deps">
+    <div class="sechead">
+      <div><div class="eyebrow">Dependency map</div><h2>どのページがどのページを開くか</h2></div>
+      <p>左から右へ、必要な情報がそろう順に並べたページの依存関係。線はキーワードや画像などの手がかりで、黄色い太線は詰まりやすい関門です。ページを選ぶと、そこに必要な前提（青）と、そこから開けるページ（橙）が光ります。</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s-web)"></i>前提（ここより前に必要）</span>
+      <span><i class="sw" style="background:var(--s-site)"></i>ここから開けるページ</span>
+      <span><svg width="22" height="10" aria-hidden="true"><line x1="0" y1="5" x2="22" y2="5" stroke="var(--warn)" stroke-width="3"></line></svg>関門（読み取り・謎解き・外部情報）</span>
+      <span><i class="sw" style="background:var(--accent-soft);border:1px solid var(--accent)"></i>エンディングの行動</span>
+    </div>
+    <div class="gwrap" id="depGraph"></div>
+    <div class="detail" id="depDetail"></div>
+  </section>
+
+  <section class="card" id="gates">
+    <div class="sechead">
+      <div><div class="eyebrow">Gates</div><h2>この情報がないと、どこで止まるか</h2></div>
+      <p>関門を1つだけ解けなかった場合に、たどり着けるページの数。ほかの関門はすべて解けている前提で、依存関係から計算しています。依存関係は、ページ内の手がかりと公式ヒントから読み取れる「想定ルート」で組んでいます。今回のプレイで事前情報から先回りした「在原業平」（#12）も、想定どおり#5と#7のあとに置いています。</p>
+    </div>
+    <div class="tablewrap"><table id="gateTable">
+      <thead><tr><th>関門</th><th>必要な情報</th><th>手がかりのあるページ</th><th>解けないと届くページ</th><th>その先で閉ざされるページ</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
   </section>
 
   <section class="card" id="keys">
@@ -422,6 +475,177 @@ const endTag = k => `<span class="endtag ${ENDS[k][1]}"><i>${ENDS[k][1]==="good"
   RUNS.forEach(([label,track,steps,name,end,surprise]) => {
     const tr = document.createElement("tr"); if (surprise) tr.className = "surprise";
     tr.innerHTML = `<td class="num">${label}</td><td class="num">${track}番</td><td>${steps.map(x=>`<span class="step${x.startsWith("（")?" off":""}">${x}</span>`).join("→ ")}</td><td class="kw">${name}</td><td>${endTag(end)}</td><td class="fate">${ENDS[end][2]}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- dependency model ---------- */
+// items: information pieces. from: pages needed (all), any: pages of which one is enough. gate: label if it is a hard step.
+const ITEMS = {
+  mail:{label:"依頼メール（二階堂）", from:[]},
+  bm:{label:"ブラウザのブックマーク", from:["1"]},
+  url_eid:{label:"投稿のURL（エイドリー）", from:["4"]},
+  kw_stil:{label:"「スティレットプロモーション」", from:["3"]},
+  partners:{label:"PARTNERSリンク", from:["7"]},
+  kw_kurumi:{label:"「クルミ」", from:["3"]},
+  kw_nari:{label:"「ナリさん」", from:["3"], gate:"TOPの文中の名前に気づく"},
+  mv:{label:"MVに一瞬出る「ドキュメントマチ」", from:["3"], gate:"MV（YouTube）を見る"},
+  kw_doc:{label:"「ドキュメント○○」の類推", from:["5"]},
+  kw_nari2:{label:"「在原業平」", from:["5","7"], gate:"ナリさん＝稀代のプレイボーイ＝業平"},
+  kw_hyaku:{label:"「百人一首」", any:["12","14"]},
+  kw_hidamari:{label:"「ひだまりの少女」", from:["5"]},
+  kw_tsushin:{label:"「ひだまり通信」", from:["16"]},
+  kw_amagi:{label:"「天城丈」", from:["16"], gate:"『伊豆の踊子』の峠＝天城"},
+  kw_yousei:{label:"「妖精のくちづけ」", from:["13","17"], gate:"2つの伏字を合わせる"},
+  kw_machiko:{label:"「小野田町子」", from:["19"]},
+  kw_contest:{label:"「新時代ドリームシンガーコンテスト」", from:["11"]},
+  kw_vguard:{label:"付箋の「V-Guard」", from:["21"], gate:"添付画像の付箋を読む"},
+  kw_plat:{label:"「プラチナスカイ」", from:["23"]},
+  kw_minami:{label:"「南野英二」", from:["22"]},
+  kw_hosp:{label:"「田山医科大学附属病院」", from:["26"], gate:"写真の看板を読む（附属）"},
+  kw_aya:{label:"「小野田文」", from:["27","20"], gate:"「◯田文」＋マチの姓"},
+  kw_master:{label:"「マスターピース」", from:["28"]},
+  kw_ariaya:{label:"「在原文」", from:["31"]},
+  kw_kurumi2:{label:"「在原来未」", from:["32"], gate:"母子手帳の画像を読む"},
+  kw_rajio:{label:"「くるらじ」", from:["33"]},
+  kw_gummy:{label:"「もっちゅむっちゅグミ」", from:["35"]},
+  sid:{label:"S-ID 39865", from:["36"], gate:"写真を拡大してS-IDを読む"},
+  pw:{label:"パスワード kimigatame", from:["8"], gate:"「15と50」＝百人一首の共通句"},
+  portal:{label:"ポータルのメニュー", from:["38"]},
+  folder:{label:"個人フォルダ", from:["40"]},
+  kw_naka:{label:"「中芽黒総合病院」", from:["39"]},
+  kw_nika:{label:"「二階堂探偵事務所」（依頼メールの署名）", from:[]},
+  e_track:{label:"11番＝「エールの歌」", from:["9","39"], gate:"和歌ブログの超訳を結びつける"},
+  e_where:{label:"依頼主（在原来未）と居場所", from:["32","39","43"]},
+  e_evid:{label:"証拠＝39番の音声ログ", from:["39"]},
+  e_name:{label:"首謀者＝御子谷佑", from:["41"]},
+};
+const DEPS = {
+  "1":[], "2":["bm"], "4":["bm"], "3":["url_eid"], "7":["kw_stil"], "37":["partners"], "10":["kw_kurumi"],
+  "6":["kw_nari"], "5":["mv"], "11":["kw_doc"], "14":["kw_doc"], "12":["kw_nari2"], "8":["kw_hyaku"], "9":["kw_hyaku"],
+  "15":["kw_hidamari"], "16":["kw_hidamari"], "13":["kw_tsushin"], "17":["kw_amagi"], "18":["kw_amagi"], "19":["kw_yousei"],
+  "20":["kw_machiko"], "21":["kw_contest"], "22":["kw_vguard"], "23":["kw_vguard"], "24":["kw_plat"], "25":["kw_minami"], "26":["kw_minami"],
+  "27":["kw_hosp"], "28":["kw_aya"], "29":["kw_aya"], "30":["kw_master"], "31":["kw_master"], "32":["kw_ariaya"],
+  "33":["kw_kurumi2"], "34":["kw_kurumi2"], "35":["kw_rajio"], "36":["kw_gummy"], "38":["sid","pw","partners"],
+  "39":["portal"], "40":["portal"], "41":["folder"], "42":["folder"], "43":["kw_naka"], "EX":["kw_nika"],
+  "励ます":["e_track"], "二階堂に報告":["e_where"], "反論":["e_evid","e_name"], "首謀者を報告":["e_name"],
+};
+const ENDNODES = ["励ます","二階堂に報告","反論","首謀者を報告"];
+const PTITLE = Object.fromEntries(PAGES.map(p => [p[0], p[4]]));
+Object.assign(PTITLE, {"励ます":"V-Guardで11番を送る","二階堂に報告":"メールで在原来未・中芽黒総合病院と答える","反論":"taskのDMで反論する","首謀者を報告":"最後のメールで御子谷佑と答える"});
+
+function reachable(blockedItems = new Set()) {
+  const got = new Set(), items = new Set();
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const [k, it] of Object.entries(ITEMS)) {
+      if (items.has(k) || blockedItems.has(k)) continue;
+      const okAll = (it.from || []).every(p => got.has(p));
+      const okAny = !it.any || it.any.some(p => got.has(p));
+      if (okAll && okAny) { items.add(k); changed = true; }
+    }
+    for (const [pg, need] of Object.entries(DEPS)) {
+      if (got.has(pg)) continue;
+      if (need.every(i => items.has(i))) { got.add(pg); changed = true; }
+    }
+  }
+  return got;
+}
+const srcPages = it => [...(it.from || []), ...(it.any || [])];
+// depth = longest chain of pages from the start
+const DEPTH = {};
+(function(){
+  const d = pg => {
+    if (pg in DEPTH) return DEPTH[pg];
+    DEPTH[pg] = 0;
+    let best = 0;
+    DEPS[pg].forEach(i => { const it = ITEMS[i]; const srcs = srcPages(it); const v = it.any ? Math.min(...it.any.map(d)) : (srcs.length ? Math.max(...srcs.map(d)) : -1); best = Math.max(best, v + 1); });
+    return DEPTH[pg] = best;
+  };
+  Object.keys(DEPS).forEach(d);
+})();
+// edges page -> page with the item that links them
+const EDGES = [];
+Object.entries(DEPS).forEach(([pg, need]) => need.forEach(i => srcPages(ITEMS[i]).forEach(src => EDGES.push({src, dst:pg, item:i}))));
+const pre = pg => { const out = new Set(); const walk = x => EDGES.filter(e => e.dst === x).forEach(e => { if (!out.has(e.src)) { out.add(e.src); walk(e.src); } }); walk(pg); return out; };
+const post = pg => { const out = new Set(); const walk = x => EDGES.filter(e => e.src === x).forEach(e => { if (!out.has(e.dst)) { out.add(e.dst); walk(e.dst); } }); walk(pg); return out; };
+
+/* ---------- dependency graph ---------- */
+(function(){
+  const host = document.getElementById("depGraph");
+  const cols = {}; Object.keys(DEPS).forEach(pg => { const c = ENDNODES.includes(pg) ? 99 : DEPTH[pg]; (cols[c] = cols[c] || []).push(pg); });
+  const keys = Object.keys(cols).map(Number).sort((a,b) => a-b);
+  const nw = 58, nh = 26, gx = 30, gy = 10, padT = 28, padL = 14;
+  const maxRows = Math.max(...keys.map(k => cols[k].length));
+  const W = padL*2 + keys.length*nw + (keys.length-1)*gx + 60, H = padT + maxRows*(nh+gy) + 14;
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":"ページ間の依存関係のグラフ"}, host);
+  const pos = {};
+  keys.forEach((k, ci) => {
+    const list = cols[k].sort((a,b) => (a==="EX")-(b==="EX") || (ENDNODES.indexOf(a)-ENDNODES.indexOf(b)) || Number(a)-Number(b));
+    const x = padL + ci*(nw+gx) + (k===99 ? 40 : 0);
+    const offset = (maxRows - list.length) * (nh+gy) / 2;
+    list.forEach((pg, ri) => pos[pg] = {x, y: padT + offset + ri*(nh+gy)});
+    const t = el("text", {x:x+nw/2, y:14, "text-anchor":"middle", class:"col"}, svg); t.textContent = k===99 ? "結末" : `段${k}`;
+  });
+  const eg = el("g", {}, svg), ng = el("g", {}, svg);
+  const edgeEls = EDGES.map(e => {
+    const a = pos[e.src], b = pos[e.dst]; if (!a || !b) return null;
+    const x1 = a.x+nw, y1 = a.y+nh/2, x2 = b.x, y2 = b.y+nh/2, mx = (x1+x2)/2;
+    const path = el("path", {d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`, class:"gedge" + (ITEMS[e.item].gate ? " gate" : "")}, eg);
+    return {e, path};
+  }).filter(Boolean);
+  const nodeEls = {};
+  Object.keys(pos).forEach(pg => {
+    const g = el("g", {class:"gnode" + (ENDNODES.includes(pg) ? " end" : ""), tabindex:0, role:"button", "aria-label":`${pg} ${PTITLE[pg]}`}, ng);
+    const isEnd = ENDNODES.includes(pg);
+    el("rect", {x:pos[pg].x, y:pos[pg].y, width: isEnd ? nw+44 : nw, height:nh, rx:6}, g);
+    const t = el("text", {x:pos[pg].x + (isEnd ? (nw+44)/2 : nw/2), y:pos[pg].y+nh/2+4, "text-anchor":"middle"}, g);
+    t.textContent = isEnd ? pg : (pg === "EX" ? "EX" : "#" + pg);
+    nodeEls[pg] = g;
+    const pick = () => select(pg);
+    g.addEventListener("click", pick); g.addEventListener("focus", pick);
+    g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(); } });
+  });
+  const detail = document.getElementById("depDetail");
+  function select(pg){
+    const p = pre(pg), q = post(pg);
+    Object.entries(nodeEls).forEach(([k, g]) => {
+      g.classList.remove("sel","pre","post","dim");
+      if (k === pg) g.classList.add("sel"); else if (p.has(k)) g.classList.add("pre"); else if (q.has(k)) g.classList.add("post"); else g.classList.add("dim");
+    });
+    edgeEls.forEach(({e, path}) => {
+      const on = (e.dst === pg || p.has(e.dst)) && (p.has(e.src)) || (e.src === pg || q.has(e.src)) && (q.has(e.dst));
+      path.classList.toggle("hot", !!on); path.classList.toggle("dim", !on);
+    });
+    const needs = DEPS[pg].map(i => { const it = ITEMS[i]; const src = srcPages(it).map(x => "#" + x + " " + PTITLE[x]).join(it.any ? " または " : "、"); return `<li><b>${it.label}</b>${it.gate ? ` <span class="pill hint">関門：${it.gate}</span>` : ""}<br><span class="muted">${src || "最初から持っている"}</span></li>`; }).join("");
+    const opens = EDGES.filter(e => e.src === pg).map(e => `<li>#${e.dst === "EX" ? "EX" : e.dst} ${PTITLE[e.dst]} <span class="muted">← ${ITEMS[e.item].label}</span></li>`);
+    const uniq = [...new Set(opens)].join("");
+    const cut = reachable(new Set(DEPS[pg])).size;
+    detail.innerHTML = `<div><h3>${ENDNODES.includes(pg) ? pg : (pg === "EX" ? "EX" : "#" + pg)} ${PTITLE[pg]}</h3><span class="muted">段${ENDNODES.includes(pg) ? "（結末）" : DEPTH[pg]} · 前提ページ ${p.size} · この先のページ ${[...q].filter(x => !ENDNODES.includes(x)).length}</span></div>`
+      + `<div><h3>開くのに必要なもの</h3><ul>${needs || "<li>最初から開いている</li>"}</ul></div>`
+      + `<div><h3>ここで得られる手がかり</h3><ul>${uniq || "<li class='muted'>次のページにつながる手がかりはない</li>"}</ul></div>`;
+  }
+  select("38");
+})();
+
+/* ---------- gate table ---------- */
+(function(){
+  const all = reachable().size;
+  const pageCount = set => [...set].filter(x => !ENDNODES.includes(x)).length;
+  const total = pageCount(reachable());
+  const tb = document.querySelector("#gateTable tbody");
+  Object.entries(ITEMS).filter(([k, it]) => it.gate).map(([k, it]) => {
+    const got = reachable(new Set([k]));
+    const lost = Object.keys(DEPS).filter(pg => !got.has(pg));
+    return {k, it, n: pageCount(got), lost};
+  }).sort((a,b) => a.n - b.n).forEach(({k, it, n, lost}) => {
+    const src = srcPages(it).map(x => "#" + x).join(it.any ? " / " : " + ");
+    const lostPages = lost.filter(x => !ENDNODES.includes(x)).map(x => x === "EX" ? "EX" : "#" + x);
+    const lostEnd = lost.filter(x => ENDNODES.includes(x));
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="kw">${it.gate}</td><td>${it.label}</td><td class="num">${src}</td>`
+      + `<td><div class="gatebar"><span class="num" style="min-width:52px">${n}/${total}</span><span class="bar"><i style="width:${n/total*100}%"></i></span></div></td>`
+      + `<td style="font-size:12.5px">${lostPages.length ? lostPages.join(" ") : "<span class='muted'>ページは閉ざされない</span>"}${lostEnd.length ? `<br><span class="muted">結末：${lostEnd.join("・")}ができない</span>` : ""}</td>`;
     tb.appendChild(tr);
   });
 })();
