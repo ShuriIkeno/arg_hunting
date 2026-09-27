@@ -130,6 +130,30 @@ tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
 .gatebar{display:flex;align-items:center;gap:8px}
 .gatebar .bar{flex:1;height:8px;border-radius:4px;background:var(--rule);overflow:hidden;min-width:60px}
 .gatebar .bar i{display:block;height:100%;background:var(--s-web);border-radius:4px}
+.stuck{display:flex;flex-direction:column;gap:12px}
+.ep{border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px 18px}
+.ep .when{display:flex;flex-direction:column;gap:4px}
+.ep .when .t{font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+.ep .when .dur{font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.ep .when .dur small{font-size:12px;color:var(--ink-3);font-weight:400}
+.ep h3{font-size:15px}
+.ep .body{display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.ep .row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;align-items:start}
+.ep .row>span:first-child{font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;padding-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chips i{font-style:normal;font-size:11.5px;border:1px solid var(--rule);border-radius:6px;padding:0 6px;color:var(--ink-2);background:var(--band-2)}
+.chips i.x{text-decoration:line-through;text-decoration-color:var(--crit)}
+.hintq{border-left:3px solid var(--warn);padding:4px 0 4px 10px;display:flex;flex-direction:column;gap:3px;color:var(--ink)}
+.hintq b{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);font-weight:500}
+.cause{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;white-space:nowrap;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--accent-soft);color:var(--accent);width:fit-content}
+.causes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.causes div{border:1px solid var(--rule);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+.causes .n{font-family:var(--mono);font-size:22px;font-weight:600}
+.causes .k{font-size:13px;font-weight:700}
+.causes .d{font-size:12.5px;color:var(--ink-2)}
+.solo{columns:2 260px;column-gap:24px;font-size:13px;color:var(--ink-2);margin:0;padding-left:18px}
+.solo li{break-inside:avoid;margin-bottom:4px}
+@media (max-width:640px){.ep{grid-template-columns:1fr}.ep .row{grid-template-columns:1fr}}
 @media (max-width:560px){.maprow{grid-template-columns:1fr}.maprow .ch{padding-top:0}.cell{width:46px;height:40px}}
 @media (prefers-reduced-motion:reduce){.tip{transition:none}}
 </style>
@@ -172,6 +196,86 @@ tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
       <p>ブラウザ検索とEIDOLieサイト内検索の合計。序盤は総当たりで回数が多く、手がかりがつながってからは少ない検索で進めています。</p>
     </div>
     <div class="chart" id="activityChart"></div>
+  </section>
+
+
+  <section class="card" id="stuck">
+    <div class="sechead">
+      <div><div class="eyebrow">Where the AI got stuck</div><h2>AIが詰まった場所と、見たヒント</h2></div>
+      <p>公式ヒントを開いた5つの場面。ヒントを見る直前に何を試していたかと、ヒントのどの一言で先へ進めたかを並べています。取り消し線の語は、試して外れた検索語です。</p>
+    </div>
+    <div class="causes">
+      <div><span class="n">2</span><span class="k">画像を読んでいなかった</span><span class="d">写真の看板、拡大できる写真のS-ID。文字だけを読んで進めていた</span></div>
+      <div><span class="n">1</span><span class="k">見られないメディア</span><span class="d">YouTubeのMV。推理ではなく環境の問題</span></div>
+      <div><span class="n">1</span><span class="k">文字化けを無視した</span><span class="d">「ナリさん」の検索結果が文字化けしていて、手がかりだと気づかなかった</span></div>
+      <div><span class="n">1</span><span class="k">ゲームの仕組み</span><span class="d">報告用のメールが届く条件と、エンドの分岐条件</span></div>
+    </div>
+    <div class="stuck">
+
+      <article class="ep">
+        <div class="when"><span class="t">07:48 → 08:15</span><span class="dur">27<small>分</small></span><span class="cause">見られないメディア</span></div>
+        <div class="body">
+          <h3>① 序盤：公式サイトの先に進めない</h3>
+          <div class="row"><span>状況</span><div>10ページ前後まで来たところで、次のキーワードが出てこない。検索は1語の完全一致で、ニュースサイトの検索窓は飾りだった。</div></div>
+          <div class="row"><span>試したこと</span><div class="chips"><i class='x'>マチ</i><i class='x'>アヤ</i><i class='x'>クルミ</i><i class='x'>事故</i><i class='x'>自殺</i><i class='x'>他殺</i><i class='x'>ナリ</i><i class='x'>真実</i><i class='x'>訃報</i><i class='x'>昭和</i><i class='x'>消えたアイドル</i><i class='x'>1/f</i><i class='x'>チェキ</i><i class='x'>在原</i><i class='x'>オラクル</i><i class='x'>ぱるとねあす</i><i class='x'>パートナー</i><i class='x'>五本木</i><i class='x'>配信</i><i class='x'>天使</i><i class='x'>闇</i><i class='x'>QRコード</i><i class='x'>くるみ</i><i class='x'>胡桃</i><i class='x'>現実</i><i class='x'>永遠</i><i class='x'>剣</i><i class='x'>倍音</i><i class='x'>竜田川</i><i class='x'>伊勢物語</i><i class='x'>在原憂次郎</i><i class='x'>在原行平</i><i class='x'>1225</i><i class='x'>ストイック</i><i class='x'>天然</i><i>…ほか25語（計60語）</i></div></div>
+          <div class="row"><span>見たヒント</span><div class="hintq"><b>新人調査員へのアドバイス</b>まずはマチさんの周辺を重点的に。漢字の打ち間違いや、英語の大文字小文字に注意。エイドリー検索とブラウザ検索の2つを使い分ける。調査記録の空欄を埋めると道が開ける。<b>５</b>エイドリーのサイトTOPのMV動画を流してしっかり見る。6の情報にもヒントがあるかも。</div></div>
+          <div class="row"><span>突破</span><div>環境の制限でYouTubeが再生できず、ここで待ちが発生。提供してもらった動画をフレーム解析し、155秒に一瞬出る「ドキュメントマチ」を見つけた。サイト内検索に入れて#5へ進んだ。</div></div>
+        </div>
+      </article>
+
+      <article class="ep">
+        <div class="when"><span class="t">08:32 → 08:44</span><span class="dur">12<small>分</small></span><span class="cause">画像を読んでいなかった</span></div>
+        <div class="body">
+          <h3>② アヤの章：日記のあと、病院が分からない</h3>
+          <div class="row"><span>状況</span><div>日記に「帰り道に大きい附属病院があった」とあるが、病院名が文章に出てこない。</div></div>
+          <div class="row"><span>試したこと</span><div class="chips"><i class='x'>附属病院</i><i class='x'>骨格と遺伝</i><i class='x'>声帯の構造</i><i class='x'>未成年後見人</i><i class='x'>忘れ形見</i><i class='x'>鏡の声</i></div></div>
+          <div class="row"><span>見たヒント</span><div class="hintq"><b>27 · ヒント1</b>彼女の体調、心配ですね。<b>27 · ヒント2</b>画像が荒いですが、なんとか読めますね。漢字、間違えないように。附属と付属はとくに。</div></div>
+          <div class="row"><span>突破</span><div>日記の最後の写真を拡大して、看板の「田山医科大学附属病院」を読んだ。1文字目が不鮮明で「中山」も試した。</div></div>
+        </div>
+      </article>
+
+      <article class="ep">
+        <div class="when"><span class="t">08:17 → 09:27</span><span class="dur">70<small>分放置</small></span><span class="cause">文字化けを無視した</span></div>
+        <div class="body">
+          <h3>③ #6だけ最後まで見つからない</h3>
+          <div class="row"><span>状況</span><div>08:17に「ナリさん」をサイト内検索すると、結果が「陞ｺ譌」と文字化けして出ていた。エラーだと判断して開かず、#6だけ空いたまま終盤まで進んだ。</div></div>
+          <div class="row"><span>見たヒント</span><div class="hintq"><b>６</b>エイドリーのサイトTOPをよく読んでみましょう。アイドルのお名前以外に気になるお名前がありませんか？</div></div>
+          <div class="row"><span>突破</span><div>文字化けした結果を開くと、MVの歌詞ページだった。タイトルを文字コード変換で戻すと「【結び目 ほどいて】螺旋」になった。</div></div>
+        </div>
+      </article>
+
+      <article class="ep">
+        <div class="when"><span class="t">09:28 → 09:40</span><span class="dur">12<small>分</small></span><span class="cause">画像を読んでいなかった</span></div>
+        <div class="body">
+          <h3>④ パートナーログイン：S-IDが分からない</h3>
+          <div class="row"><span>状況</span><div>パスワードは「15と50」から「kimigatame」と早い段階で推測できていた。IDだけが見つからない。</div></div>
+          <div class="row"><span>試したこと</span><div class="chips"><i class='x'>task_000515</i><i class='x'>1550</i><i class='x'>kimigatame（IDとして）</i><i class='x'>krms_love_cream</i></div></div>
+          <div class="row"><span>見たヒント</span><div class="hintq"><b>「15 50」 · ヒント1</b>残りはパスワードかも。数字というより「番号」でしょうか？<b>S-ID · ヒント1</b>「S-ID」…どこかで見たような。<b>S-ID · ヒント2</b>クルミさんのIDだと思うが、プライベートな記事のどこかにヒントがありそう。<b>S-ID · ヒント3</b>36の裏垢記事が怪しい。写真も拡大して見れるようですよ。</div></div>
+          <div class="row"><span>突破</span><div>#36の腕時計の写真をクリックで拡大すると「Ariwara Kurumi : S-ID39865」と写っていた。39865 / kimigatame でログインできた。</div></div>
+        </div>
+      </article>
+
+      <article class="ep">
+        <div class="when"><span class="t">09:52 → 10:16</span><span class="dur">24<small>分</small></span><span class="cause">ゲームの仕組み</span></div>
+        <div class="body">
+          <h3>⑤ エンディング：何をどの順でやるか</h3>
+          <div class="row"><span>状況</span><div>全ページを見たあと、二階堂に報告する手段が見つからない。探偵事務所の相談フォームは飾りで、メールの新規作成も動かない。V-Guardの音源再生は一度きり。</div></div>
+          <div class="row"><span>見たヒント</span><div class="hintq"><b>42以降 · taskへの反論</b>同調するも反論するも自由。行動次第で未来が変わる。反論するなら「やれること」を先に。冗談は通じない。<b>だれが…</b>思う人物の名前をストレートにたたきつける。<b>証拠 · ヒント1</b>調査記録の横にある番号を記入する。<b>43</b>39をくまなく。オフラインになると確認できないが、やり直せれば…。<b>エンド分岐条件</b>A〜Fがあり、行動とその順番で変わる。分かれ目は「二階堂に＊＊＊の△△△を伝える」「＊＊＊を励ます」「◯◯◯◯に◆◆する」「人物名をなんと報告するか」。</div></div>
+          <div class="row"><span>突破</span><div>V-Guardは最初に50番を送って失敗し、セーブデータからやり直した。和歌ブログで「エールの歌」とされていた11番に自力で切り替えて成功（どの番号かはヒントに書かれていない）。報告のメールはtaskのDMとニュース速報を見たあとに届いた。</div></div>
+        </div>
+      </article>
+    </div>
+    <h3 style="font-size:15px">ヒントなしで解いた謎</h3>
+    <ul class="solo">
+      <li>「ドキュメントマチ」から「ドキュメントアヤ／クルミ」を類推</li>
+      <li>『伊豆の踊子』の峠・「◯◯越え」→ 天城丈</li>
+      <li>会報「妖精の◯◯◯◯」と週刊誌「◯◯のくちづけ」→ 妖精のくちづけ</li>
+      <li>パンフレットの「◯田文」＋マチの本名 → 小野田文</li>
+      <li>礼状・母子手帳の画像から在原文・在原来未を読み取り</li>
+      <li>百人一首15番と50番の共通句 → パスワード kimigatame</li>
+      <li>V-Guardの11番＝和歌ブログの「エールの歌」</li>
+      <li>taskとの問答（目的＝復讐、首謀者＝御子谷佑、証拠＝39番）</li>
+    </ul>
   </section>
 
   <section class="card" id="map">
