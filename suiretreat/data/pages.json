@@ -1,0 +1,91 @@
+[
+ {
+  "id": "1",
+  "found": "2026-10-01T08:53:34",
+  "title": "ホテル公式サイト",
+  "chapter": "入口",
+  "method": "link",
+  "source": "ショップ→プレイ開始"
+ },
+ {
+  "id": "2",
+  "found": "2026-10-01T08:53:34",
+  "title": "ポータル(チェックイン・名前入力)",
+  "chapter": "入口",
+  "method": "login",
+  "keyword": "ゲスト",
+  "source": "公式サイトのLOGIN"
+ },
+ {
+  "id": "3",
+  "found": "2026-10-01T08:55:12",
+  "title": "PROGRAM1 STILL(かき混ぜる)",
+  "chapter": "プログラム",
+  "method": "link",
+  "keyword": "淨を取得",
+  "source": "ポータル「開始する」"
+ },
+ {
+  "id": "4",
+  "found": "2026-10-01T08:56:44",
+  "title": "公式サイトFAQ(音楽の項)",
+  "chapter": "プログラム",
+  "method": "link",
+  "keyword": "528",
+  "source": "公式サイトFAQ「音楽プレーヤー」の答え(528 sHz)"
+ },
+ {
+  "id": "5",
+  "found": "2026-10-01T08:57:07",
+  "title": "PROGRAM2 SYNC(波長合わせ)",
+  "chapter": "プログラム",
+  "method": "login",
+  "keyword": "528 sHz→心を取得",
+  "source": "#4 FAQの528"
+ },
+ {
+  "id": "6",
+  "found": "2026-10-01T08:57:51",
+  "title": "公式サイトBrand(覚書)",
+  "chapter": "プログラム",
+  "method": "link",
+  "keyword": "青泥1/4 黒灰1/2 緑土3/4",
+  "source": "公式サイトBrand『覚書』リンク"
+ },
+ {
+  "id": "7",
+  "found": "2026-10-01T08:58:28",
+  "title": "PROGRAM3 BLEND(クレイ調合)",
+  "chapter": "プログラム",
+  "method": "login",
+  "keyword": "青泥25 黒灰50 緑土75→歸を取得",
+  "source": "#6 覚書"
+ },
+ {
+  "id": "8",
+  "found": "2026-10-01T08:58:57",
+  "title": "PROGRAM4 RELEASE(名前を消す)",
+  "chapter": "プログラム",
+  "method": "link",
+  "keyword": "忘を取得",
+  "source": "ポータル"
+ },
+ {
+  "id": "9",
+  "found": "2026-10-01T09:02:09",
+  "title": "PROGRAM5 RETURN→END A「還元」",
+  "chapter": "エンディング",
+  "method": "login",
+  "keyword": "淨心歸忘(取得順)+3秒長押し",
+  "source": "#3,#5,#7,#8 のキーワード"
+ },
+ {
+  "id": "10",
+  "found": "2026-10-01T09:02:49",
+  "title": "END E「帰宅」(規約に2回同意しない)",
+  "chapter": "エンディング",
+  "method": "link",
+  "keyword": "同意しない×2",
+  "source": "#2 チェックイン画面"
+ }
+]

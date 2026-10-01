@@ -1,0 +1,41 @@
+{
+ "slug": "suiretreat",
+ "title": "SUI RETREAT 調査ログ",
+ "game": "SUI RETREAT",
+ "publisher": "conizm_",
+ "url": "https://shop.daiyonkyokai.net/products/26082602?variant=51655331578162",
+ "match_url": "sui-r.pages.dev",
+ "hint_url": "",
+ "date": "2026-10-01",
+ "lede": "SUI RETREAT を、画面操作だけで攻略した記録。",
+ "total_pages": null,
+ "page_note": "",
+ "progress_regex": "",
+ "title_selector": "",
+ "search_boxes": {},
+ "miss_patterns": [
+  "一致する.*ありません",
+  "見つかりませんでした",
+  "No results"
+ ],
+ "apps": {},
+ "methods": {
+  "web": "ブラウザ検索",
+  "site": "サイト内検索",
+  "login": "ログイン・入力",
+  "link": "リンク"
+ },
+ "nav_keywords": [],
+ "viewport": [
+  1280,
+  800
+ ],
+ "settle_ms": 2500,
+ "play_end": null,
+ "result": null,
+ "milestones": [],
+ "activity_notes": [],
+ "stats_override": {},
+ "text": {},
+ "caveats": []
+}

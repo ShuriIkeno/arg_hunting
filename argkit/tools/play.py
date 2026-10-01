@@ -16,6 +16,8 @@ Usage: python argkit/tools/play.py <game_dir> <cmd> [args...]
   select <selector> <value> choose an option in a visible <select>
   key <Key>                 press a key (Enter, Escape, PageDown ...)
   scroll [dy]               mouse-wheel scroll (default 600)
+  circle <x> <y> [r] [turns] drag the mouse in circles around a point (stirring, rubbing, spinning dials)
+  drag <x1> <y1> <x2> <y2>  press at the first point, move to the second, release
   back                      browser back
   open <app>                double-click a desktop icon named in game.json "apps"
 Options: --note "<why>"  free text stored with the action (where the keyword came from, what you expect)
@@ -165,6 +167,20 @@ def main():
                 else: result = "NOT FOUND"
             elif cmd == "key":
                 page.keyboard.press(rest[0])
+            elif cmd == "circle":
+                import math
+                cx, cy = float(rest[0]), float(rest[1])
+                r = float(rest[2]) if len(rest) > 2 else 40
+                turns = float(rest[3]) if len(rest) > 3 else 3
+                page.mouse.move(cx + r, cy); page.mouse.down()
+                steps = int(turns * 36)
+                for i in range(1, steps + 1):
+                    a = 2 * math.pi * i / 36
+                    page.mouse.move(cx + r * math.cos(a), cy + r * math.sin(a)); page.wait_for_timeout(15)
+                page.mouse.up()
+            elif cmd == "drag":
+                x1, y1, x2, y2 = map(float, rest[:4])
+                page.mouse.move(x1, y1); page.mouse.down(); page.mouse.move(x2, y2, steps=20); page.mouse.up()
             elif cmd == "scroll":
                 page.mouse.move(w / 2, h / 2); page.mouse.wheel(0, float(rest[0]) if rest else 600)
             elif cmd == "back":
