@@ -1,3 +1,4 @@
 {"time": "2026-10-01T13:51:20", "type": "environment", "text": "Chromium NSSにCA未登録でERR_CERT_AUTHORITY_INVALID→certutilで登録。Shopifyでnetworkidleが終わらずplay.pyをwait_until=loadに変更"}
 {"time": "2026-10-01T13:53:26", "type": "environment", "text": "yumifuri-observatory.com がエグレスプロキシのネットワークポリシーで403(CONNECT拒否)。本編サイトに到達できず待機"}
 {"time": "2026-10-01T14:14:51", "type": "environment", "text": "検索『アンティキティラ』『歯車』は miss_patterns 修正前のためHIT: Falseで記録されたが実際はヒット(#20,#26)"}
+{"time": "2026-10-01T14:19:42", "type": "note", "text": "B7Fにサーバールーム。B6F右下に星状の光る印(1115,665付近)を発見→クリックしてみる"}

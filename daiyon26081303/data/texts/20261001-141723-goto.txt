@@ -1,0 +1,2 @@
+--- frame: https://yumifuri-observatory.com/pages/floor-map.html?f=B2
+upstream request failed
