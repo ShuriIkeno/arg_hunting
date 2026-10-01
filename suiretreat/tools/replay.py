@@ -12,7 +12,7 @@ with sync_playwright() as p:
             a = 2 * math.pi * i / 36; m.move(cx + r * math.cos(a), cy + r * math.sin(a)); pg.wait_for_timeout(12)
         m.up()
     if "完了しました" not in txt(pg):
-        circle(633, 435, 60, 4); circle(633, 435, 60, 4); pg.wait_for_timeout(800); pg.get_by_text("飲み干す").click(); pg.wait_for_timeout(1000)
+        circle(633, 315, 60, 4); circle(633, 315, 60, 4); pg.wait_for_timeout(800); pg.get_by_text("飲み干す").click(); pg.wait_for_timeout(1000)
     pg.get_by_text("マイページへ戻る").locator("visible=true").first.click(); pg.wait_for_timeout(1200)
     pg.get_by_text("進む", exact=True).locator("visible=true").first.click(); pg.wait_for_timeout(1200)
     m.move(474, 585); m.down(); m.move(676, 585, steps=20); m.up(); pg.keyboard.press("ArrowRight")
