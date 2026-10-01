@@ -10,3 +10,4 @@
 {"time": "2026-10-01T17:02:17", "type": "environment", "text": "WEB検索『日本一、銀河に近い高校』: Googleは許可されたがヘッドレスChromiumでは接続が固まり(commitまで到達せず)、curlはJS必須ページのみ、gbv=1簡易版は廃止。bing/ddg/yahoo/brave/ecosiaは拒否のまま。高校サイトに到達できず待機"}
 {"time": "2026-10-01T17:05:45", "type": "environment", "text": "html.duckduckgo.comは許可されたが、curlではbot判定のCAPTCHA(画像選択)が出て結果取得不可、Chromiumからはページ読み込みが固まる。検索エンジン経由で高校サイトに到達できず待機"}
 {"time": "2026-10-01T17:18:03", "type": "human", "text": "ユーザーがWeb検索『日本一、銀河に近い高校』の結果の高校サイトURL https://sgm-hs.com/index.html を提供(検索エンジンがヘッドレス環境で使えないため)"}
+{"time": "2026-10-01T17:39:45", "type": "note", "text": "世界線方程式: 写真のシールで演算子が隠れていたため、4演算子×3箇所を全探索し ℓ=24 で2桁整数になる唯一の組(−,×,+ → ℓ'=41)を採用。ツールでも41と緑表示"}
