@@ -14,3 +14,4 @@
 {"time": "2026-10-01T17:57:16", "type": "note", "text": "S-クリアランス(#30)の16桁: ヒント答えにより『番号選んで顔作るやつ』表(ブログp3)でコップ/バッグ/キーホルダーのだーくまちゃんを数字に変換→12桁+4桁。次: だーくまグッズ画像の入手"}
 {"time": "2026-10-01T17:57:58", "type": "environment", "text": "suzuri.jp (天文台トップのだーくまバッジのリンク先グッズ店)がプロキシで拒否(CONNECT拒否)。S-クリアランスの12桁コードに必要なコップ/バッグ/キーホルダー画像に到達できず待機"}
 {"time": "2026-10-01T19:17:22", "type": "environment", "text": "suzuri.jp本体は許可されたが、画像/CSS配信の dijsur42hqnz1.cloudfront.net がプロキシ拒否。商品画像(コップ/バッグ/キーホルダーのだーくまちゃん)が表示できず待機"}
+{"time": "2026-10-01T20:40:33", "type": "environment", "text": "suzuri.jp/cloudfrontは許可されたが、商品画像の配信元 lens.suzuri.jp がプロキシ拒否。キーホルダー/タンブラー/サコッシュの商品画像が表示できず待機(商品ページ: suzuri.jp/yumifuri-observatory/19113985/acrylic-keychain/50x50mm/clear 等)"}
