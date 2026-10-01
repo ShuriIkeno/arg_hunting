@@ -168,6 +168,7 @@ EIDOLie の初期ログには `keyword` `hit` `progress` が無く、`browser_ti
 ```
 
 - `from` はすべて必要、`any` はどれか1つでよい。`from: []` は最初から持っている情報。
+- `unreached: true` を付けた item は、入手元が未到達であることを表示する（`from: []` のとき「最初から持っている」と出さない）。
 - `gate` を書いた item は「関門」として、解けなかった場合にどこで止まるかを自動計算する。
 - 実際のプレイ順ではなく、作者が想定した経路で組む。
 
@@ -176,7 +177,7 @@ EIDOLie の初期ログには `keyword` `hit` `progress` が無く、`browser_ti
 ```json
 {
  "intro": "…", "total_ends": 6,
- "ends": {"A": {"title": "…", "tone": "good|bad|gray", "fate": "結末の一言"}},
+ "ends": {"A": {"title": "…", "tone": "good|bad|gray", "fate": "結末の一言", "reached": true}},   // 未到達のエンドは "reached": false
  "columns": {"param": "変えた条件の列名", "name": "報告の列名", "fate": "結末の列名"},
  "tree": [{"cond": "条件（<b>可</b>）", "end": "F"}, {"cond": "どれにも当てはまらない", "end": "A", "default": true}],
  "runs": [{"label": "A", "param": "11番", "steps": ["励ます", "伝える"], "name": "…", "end": "A", "surprise": false}],

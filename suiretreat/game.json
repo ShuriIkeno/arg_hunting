@@ -8,8 +8,8 @@
  "hint_url": "https://sui-r.pages.dev/hint",
  "date": "2026-10-01",
  "lede": "SUI RETREAT(conizm_)を、画面操作だけで攻略した記録。5エンドのうちA・C・D・Eに到達(Bは未到達)。",
- "total_pages": 14,
- "page_note": "フッターの注記末尾の番号(1〜14)。確認できたのは1〜8,10と、/emergency内",
+ "total_pages": null,
+ "page_note": "ページ番号はこの記録の通し番号(ゲーム内の注記番号とは別)",
  "progress_regex": "",
  "title_selector": "",
  "search_boxes": {},
@@ -37,8 +37,26 @@
   "title": "還元 / 通報 / 脱出 / 帰宅",
   "label": "に到達（Bは未到達）"
  },
- "milestones": [],
- "activity_notes": [],
+ "milestones": [
+  {
+   "time": "2026-10-01T09:02:09",
+   "label": "END A・E"
+  },
+  {
+   "time": "2026-10-01T09:16:30",
+   "label": "END C"
+  },
+  {
+   "time": "2026-10-01T10:33:34",
+   "label": "END D"
+  }
+ ],
+ "activity_notes": [
+  {
+   "time": "2026-10-01T10:40:00",
+   "label": "クーポン総当たり(899件)"
+  }
+ ],
  "stats_override": {},
  "text": {},
  "caveats": [

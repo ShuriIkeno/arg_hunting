@@ -524,7 +524,7 @@ DP && (function(){
       const on = (e.dst === pg || p.has(e.dst)) && (p.has(e.src)) || (e.src === pg || q.has(e.src)) && (q.has(e.dst));
       path.classList.toggle("hot", !!on); path.classList.toggle("dim", !on);
     });
-    const needs = DEPS[pg].map(i => { const it = ITEMS[i]; const src = srcPages(it).map(x => "#" + x + " " + PTITLE[x]).join(it.any ? " または " : "、"); return `<li><b>${it.label}</b>${it.gate ? ` <span class="pill hint">関門：${it.gate}</span>` : ""}<br><span class="muted">${src || "最初から持っている"}</span></li>`; }).join("");
+    const needs = DEPS[pg].map(i => { const it = ITEMS[i]; const src = srcPages(it).map(x => "#" + x + " " + PTITLE[x]).join(it.any ? " または " : "、"); return `<li><b>${it.label}</b>${it.gate ? ` <span class="pill hint">関門：${it.gate}</span>` : ""}<br><span class="muted">${src || (it.unreached ? "入手元は未到達" : "最初から持っている")}</span></li>`; }).join("");
     const opens = EDGES.filter(e => e.src === pg).map(e => `<li>#${e.dst === "EX" ? "EX" : e.dst} ${PTITLE[e.dst]} <span class="muted">← ${ITEMS[e.item].label}</span></li>`);
     const uniq = [...new Set(opens)].join("");
     const cut = reachable(new Set(DEPS[pg])).size;
@@ -573,7 +573,7 @@ const show = id => { const n = document.getElementById(id); if (n) n.hidden = fa
     ["公式ヒント", `${S.hint_topics}<small>項目</small>`, `ヒントページの開閉${S.hint_opens}回`],
   ];
   if (S.retries != null) tiles.push(["やり直し", `${S.retries}<small>回</small>`, S.retries_note || ""]);
-  if (EN) tiles.push(["回収したエンド", `${Object.keys(EN.ends).length}<small>/${EN.total_ends || Object.keys(EN.ends).length}</small>`, `リプレイ${EN.runs.length}回`]);
+  if (EN) tiles.push(["回収したエンド", `${Object.values(EN.ends).filter(e => e.reached !== false).length}<small>/${EN.total_ends || Object.keys(EN.ends).length}</small>`, `再現ルート${EN.runs.length}本`]);
   document.getElementById("tiles").innerHTML = tiles.map(([k,v,n]) => `<div class="tile"><span class="k">${k}</span><span class="v">${v}</span><span class="n">${esc(n)}</span></div>`).join("");
 
   document.getElementById("activityText").textContent = (g.text && g.text.activity) || "検索窓への入力回数の合計（移動のための定型検索を含む）。";
