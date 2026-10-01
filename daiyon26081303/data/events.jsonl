@@ -7,3 +7,4 @@
 {"time": "2026-10-01T15:28:08", "type": "environment", "text": "our-planetarium.net がエグレスプロキシで403(CONNECT拒否)。水無瀬の高校時代ブログ(Phase03)に到達できず待機"}
 {"time": "2026-10-01T15:52:41", "type": "note", "text": "ヒント03-01答え: WEBブラウザで『日本一、銀河に近い高校』を検索(紙の裏の透けた文字と一致)"}
 {"time": "2026-10-01T15:52:48", "type": "environment", "text": "WEB検索(ヒント03-01答え『日本一、銀河に近い高校』)が必要だが google/bing/duckduckgo/yahoo が全てプロキシで拒否され、高校公式サイト(Phase04)に到達できず待機"}
+{"time": "2026-10-01T17:02:17", "type": "environment", "text": "WEB検索『日本一、銀河に近い高校』: Googleは許可されたがヘッドレスChromiumでは接続が固まり(commitまで到達せず)、curlはJS必須ページのみ、gbv=1簡易版は廃止。bing/ddg/yahoo/brave/ecosiaは拒否のまま。高校サイトに到達できず待機"}
