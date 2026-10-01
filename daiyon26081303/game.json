@@ -8,20 +8,19 @@
  "hint_url": "",
  "date": "2026-10-01",
  "lede": "アンティキティラの沈没船（弓降岳天文台）を、画面操作だけで攻略した記録。商品ページ: https://shop.daiyonkyokai.net/products/26081303",
- "total_pages": null,
- "page_note": "",
- "progress_regex": "",
- "title_selector": "",
+ "total_pages": 43,
+ "page_note": "本編43ページ（導入記事3ページは intro1-3 として別記録）",
+ "progress_regex": "(\\d+)\\s*/\\s*43",
+ "title_selector": ".arg-pager-badge",
  "search_boxes": {
   "site": {
    "frame": "",
-   "selector": "input[type=search], input[type=text]"
+   "selector": "#searchInput"
   }
  },
  "miss_patterns": [
-  "一致する.*ありません",
-  "見つかりませんでした",
-  "No results"
+  "データが見つかりませんでした",
+  "一致する.*ありません"
  ],
  "apps": {},
  "methods": {
