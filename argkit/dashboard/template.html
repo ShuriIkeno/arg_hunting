@@ -186,7 +186,7 @@ tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
 
   <section class="card" id="activity">
     <div class="sechead">
-      <div><div class="eyebrow">Search activity</div><h2>5分ごとの検索回数</h2></div>
+      <div><div class="eyebrow">Search activity</div><h2 id="activityTitle">5分ごとの検索回数</h2></div>
       <p id="activityText"></p>
     </div>
     <div class="chart" id="activityChart"></div>
@@ -569,13 +569,14 @@ const show = id => { const n = document.getElementById(id); if (n) n.hidden = fa
   const tiles = [
     ["到達ページ", `${S.pages_found}<small>/${TOTAL}</small>`, g.page_note || ""],
     ["プレイ時間", S.duration, `${S.start} → ${S.end}（待ち時間込み）`],
-    ["試したキーワード", `${S.keywords}<small>種</small>`, S.keyword_hits != null ? `結果が出たのは約${S.keyword_hits}種（${Math.round(S.keyword_hits / Math.max(1,S.keywords) * 100)}%）` : "ヒット数は未記録"],
+    [(g.text && g.text.keywords_label) || "試したキーワード", `${S.keywords}<small>種</small>`, (g.text && g.text.keywords_note) ? g.text.keywords_note : S.keyword_hits != null ? `結果が出たのは約${S.keyword_hits}種（${Math.round(S.keyword_hits / Math.max(1,S.keywords) * 100)}%）` : "ヒット数は未記録"],
     ["公式ヒント", `${S.hint_topics}<small>項目</small>`, `ヒントページの開閉${S.hint_opens}回`],
   ];
   if (S.retries != null) tiles.push(["やり直し", `${S.retries}<small>回</small>`, S.retries_note || ""]);
   if (EN) tiles.push(["回収したエンド", `${Object.values(EN.ends).filter(e => e.reached !== false).length}<small>/${EN.total_ends || Object.keys(EN.ends).length}</small>`, `再現ルート${EN.runs.length}本`]);
   document.getElementById("tiles").innerHTML = tiles.map(([k,v,n]) => `<div class="tile"><span class="k">${k}</span><span class="v">${v}</span><span class="n">${esc(n)}</span></div>`).join("");
 
+  if (g.text && g.text.activity_title) document.getElementById("activityTitle").textContent = g.text.activity_title;
   document.getElementById("activityText").textContent = (g.text && g.text.activity) || "検索窓への入力回数の合計（移動のための定型検索を含む）。";
   document.getElementById("mapTitle").textContent = `${TOTAL}ページを何で見つけたか`;
   const used = [...new Set(PAGES.map(p => p[3]))];

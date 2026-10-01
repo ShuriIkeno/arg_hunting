@@ -61,7 +61,7 @@
 | `milestones` | object[] | 進捗グラフに入れる注記 `{"time", "label"}` |
 | `activity_notes` | object[] | 検索回数グラフに入れる注記 `{"time", "label"}` |
 | `stats_override` | object | 自動集計できない数字：`keyword_hits` `retries` `retries_note` |
-| `text` | object | 文言の差し替え：`activity`（検索グラフの説明）、`deps_note`（関門表の補足） |
+| `text` | object | 文言の差し替え：`activity`（入力回数グラフの説明）、`activity_title`（同・見出し）、`keywords_label` / `keywords_note`（キーワードのタイルの名前と補足）、`deps_note`（関門表の補足） |
 | `caveats` | string[] | 「データを読むときの注意」 |
 
 ## data/actions.jsonl（自動）
