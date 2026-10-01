@@ -87,5 +87,50 @@
   "method": "link",
   "keyword": "同意しない×2",
   "source": "#2 チェックイン画面"
+ },
+ {
+  "id": "11",
+  "found": "2026-10-01T09:09:18",
+  "title": "404エラー詳細(スタッフ用認証情報)",
+  "chapter": "スタッフ側",
+  "method": "link",
+  "keyword": "staff4sui / sui4suikyou",
+  "source": "ポータル『レビューを書く』→記入する→404→エラー詳細(英文)。公式ヒント『アクセス情報が見つからない』で気づく"
+ },
+ {
+  "id": "12",
+  "found": "2026-10-01T09:14:39",
+  "title": "MAINTENANCE MODE(/emergency)",
+  "chapter": "スタッフ側",
+  "method": "login",
+  "keyword": "1826205(創業年+部屋番号)",
+  "source": "レビューのクーポン欄。公式ヒント『ページ9 答え』を開いて入手(自力では入口に到達できず)"
+ },
+ {
+  "id": "13",
+  "found": "2026-10-01T09:15:57",
+  "title": "MAINTENANCE MODE内: memo_01.txt(代替回線)",
+  "chapter": "スタッフ側",
+  "method": "link",
+  "keyword": "SSID SUI_REF_NET / PASS=○○○○○T=食事メニュー【02-1,04-4,01-1,01-3,03-6】T",
+  "source": "#12 ごみ箱→memo_01.txt"
+ },
+ {
+  "id": "14",
+  "found": "2026-10-01T09:16:23",
+  "title": "Wi-Fi接続(SUI_REF_NET)",
+  "chapter": "スタッフ側",
+  "method": "login",
+  "keyword": "EMGNET",
+  "source": "#13 memo_01.txt"
+ },
+ {
+  "id": "15",
+  "found": "2026-10-01T09:17:05",
+  "title": "END C「通報」(救助要請メール再送信)",
+  "chapter": "エンディング",
+  "method": "link",
+  "keyword": "Wi-Fi接続後に再送信",
+  "source": "#10 送信トレイ"
  }
 ]

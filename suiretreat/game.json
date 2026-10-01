@@ -5,11 +5,11 @@
  "publisher": "conizm_",
  "url": "https://shop.daiyonkyokai.net/products/26082602?variant=51655331578162",
  "match_url": "sui-r.pages.dev",
- "hint_url": "",
+ "hint_url": "https://sui-r.pages.dev/hint",
  "date": "2026-10-01",
- "lede": "SUI RETREAT を、画面操作だけで攻略した記録。",
- "total_pages": null,
- "page_note": "",
+ "lede": "SUI RETREAT(conizm_)を、画面操作だけで攻略した記録。5エンドのうちA・C・Eに到達。",
+ "total_pages": 14,
+ "page_note": "フッターの注記末尾の番号(1〜14)。確認できたのは1〜8,10と、/emergency内",
  "progress_regex": "",
  "title_selector": "",
  "search_boxes": {},
@@ -32,10 +32,19 @@
  ],
  "settle_ms": 2500,
  "play_end": null,
- "result": null,
+ "result": {
+  "end": "A,C,E",
+  "title": "還元 / 通報 / 帰宅",
+  "label": "に到達（B・Dは未到達）"
+ },
  "milestones": [],
  "activity_notes": [],
  "stats_override": {},
  "text": {},
- "caveats": []
+ "caveats": [
+  "公式ヒント(/hint)を使った箇所: スタッフ用ポータル入口の探索で行き詰まり、ページ9の『答え』(クーポン欄に1826205)を開いた。他に見出し・STEPを数件。",
+  "スタッフ用ポータル(ページ9,11〜14相当)の入口は自力では見つからず未到達。END Dは録音音声が必要で、この環境では音声を聞けない。",
+  "END B・Dは未到達。『招待する(X)』『報告する(X)』は外部投稿のため押していない。",
+  "一度 /emergency のURLを直接開いて端末の状態をリセットした(END Cは既に回収済み)。"
+ ]
 }

@@ -1,0 +1,622 @@
+<title>SUI RETREAT 調査ログ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#f6f5f8; --surface:#fdfcfe; --ink:#16141c; --ink-2:#4d4958; --ink-3:#7d7889; --rule:#e3e0ea; --rule-2:#eeecf2;
+  --accent:#9b3d6e; --accent-soft:#f6e6ef;
+  --s-web:#2a78d6; --s-site:#eb6834; --s-login:#1baf7a; --s-link:#b9b5c4;
+  --band:#f0eef4; --band-2:#f8f7fa; --warn:#fab219; --good:#0ca30c; --crit:#d03b3b;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131218; --surface:#1b1a21; --ink:#f4f2f8; --ink-2:#c3bfcd; --ink-3:#8f8a9c; --rule:#2e2c37; --rule-2:#25232d;
+    --accent:#e28ab6; --accent-soft:#3a2331;
+    --s-web:#3987e5; --s-site:#d95926; --s-login:#199e70; --s-link:#5b5767;
+    --band:#211f28; --band-2:#1e1c24;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131218; --surface:#1b1a21; --ink:#f4f2f8; --ink-2:#c3bfcd; --ink-3:#8f8a9c; --rule:#2e2c37; --rule-2:#25232d;
+  --accent:#e28ab6; --accent-soft:#3a2331;
+  --s-web:#3987e5; --s-site:#d95926; --s-login:#199e70; --s-link:#5b5767;
+  --band:#211f28; --band-2:#1e1c24;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;margin:0;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(26px,4vw,38px);font-weight:900;letter-spacing:.01em}
+h2{font-size:19px;font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.lede{color:var(--ink-2);max-width:62ch;margin:6px 0 0}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.endchip{display:inline-flex;align-items:center;gap:10px;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}
+.endchip b{font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.tile .k{font-size:12.5px;color:var(--ink-3)}
+.tile .v{font-family:var(--mono);font-size:28px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile .v small{font-size:14px;color:var(--ink-3);font-weight:400;margin-left:2px}
+.tile .n{font-size:12px;color:var(--ink-2)}
+section.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:12px}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
+.sechead p{margin:0;color:var(--ink-2);font-size:13.5px;max-width:70ch}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.chart .lbl{font-family:var(--sans);font-size:11.5px;fill:var(--ink-2);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 10px;font-size:12.5px;line-height:1.5;max-width:280px;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.18);opacity:0;transition:opacity .08s}
+.tip b{font-family:var(--mono);font-weight:600}
+.tip .m{opacity:.75}
+.map{display:flex;flex-direction:column;gap:10px}
+.maprow{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:start}
+.maprow .ch{font-size:13px;font-weight:700;padding-top:8px}
+.maprow .ch span{display:block;font-weight:400;font-size:11.5px;color:var(--ink-3);font-family:var(--mono)}
+.cells{display:flex;flex-wrap:wrap;gap:6px}
+.cell{position:relative;width:52px;height:44px;border-radius:7px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px;color:#fff;cursor:default;padding:0}
+.cell small{font-size:9.5px;font-weight:400;opacity:.9;letter-spacing:.02em}
+.cell.link{color:var(--ink)}
+.cell .h{position:absolute;top:-5px;right:-5px;width:17px;height:17px;border-radius:50%;background:var(--warn);color:#16141c;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--surface)}
+.cell:focus-visible,.row-focus:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);font-weight:500;background:var(--band-2)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.kw{font-weight:700}
+.pill{display:inline-block;font-size:11px;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.pill.web{background:color-mix(in srgb,var(--s-web) 16%,transparent);color:var(--ink)}
+.pill.site{background:color-mix(in srgb,var(--s-site) 18%,transparent);color:var(--ink)}
+.pill.login{background:color-mix(in srgb,var(--s-login) 20%,transparent);color:var(--ink)}
+.pill.hint{background:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--ink)}
+.pill.human{background:var(--accent-soft);color:var(--accent)}
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;counter-reset:step;list-style:none;padding:0;margin:0}
+.route li{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:var(--surface)}
+.route li .t{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.route li .s{font-weight:700;font-size:14px}
+.route li .d{font-size:12.5px;color:var(--ink-2)}
+.route li.fail{border-style:dashed;background:var(--band-2)}
+.route li.fail .s{color:var(--crit)}
+.route li.ok .s::before{content:"✓ ";color:var(--good)}
+.route li.fail .s::before{content:"✕ ";}
+.notes{font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px;padding-left:18px;margin:0}
+.toggle{font:inherit;font-size:12.5px;background:transparent;border:1px solid var(--rule);color:var(--ink-2);border-radius:999px;padding:4px 12px;cursor:pointer}
+.toggle:hover{border-color:var(--ink-3);color:var(--ink)}
+.tree{display:flex;flex-direction:column;gap:8px}
+.q{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;border:1px solid var(--rule);border-radius:10px;padding:10px 14px;background:var(--band-2)}
+.q .qq{font-size:13.5px}
+.q .qq b{font-weight:700}
+.q .yes{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2)}
+.endtag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-weight:600;font-size:12.5px;border-radius:999px;padding:3px 10px;white-space:nowrap;border:1px solid var(--rule);background:var(--surface);color:var(--ink)}
+.endtag i{font-style:normal;width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#fff}
+.endtag.good i{background:var(--good)} .endtag.bad i{background:var(--crit)} .endtag.gray i{background:var(--ink-3)}
+.fate{font-size:12.5px;color:var(--ink-2)}
+td .step{display:inline-block;font-size:11.5px;border:1px solid var(--rule);border-radius:6px;padding:0 6px;margin:1px 2px 1px 0;white-space:nowrap}
+td .step.off{color:var(--ink-3);border-style:dashed}
+tr.surprise td{background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.gwrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--band-2)}
+.gwrap svg{display:block;min-width:1180px;width:100%;height:auto}
+.gwrap text{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+.gwrap .col{font-family:var(--mono);font-size:10px;fill:var(--ink-3)}
+.gnode rect{fill:var(--surface);stroke:var(--rule);stroke-width:1.2}
+.gnode.end rect{fill:var(--accent-soft);stroke:var(--accent)}
+.gnode.pre rect{fill:color-mix(in srgb,var(--s-web) 22%,var(--surface));stroke:var(--s-web)}
+.gnode.post rect{fill:color-mix(in srgb,var(--s-site) 22%,var(--surface));stroke:var(--s-site)}
+.gnode.sel rect{fill:var(--ink);stroke:var(--ink)}
+.gnode.sel text{fill:var(--bg)}
+.gnode.dim{opacity:.28}
+.gnode{cursor:pointer}
+.gnode:focus-visible rect{stroke:var(--accent);stroke-width:2.5}
+.gedge{fill:none;stroke:var(--ink-3);stroke-opacity:.45;stroke-width:1.2}
+.gedge.gate{stroke:var(--warn);stroke-opacity:.95;stroke-width:2.2}
+.gedge.dim{stroke-opacity:.08}
+.gedge.hot{stroke:var(--ink);stroke-opacity:.9}
+.gedge.gate.hot{stroke:var(--warn)}
+.detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:13.5px}
+.detail>div{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.detail h3{font-size:14px}
+.detail ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.detail .muted{color:var(--ink-3);font-size:12.5px}
+.gatebar{display:flex;align-items:center;gap:8px}
+.gatebar .bar{flex:1;height:8px;border-radius:4px;background:var(--rule);overflow:hidden;min-width:60px}
+.gatebar .bar i{display:block;height:100%;background:var(--s-web);border-radius:4px}
+.stuck{display:flex;flex-direction:column;gap:12px}
+.ep{border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px 18px}
+.ep .when{display:flex;flex-direction:column;gap:4px}
+.ep .when .t{font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+.ep .when .dur{font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.ep .when .dur small{font-size:12px;color:var(--ink-3);font-weight:400}
+.ep h3{font-size:15px}
+.ep .body{display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.ep .row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;align-items:start}
+.ep .row>span:first-child{font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;padding-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chips i{font-style:normal;font-size:11.5px;border:1px solid var(--rule);border-radius:6px;padding:0 6px;color:var(--ink-2);background:var(--band-2)}
+.chips i.x{text-decoration:line-through;text-decoration-color:var(--crit)}
+.hintq{border-left:3px solid var(--warn);padding:4px 0 4px 10px;display:flex;flex-direction:column;gap:3px;color:var(--ink)}
+.hintq b{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);font-weight:500}
+.cause{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;white-space:nowrap;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--accent-soft);color:var(--accent);width:fit-content}
+.causes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.causes div{border:1px solid var(--rule);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+.causes .n{font-family:var(--mono);font-size:22px;font-weight:600}
+.causes .k{font-size:13px;font-weight:700}
+.causes .d{font-size:12.5px;color:var(--ink-2)}
+.solo{columns:2 260px;column-gap:24px;font-size:13px;color:var(--ink-2);margin:0;padding-left:18px}
+.solo li{break-inside:avoid;margin-bottom:4px}
+@media (max-width:640px){.ep{grid-template-columns:1fr}.ep .row{grid-template-columns:1fr}}
+@media (max-width:560px){.maprow{grid-template-columns:1fr}.maprow .ch{padding-top:0}.cell{width:46px;height:40px}}
+@media (prefers-reduced-motion:reduce){.tip{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow" id="hdrEyebrow"></div>
+      <h1 id="hdrTitle"></h1>
+      <p class="lede" id="hdrLede"></p>
+    </div>
+    <div class="endchip" id="hdrEnd" hidden></div>
+  </header>
+
+  <div class="tiles" id="tiles" aria-label="概要"></div>
+
+  <section class="card" id="progress">
+    <div class="sechead">
+      <div><div class="eyebrow">Progress</div><h2>いつ、どのページにたどり着いたか</h2></div>
+      <p>ページを見つけるたびに1段上がる階段グラフ。平らな区間が詰まっていた時間です。点にカーソルを合わせるとページ名が出ます。</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s-web)"></i>累計到達ページ数</span>
+      <span><svg width="12" height="12" aria-hidden="true"><path d="M6 1 L11 11 L1 11 Z" fill="var(--warn)"></path></svg>公式ヒントを参照</span>
+      <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--accent)"></circle></svg>人の手助け</span>
+    </div>
+    <div class="chart" id="progressChart"></div>
+  </section>
+
+  <section class="card" id="activity">
+    <div class="sechead">
+      <div><div class="eyebrow">Search activity</div><h2>5分ごとの検索回数</h2></div>
+      <p id="activityText"></p>
+    </div>
+    <div class="chart" id="activityChart"></div>
+  </section>
+
+  <section class="card" id="stuck" hidden>
+    <div class="sechead">
+      <div><div class="eyebrow">Where the AI got stuck</div><h2>AIが詰まった場所と、見たヒント</h2></div>
+      <p>公式ヒントを開いた場面ごとに、ヒントを見る直前に何を試していたかと、ヒントのどの一言で先へ進めたかを並べています。取り消し線の語は、試して外れた検索語です。</p>
+    </div>
+    <div class="causes" id="causes"></div>
+    <div class="stuck" id="episodes"></div>
+    <h3 style="font-size:15px" id="soloHead">ヒントなしで解いた謎</h3>
+    <ul class="solo" id="solo"></ul>
+  </section>
+
+  <section class="card" id="map">
+    <div class="sechead">
+      <div><div class="eyebrow">Page map</div><h2 id="mapTitle">ページを何で見つけたか</h2></div>
+      <p>章ごとに並べた全ページ。色は見つけ方、右上の「?」は公式ヒントを見てから見つけたページ。セルにカーソルを合わせると入力した語と、その語をどこから得たかが出ます。</p>
+    </div>
+    <div class="legend" id="mapLegend"></div>
+    <div class="map" id="pageMap"></div>
+  </section>
+
+  <section class="card" id="deps" hidden>
+    <div class="sechead">
+      <div><div class="eyebrow">Dependency map</div><h2>どのページがどのページを開くか</h2></div>
+      <p>左から右へ、必要な情報がそろう順に並べたページの依存関係。線はキーワードや画像などの手がかりで、黄色い太線は詰まりやすい関門です。ページを選ぶと、そこに必要な前提（青）と、そこから開けるページ（橙）が光ります。</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s-web)"></i>前提（ここより前に必要）</span>
+      <span><i class="sw" style="background:var(--s-site)"></i>ここから開けるページ</span>
+      <span><svg width="22" height="10" aria-hidden="true"><line x1="0" y1="5" x2="22" y2="5" stroke="var(--warn)" stroke-width="3"></line></svg>関門（読み取り・謎解き・外部情報）</span>
+      <span><i class="sw" style="background:var(--accent-soft);border:1px solid var(--accent)"></i>エンディングの行動</span>
+    </div>
+    <div class="gwrap" id="depGraph"></div>
+    <div class="detail" id="depDetail"></div>
+  </section>
+
+  <section class="card" id="gates" hidden>
+    <div class="sechead">
+      <div><div class="eyebrow">Gates</div><h2>この情報がないと、どこで止まるか</h2></div>
+      <p id="gatesText">関門を1つだけ解けなかった場合に、たどり着けるページの数。ほかの関門はすべて解けている前提で、依存関係から計算しています。</p>
+    </div>
+    <div class="tablewrap"><table id="gateTable">
+      <thead><tr><th>関門</th><th>必要な情報</th><th>手がかりのあるページ</th><th>解けないと届くページ</th><th>その先で閉ざされるページ</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" id="keys">
+    <div class="sechead">
+      <div><div class="eyebrow">Breakthroughs</div><h2>突破口になったキーワード</h2></div>
+      <p>新しいページを開いた入力語と、その語をどこで拾ったか。</p>
+    </div>
+    <div class="tablewrap"><table id="kwTable">
+      <thead><tr><th>時刻</th><th>入力した語</th><th>入力先</th><th>語の出どころ</th><th>開いたページ</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" id="ending" hidden>
+    <div class="sechead">
+      <div><div class="eyebrow">Ending route</div><h2 id="routeTitle"></h2></div>
+      <p id="routeIntro"></p>
+    </div>
+    <ol class="route" id="route"></ol>
+  </section>
+
+  <section class="card" id="endings" hidden>
+    <div class="sechead">
+      <div><div class="eyebrow">Ending comparison</div><h2 id="endingsTitle"></h2></div>
+      <p id="endingsIntro"></p>
+    </div>
+    <div class="tree" id="endTree"></div>
+    <div class="tablewrap"><table id="endTable">
+      <thead><tr id="endHead"></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <ul class="notes" id="endNotes"></ul>
+  </section>
+
+  <section class="card" id="caveats" hidden>
+    <div class="sechead"><div><div class="eyebrow">Caveats</div><h2>データを読むときの注意</h2></div></div>
+    <ul class="notes" id="caveatList"></ul>
+  </section>
+</div>
+
+<script>
+
+const D = {"game": {"slug": "suiretreat", "title": "SUI RETREAT 調査ログ", "game": "SUI RETREAT", "publisher": "conizm_", "url": "https://shop.daiyonkyokai.net/products/26082602?variant=51655331578162", "match_url": "sui-r.pages.dev", "hint_url": "https://sui-r.pages.dev/hint", "date": "2026-10-01", "lede": "SUI RETREAT(conizm_)を、画面操作だけで攻略した記録。5エンドのうちA・C・Eに到達。", "total_pages": 14, "page_note": "フッターの注記末尾の番号(1〜14)。確認できたのは1〜8,10と、/emergency内", "progress_regex": "", "title_selector": "", "search_boxes": {}, "miss_patterns": ["一致する.*ありません", "見つかりませんでした", "No results"], "apps": {}, "methods": {"web": "ブラウザ検索", "site": "サイト内検索", "login": "ログイン・入力", "link": "リンク"}, "nav_keywords": [], "viewport": [1280, 800], "settle_ms": 2500, "play_end": null, "result": {"end": "A,C,E", "title": "還元 / 通報 / 帰宅", "label": "に到達（B・Dは未到達）"}, "milestones": [], "activity_notes": [], "stats_override": {}, "text": {}, "caveats": ["公式ヒント(/hint)を使った箇所: スタッフ用ポータル入口の探索で行き詰まり、ページ9の『答え』(クーポン欄に1826205)を開いた。他に見出し・STEPを数件。", "スタッフ用ポータル(ページ9,11〜14相当)の入口は自力では見つからず未到達。END Dは録音音声が必要で、この環境では音声を聞けない。", "END B・Dは未到達。『招待する(X)』『報告する(X)』は外部投稿のため押していない。", "一度 /emergency のURLを直接開いて端末の状態をリセットした(END Cは既に回収済み)。"]}, "stats": {"actions": 195, "pages_found": 15, "start": "08:52", "end": "09:18", "duration": "0:26", "keywords": 5, "keyword_hits": 4, "hint_topics": 6, "hint_opens": 12, "retries": null, "retries_note": null}, "pages": [{"id": "1", "found": "2026-10-01T08:53:34", "title": "ホテル公式サイト", "chapter": "入口", "method": "link", "source": "ショップ→プレイ開始", "t": "08:53:34"}, {"id": "2", "found": "2026-10-01T08:53:34", "title": "ポータル(チェックイン・名前入力)", "chapter": "入口", "method": "login", "keyword": "ゲスト", "source": "公式サイトのLOGIN", "t": "08:53:34"}, {"id": "3", "found": "2026-10-01T08:55:12", "title": "PROGRAM1 STILL(かき混ぜる)", "chapter": "プログラム", "method": "link", "keyword": "淨を取得", "source": "ポータル「開始する」", "t": "08:55:12"}, {"id": "4", "found": "2026-10-01T08:56:44", "title": "公式サイトFAQ(音楽の項)", "chapter": "プログラム", "method": "link", "keyword": "528", "source": "公式サイトFAQ「音楽プレーヤー」の答え(528 sHz)", "t": "08:56:44"}, {"id": "5", "found": "2026-10-01T08:57:07", "title": "PROGRAM2 SYNC(波長合わせ)", "chapter": "プログラム", "method": "login", "keyword": "528 sHz→心を取得", "source": "#4 FAQの528", "t": "08:57:07"}, {"id": "6", "found": "2026-10-01T08:57:51", "title": "公式サイトBrand(覚書)", "chapter": "プログラム", "method": "link", "keyword": "青泥1/4 黒灰1/2 緑土3/4", "source": "公式サイトBrand『覚書』リンク", "t": "08:57:51"}, {"id": "7", "found": "2026-10-01T08:58:28", "title": "PROGRAM3 BLEND(クレイ調合)", "chapter": "プログラム", "method": "login", "keyword": "青泥25 黒灰50 緑土75→歸を取得", "source": "#6 覚書", "t": "08:58:28"}, {"id": "8", "found": "2026-10-01T08:58:57", "title": "PROGRAM4 RELEASE(名前を消す)", "chapter": "プログラム", "method": "link", "keyword": "忘を取得", "source": "ポータル", "t": "08:58:57"}, {"id": "9", "found": "2026-10-01T09:02:09", "title": "PROGRAM5 RETURN→END A「還元」", "chapter": "エンディング", "method": "login", "keyword": "淨心歸忘(取得順)+3秒長押し", "source": "#3,#5,#7,#8 のキーワード", "t": "09:02:09"}, {"id": "10", "found": "2026-10-01T09:02:49", "title": "END E「帰宅」(規約に2回同意しない)", "chapter": "エンディング", "method": "link", "keyword": "同意しない×2", "source": "#2 チェックイン画面", "t": "09:02:49"}, {"id": "11", "found": "2026-10-01T09:09:18", "title": "404エラー詳細(スタッフ用認証情報)", "chapter": "スタッフ側", "method": "link", "keyword": "staff4sui / sui4suikyou", "source": "ポータル『レビューを書く』→記入する→404→エラー詳細(英文)。公式ヒント『アクセス情報が見つからない』で気づく", "t": "09:09:18"}, {"id": "12", "found": "2026-10-01T09:14:39", "title": "MAINTENANCE MODE(/emergency)", "chapter": "スタッフ側", "method": "login", "keyword": "1826205(創業年+部屋番号)", "source": "レビューのクーポン欄。公式ヒント『ページ9 答え』を開いて入手(自力では入口に到達できず)", "t": "09:14:39"}, {"id": "13", "found": "2026-10-01T09:15:57", "title": "MAINTENANCE MODE内: memo_01.txt(代替回線)", "chapter": "スタッフ側", "method": "link", "keyword": "SSID SUI_REF_NET / PASS=○○○○○T=食事メニュー【02-1,04-4,01-1,01-3,03-6】T", "source": "#12 ごみ箱→memo_01.txt", "t": "09:15:57"}, {"id": "14", "found": "2026-10-01T09:16:23", "title": "Wi-Fi接続(SUI_REF_NET)", "chapter": "スタッフ側", "method": "login", "keyword": "EMGNET", "source": "#13 memo_01.txt", "t": "09:16:23"}, {"id": "15", "found": "2026-10-01T09:17:05", "title": "END C「通報」(救助要請メール再送信)", "chapter": "エンディング", "method": "link", "keyword": "Wi-Fi接続後に再送信", "source": "#10 送信トレイ", "t": "09:17:05"}], "range": {"start": "08:52:08", "end": "09:18:35"}, "phases": [{"label": "ホテル公式サイト", "start": "08:52:58", "end": "09:18:35"}, {"label": "ポータル", "start": "08:53:34", "end": "09:18:35"}], "hint_markers": [{"t": "09:06:09", "label": "「プログラム進行」後のゲームの進め方がわからない"}, {"t": "09:08:17", "label": "○○○○○○○○へのアクセス情報が見つからない・ページ番号9でのゲームの進め方がわからない・ページ番号10でのゲームの進め方がわからない・エンドDの到達方法がわからない。・エンドEの到達方法がわからない。"}, {"t": "09:17:09", "label": "エンドDの到達方法がわからない。"}], "events": [{"time": "2026-10-01T08:55:12", "type": "note", "text": "PROGRAM1完了でキーワード『淨』を取得。操作は円運動のドラッグ(circleコマンドを追加)", "t": "08:55:12"}, {"time": "2026-10-01T09:01:31", "type": "note", "text": "PROGRAM5: 刻印を淨・心・歸・忘(取得順)に合わせて3秒長押し", "t": "09:01:31"}, {"time": "2026-10-01T09:02:09", "type": "note", "text": "END A到達(滞在記録: A=還元 / B-E未到達)。『招待する(X)』は外部投稿のため押さない", "t": "09:02:09"}], "search5": [[530, 1], [535, 0], [540, 2], [545, 0], [550, 4], [555, 1]], "milestones": [], "activity_notes": [], "stuck": null, "deps": null, "endings": null};
+const toMin = t => { const [h,m,s] = t.split(":").map(Number); return h*60 + m + (s||0)/60; };
+// tuple form used by the charts: id, chapter, time(HH:MM:SS, may exceed 24h), method, title, keyword|"—", source, hint, human
+const PAGES = D.pages.map(p => [p.id, p.chapter || "—", p.t, p.method || "link", p.title, p.keyword || "—", p.source || "", !!p.hint, !!p.human]);
+const TOTAL = D.game.total_pages || PAGES.length;
+const HINTS = D.hint_markers.map(h => [h.t, h.label]);
+const HUMAN = D.events.filter(e => e.type === "human").map(e => [e.t, e.text]);
+const BANDS = D.phases.map(b => [b.label, b.start, b.end]);
+const SEARCH5 = D.search5;
+const METHOD = Object.assign({web:"ブラウザ検索", site:"サイト内検索", login:"ログイン・入力", link:"リンク・ブックマーク"}, D.game.methods || {});
+const CHAPTERS = [...new Set(PAGES.map(p => p[1]))].map(c => [c, ""]);
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs={}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const hhmm = m => { const h = Math.floor(m/60), mm = Math.floor(m%60); return `${String(h).padStart(2,"0")}:${String(mm).padStart(2,"0")}`; };
+
+function makeTip(host){ const t = document.createElement("div"); t.className = "tip"; t.setAttribute("role","status"); host.appendChild(t); return t; }
+function showTip(tip, host, x, y, html){
+  tip.innerHTML = html; tip.style.opacity = 1;
+  const hw = host.clientWidth, tw = tip.offsetWidth;
+  let left = x + 14; if (left + tw > hw) left = x - tw - 14; if (left < 0) left = 4;
+  tip.style.left = left + "px"; tip.style.top = Math.max(0, y - 10) + "px";
+}
+function hideTip(tip){ tip.style.opacity = 0; }
+
+/* ---------- progress step chart ---------- */
+(function(){
+  const host = document.getElementById("progressChart");
+  const W = 1000, H = 380, m = {l:40, r:16, t:34, b:58};
+  const x0 = Math.floor(toMin(D.range.start)/15)*15, x1 = Math.ceil(toMin(D.range.end)/15)*15;
+  const X = t => m.l + (toMin(t) - x0) / (x1 - x0) * (W - m.l - m.r);
+  const Y = n => H - m.b - n / TOTAL * (H - m.t - m.b);
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":`累計到達ページ数の推移。${PAGES.length}/${TOTAL}ページ`}, host);
+  BANDS.forEach(([name,a,b],i) => {
+    el("rect", {x:X(a), y:m.t, width:X(b)-X(a), height:H-m.t-m.b, fill: i%2 ? "var(--band)" : "var(--band-2)"}, svg);
+    const tx = el("text", {x:(X(a)+X(b))/2, y:m.t-10, "text-anchor":"middle", class:"lbl"}, svg); tx.textContent = name;
+  });
+  [0,.25,.5,.75,1].map(f => Math.round(TOTAL*f)).forEach(v => {
+    el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:"var(--rule)", "stroke-width":1}, svg);
+    const t = el("text", {x:m.l-8, y:Y(v)+4, "text-anchor":"end"}, svg); t.textContent = v;
+  });
+  for (let mm = Math.ceil(x0/30)*30; mm <= x1; mm += 30) {
+    const t = el("text", {x:m.l + (mm-x0)/(x1-x0)*(W-m.l-m.r), y:H-m.b+18, "text-anchor":"middle"}, svg); t.textContent = hhmm(mm);
+  }
+  const pts = PAGES.slice().sort((a,b) => toMin(a[2]) - toMin(b[2]));
+  let d = `M${X(pts[0][2])},${Y(1)}`;
+  pts.forEach((p,i) => { if (i) d += ` H${X(p[2])} V${Y(i+1)}`; });
+  d += ` H${X(D.range.end)}`;
+  el("path", {d: d + ` V${Y(0)} H${X(pts[0][2])} Z`, fill:"var(--s-web)", "fill-opacity":0.08}, svg);
+  el("path", {d, fill:"none", stroke:"var(--s-web)", "stroke-width":2, "stroke-linejoin":"round"}, svg);
+  const lastP = pts[pts.length-1];
+  const endLbl = el("text", {x:X(lastP[2])+10, y:Y(pts.length)+18, class:"lbl", "text-anchor":"start"}, svg); endLbl.textContent = `${lastP[2].slice(0,5)} ${pts.length}/${TOTAL}ページ`;
+  (D.milestones || []).forEach(ms => { const t = el("text", {x:X(ms.t), y:Y(pts.length)+34, class:"lbl", "text-anchor":"end"}, svg); t.textContent = `${ms.t.slice(0,5)} ${ms.label}`; });
+  HINTS.forEach(([t,label]) => { const x = X(t), y = H-m.b+32; el("path", {d:`M${x},${y-6} L${x+6},${y+5} L${x-6},${y+5} Z`, fill:"var(--warn)", "data-tip":`<b>${t.slice(0,5)}</b> 公式ヒント<br>${label}`}, svg); });
+  HUMAN.forEach(([t,label]) => { el("circle", {cx:X(t), cy:H-m.b+46, r:5, fill:"var(--accent)", "data-tip":`<b>${t.slice(0,5)}</b> 人の手助け<br>${label}`}, svg); });
+  const hintT = el("text", {x:m.l-8, y:H-m.b+36, "text-anchor":"end"}, svg); hintT.textContent = "ヒント";
+  const humT = el("text", {x:m.l-8, y:H-m.b+50, "text-anchor":"end"}, svg); humT.textContent = "支援";
+  const tip = makeTip(host);
+  pts.forEach((p,i) => {
+    const cx = X(p[2]), cy = Y(i+1);
+    el("circle", {cx, cy, r:4, fill:`var(--s-${p[3]})`, stroke:"var(--surface)", "stroke-width":2}, svg);
+    el("circle", {cx, cy, r:11, fill:"transparent", "data-tip":`<b>${p[2].slice(0,5)}</b> · ${i+1}/${TOTAL}<br><b>#${p[0]}</b> ${p[4]}<br><span class="m">${METHOD[p[3]]}${p[5] !== "—" ? "：「"+p[5]+"」" : ""}</span>`}, svg);
+  });
+  svg.addEventListener("mousemove", e => {
+    const tgt = e.target.closest("[data-tip]"); const r = host.getBoundingClientRect();
+    if (tgt) showTip(tip, host, e.clientX - r.left, e.clientY - r.top, tgt.getAttribute("data-tip")); else hideTip(tip);
+  });
+  svg.addEventListener("mouseleave", () => hideTip(tip));
+})();
+
+/* ---------- search activity bars ---------- */
+(function(){
+  const host = document.getElementById("activityChart");
+  const W = 1000, H = 220, m = {l:40, r:16, t:14, b:30};
+  const n = SEARCH5.length, bw = (W - m.l - m.r) / n;
+  const max = Math.max(10, Math.ceil(Math.max(...SEARCH5.map(s => s[1]))/10)*10), Y = v => H - m.b - v / max * (H - m.t - m.b);
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":`5分ごとの検索回数。最大${Math.max(...SEARCH5.map(s => s[1]))}回`}, host);
+  [0,max/2,max].forEach(v => { el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:"var(--rule)"}, svg); const t = el("text", {x:m.l-8, y:Y(v)+4, "text-anchor":"end"}, svg); t.textContent = v; });
+  const tip = makeTip(host);
+  SEARCH5.forEach(([mm,v],i) => {
+    const x = m.l + i*bw + 1, w = bw - 2, y = Y(v), h = Y(0) - y;
+    if (v > 0) {
+      const r = Math.min(4, w/2, h);
+      el("path", {d:`M${x},${Y(0)} V${y+r} Q${x},${y} ${x+r},${y} H${x+w-r} Q${x+w},${y} ${x+w},${y+r} V${Y(0)} Z`, fill:"var(--s-web)"}, svg);
+    }
+    el("rect", {x:m.l + i*bw, y:m.t, width:bw, height:H-m.t-m.b, fill:"transparent", "data-tip":`<b>${hhmm(mm)}–${hhmm(mm+5)}</b><br>検索 ${v}回`}, svg);
+    if (mm % 30 === 0) { const t = el("text", {x:m.l + i*bw, y:H-m.b+18, "text-anchor":"middle"}, svg); t.textContent = hhmm(mm); }
+  });
+  (D.activity_notes || []).forEach(({t:tt, label}) => {
+    const mm = Math.floor(toMin(tt)/5)*5; const i = SEARCH5.findIndex(s => s[0] === mm); if (i < 0) return;
+    const t = el("text", {x:m.l + i*bw + bw/2, y:Y(SEARCH5[i][1])-6, class:"lbl", "text-anchor":"middle"}, svg); t.textContent = label;
+  });
+  svg.addEventListener("mousemove", e => { const tgt = e.target.closest("[data-tip]"); const r = host.getBoundingClientRect(); if (tgt) showTip(tip, host, e.clientX - r.left, e.clientY - r.top, tgt.getAttribute("data-tip")); else hideTip(tip); });
+  svg.addEventListener("mouseleave", () => hideTip(tip));
+})();
+
+/* ---------- page map ---------- */
+(function(){
+  const host = document.getElementById("pageMap"); host.style.position = "relative";
+  const tip = makeTip(host);
+  const order = p => isNaN(Number(p[0])) ? 9999 : Number(p[0]);
+  CHAPTERS.forEach(([ch, span]) => {
+    const row = document.createElement("div"); row.className = "maprow";
+    const items = PAGES.filter(p => p[1] === ch).sort((a,b) => order(a) - order(b));
+    row.innerHTML = `<div class="ch">${ch}<span>${items.length}ページ</span></div>`;
+    const cells = document.createElement("div"); cells.className = "cells";
+    items.forEach(p => {
+      const b = document.createElement("button");
+      b.className = "cell" + (p[3] === "link" ? " link" : "");
+      b.style.background = `var(--s-${p[3]})`;
+      b.innerHTML = `${p[0]}<small>${p[2].slice(0,5)}</small>` + (p[7] ? `<span class="h" aria-label="ヒント使用">?</span>` : "");
+      const html = `<b>#${p[0]}</b> ${p[4]}<br><span class="m">${p[2].slice(0,5)} · ${METHOD[p[3]]}${p[7] ? " · ヒント使用" : ""}</span>` + (p[5] !== "—" ? `<br>入力：「${p[5]}」` : "") + `<br><span class="m">出どころ：${p[6]}</span>`;
+      b.setAttribute("aria-label", `${p[0]}番 ${p[4]}、${METHOD[p[3]]}`);
+      const show = () => { const r = host.getBoundingClientRect(), c = b.getBoundingClientRect(); showTip(tip, host, c.right - r.left, c.top - r.top, html); };
+      b.addEventListener("mouseenter", show); b.addEventListener("focus", show);
+      b.addEventListener("mouseleave", () => hideTip(tip)); b.addEventListener("blur", () => hideTip(tip));
+      cells.appendChild(b);
+    });
+    row.appendChild(cells); host.appendChild(row);
+  });
+})();
+
+/* ---------- keyword table ---------- */
+(function(){
+  const tb = document.querySelector("#kwTable tbody");
+  const seen = new Set();
+  PAGES.slice().sort((a,b) => toMin(a[2]) - toMin(b[2])).forEach(p => {
+    if (p[5] === "—" || p[3] === "link") return;
+    const key = p[5] + p[3];
+    const pages = PAGES.filter(q => q[5] === p[5] && q[3] === p[3]).map(q => `#${q[0]} ${q[4]}`);
+    if (seen.has(key)) return; seen.add(key);
+    const tags = `<span class="pill ${p[3]}">${METHOD[p[3]]}</span>` + (p[7] ? ` <span class="pill hint">ヒント</span>` : "") + (p[8] ? ` <span class="pill human">人の手助け</span>` : "");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="num">${p[2].slice(0,5)}</td><td class="kw">${p[5]}</td><td>${tags}</td><td>${p[6]}</td><td>${pages.join("<br>")}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- ending comparison ---------- */
+const EN = D.endings || null;
+const ENDS = EN ? Object.fromEntries(Object.entries(EN.ends).map(([k,v]) => [k,[v.title, v.tone, v.fate]])) : {};
+const RUNS = EN ? EN.runs.map(r => [r.label, r.param, r.steps, r.name, r.end, !!r.surprise]) : [];
+const endTag = k => `<span class="endtag ${ENDS[k][1]}"><i>${ENDS[k][1]==="good"?"✓":ENDS[k][1]==="bad"?"✕":"–"}</i>END ${k} · ${ENDS[k][0]}</span>`;
+EN && (function(){
+  const tree = document.getElementById("endTree");
+  EN.tree.map(t => [t.cond, t.end])
+  .forEach(([q,k],i) => { const d = document.createElement("div"); d.className = "q"; d.innerHTML = `<div class="qq">${EN.tree[i].default?"✓ ":""}${q}</div><div class="yes">${EN.tree[i].default?"":"→"} ${endTag(k)}</div>`; tree.appendChild(d); });
+  const tb = document.querySelector("#endTable tbody");
+  RUNS.forEach(([label,track,steps,name,end,surprise]) => {
+    const tr = document.createElement("tr"); if (surprise) tr.className = "surprise";
+    tr.innerHTML = `<td class="num">${label}</td><td class="num">${track}</td><td>${steps.map(x=>`<span class="step${x.startsWith("（")?" off":""}">${x}</span>`).join("→ ")}</td><td class="kw">${name}</td><td>${endTag(end)}</td><td class="fate">${ENDS[end][2]}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- dependency model ---------- */
+// items: information pieces. from: pages needed (all), any: pages of which one is enough. gate: label if it is a hard step.
+const DP = D.deps || null;
+const ITEMS = DP ? DP.items : {};
+const DEPS = DP ? DP.deps : {};
+const ENDNODES = DP ? (DP.end_nodes || []) : [];
+const PTITLE = Object.fromEntries(PAGES.map(p => [p[0], p[4]]));
+Object.assign(PTITLE, DP ? (DP.end_titles || {}) : {});
+
+function reachable(blockedItems = new Set()) {
+  const got = new Set(), items = new Set();
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const [k, it] of Object.entries(ITEMS)) {
+      if (items.has(k) || blockedItems.has(k)) continue;
+      const okAll = (it.from || []).every(p => got.has(p));
+      const okAny = !it.any || it.any.some(p => got.has(p));
+      if (okAll && okAny) { items.add(k); changed = true; }
+    }
+    for (const [pg, need] of Object.entries(DEPS)) {
+      if (got.has(pg)) continue;
+      if (need.every(i => items.has(i))) { got.add(pg); changed = true; }
+    }
+  }
+  return got;
+}
+const srcPages = it => [...(it.from || []), ...(it.any || [])];
+// depth = longest chain of pages from the start
+const DEPTH = {};
+(function(){
+  const d = pg => {
+    if (pg in DEPTH) return DEPTH[pg];
+    DEPTH[pg] = 0;
+    let best = 0;
+    DEPS[pg].forEach(i => { const it = ITEMS[i]; const srcs = srcPages(it); const v = it.any ? Math.min(...it.any.map(d)) : (srcs.length ? Math.max(...srcs.map(d)) : -1); best = Math.max(best, v + 1); });
+    return DEPTH[pg] = best;
+  };
+  Object.keys(DEPS).forEach(d);
+})();
+// edges page -> page with the item that links them
+const EDGES = [];
+Object.entries(DEPS).forEach(([pg, need]) => need.forEach(i => srcPages(ITEMS[i]).forEach(src => EDGES.push({src, dst:pg, item:i}))));
+const pre = pg => { const out = new Set(); const walk = x => EDGES.filter(e => e.dst === x).forEach(e => { if (!out.has(e.src)) { out.add(e.src); walk(e.src); } }); walk(pg); return out; };
+const post = pg => { const out = new Set(); const walk = x => EDGES.filter(e => e.src === x).forEach(e => { if (!out.has(e.dst)) { out.add(e.dst); walk(e.dst); } }); walk(pg); return out; };
+
+/* ---------- dependency graph ---------- */
+DP && (function(){
+  const host = document.getElementById("depGraph");
+  const cols = {}; Object.keys(DEPS).forEach(pg => { const c = ENDNODES.includes(pg) ? 99 : DEPTH[pg]; (cols[c] = cols[c] || []).push(pg); });
+  const keys = Object.keys(cols).map(Number).sort((a,b) => a-b);
+  const nw = 58, nh = 26, gx = 30, gy = 10, padT = 28, padL = 14;
+  const maxRows = Math.max(...keys.map(k => cols[k].length));
+  const W = padL*2 + keys.length*nw + (keys.length-1)*gx + 60, H = padT + maxRows*(nh+gy) + 14;
+  const svg = el("svg", {viewBox:`0 0 ${W} ${H}`, role:"img", "aria-label":"ページ間の依存関係のグラフ"}, host);
+  const pos = {};
+  keys.forEach((k, ci) => {
+    const list = cols[k].sort((a,b) => (a==="EX")-(b==="EX") || (ENDNODES.indexOf(a)-ENDNODES.indexOf(b)) || Number(a)-Number(b));
+    const x = padL + ci*(nw+gx) + (k===99 ? 40 : 0);
+    const offset = (maxRows - list.length) * (nh+gy) / 2;
+    list.forEach((pg, ri) => pos[pg] = {x, y: padT + offset + ri*(nh+gy)});
+    const t = el("text", {x:x+nw/2, y:14, "text-anchor":"middle", class:"col"}, svg); t.textContent = k===99 ? "結末" : `段${k}`;
+  });
+  const eg = el("g", {}, svg), ng = el("g", {}, svg);
+  const edgeEls = EDGES.map(e => {
+    const a = pos[e.src], b = pos[e.dst]; if (!a || !b) return null;
+    const x1 = a.x+nw, y1 = a.y+nh/2, x2 = b.x, y2 = b.y+nh/2, mx = (x1+x2)/2;
+    const path = el("path", {d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`, class:"gedge" + (ITEMS[e.item].gate ? " gate" : "")}, eg);
+    return {e, path};
+  }).filter(Boolean);
+  const nodeEls = {};
+  Object.keys(pos).forEach(pg => {
+    const g = el("g", {class:"gnode" + (ENDNODES.includes(pg) ? " end" : ""), tabindex:0, role:"button", "aria-label":`${pg} ${PTITLE[pg]}`}, ng);
+    const isEnd = ENDNODES.includes(pg);
+    el("rect", {x:pos[pg].x, y:pos[pg].y, width: isEnd ? nw+44 : nw, height:nh, rx:6}, g);
+    const t = el("text", {x:pos[pg].x + (isEnd ? (nw+44)/2 : nw/2), y:pos[pg].y+nh/2+4, "text-anchor":"middle"}, g);
+    t.textContent = isEnd ? pg : (isNaN(Number(pg)) ? pg : "#" + pg);
+    nodeEls[pg] = g;
+    const pick = () => select(pg);
+    g.addEventListener("click", pick); g.addEventListener("focus", pick);
+    g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(); } });
+  });
+  const detail = document.getElementById("depDetail");
+  function select(pg){
+    const p = pre(pg), q = post(pg);
+    Object.entries(nodeEls).forEach(([k, g]) => {
+      g.classList.remove("sel","pre","post","dim");
+      if (k === pg) g.classList.add("sel"); else if (p.has(k)) g.classList.add("pre"); else if (q.has(k)) g.classList.add("post"); else g.classList.add("dim");
+    });
+    edgeEls.forEach(({e, path}) => {
+      const on = (e.dst === pg || p.has(e.dst)) && (p.has(e.src)) || (e.src === pg || q.has(e.src)) && (q.has(e.dst));
+      path.classList.toggle("hot", !!on); path.classList.toggle("dim", !on);
+    });
+    const needs = DEPS[pg].map(i => { const it = ITEMS[i]; const src = srcPages(it).map(x => "#" + x + " " + PTITLE[x]).join(it.any ? " または " : "、"); return `<li><b>${it.label}</b>${it.gate ? ` <span class="pill hint">関門：${it.gate}</span>` : ""}<br><span class="muted">${src || "最初から持っている"}</span></li>`; }).join("");
+    const opens = EDGES.filter(e => e.src === pg).map(e => `<li>#${e.dst === "EX" ? "EX" : e.dst} ${PTITLE[e.dst]} <span class="muted">← ${ITEMS[e.item].label}</span></li>`);
+    const uniq = [...new Set(opens)].join("");
+    const cut = reachable(new Set(DEPS[pg])).size;
+    detail.innerHTML = `<div><h3>${ENDNODES.includes(pg) ? pg : (pg === "EX" ? "EX" : "#" + pg)} ${PTITLE[pg]}</h3><span class="muted">段${ENDNODES.includes(pg) ? "（結末）" : DEPTH[pg]} · 前提ページ ${p.size} · この先のページ ${[...q].filter(x => !ENDNODES.includes(x)).length}</span></div>`
+      + `<div><h3>開くのに必要なもの</h3><ul>${needs || "<li>最初から開いている</li>"}</ul></div>`
+      + `<div><h3>ここで得られる手がかり</h3><ul>${uniq || "<li class='muted'>次のページにつながる手がかりはない</li>"}</ul></div>`;
+  }
+  select(DP.focus || Object.keys(DEPS).filter(k => !ENDNODES.includes(k)).sort((a,b) => DEPS[b].length - DEPS[a].length)[0]);
+})();
+
+/* ---------- gate table ---------- */
+DP && (function(){
+  const all = reachable().size;
+  const pageCount = set => [...set].filter(x => !ENDNODES.includes(x)).length;
+  const total = pageCount(reachable());
+  const tb = document.querySelector("#gateTable tbody");
+  Object.entries(ITEMS).filter(([k, it]) => it.gate).map(([k, it]) => {
+    const got = reachable(new Set([k]));
+    const lost = Object.keys(DEPS).filter(pg => !got.has(pg));
+    return {k, it, n: pageCount(got), lost};
+  }).sort((a,b) => a.n - b.n).forEach(({k, it, n, lost}) => {
+    const src = srcPages(it).map(x => "#" + x).join(it.any ? " / " : " + ");
+    const lostPages = lost.filter(x => !ENDNODES.includes(x)).map(x => x === "EX" ? "EX" : "#" + x);
+    const lostEnd = lost.filter(x => ENDNODES.includes(x));
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="kw">${it.gate}</td><td>${it.label}</td><td class="num">${src}</td>`
+      + `<td><div class="gatebar"><span class="num" style="min-width:52px">${n}/${total}</span><span class="bar"><i style="width:${n/total*100}%"></i></span></div></td>`
+      + `<td style="font-size:12.5px">${lostPages.length ? lostPages.join(" ") : "<span class='muted'>ページは閉ざされない</span>"}${lostEnd.length ? `<br><span class="muted">結末：${lostEnd.join("・")}ができない</span>` : ""}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- static parts rendered from D ---------- */
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const show = id => { const n = document.getElementById(id); if (n) n.hidden = false; };
+(function(){
+  const g = D.game, S = D.stats;
+  document.getElementById("hdrEyebrow").textContent = `Play log · ${g.date || ""} · UI-only run`;
+  document.getElementById("hdrTitle").textContent = g.title;
+  document.getElementById("hdrLede").innerHTML = `${esc(g.lede || "")} <code>data/actions.jsonl</code> の${S.actions.toLocaleString()}件の操作から集計しています。`;
+  if (g.result) { const e = document.getElementById("hdrEnd"); e.hidden = false; e.innerHTML = `<b>END ${esc(g.result.end)}</b> ${esc(g.result.title || "")} ${esc(g.result.label || "")}`; }
+
+  const tiles = [
+    ["到達ページ", `${S.pages_found}<small>/${TOTAL}</small>`, g.page_note || ""],
+    ["プレイ時間", S.duration, `${S.start} → ${S.end}（待ち時間込み）`],
+    ["試したキーワード", `${S.keywords}<small>種</small>`, S.keyword_hits != null ? `結果が出たのは約${S.keyword_hits}種（${Math.round(S.keyword_hits / Math.max(1,S.keywords) * 100)}%）` : "ヒット数は未記録"],
+    ["公式ヒント", `${S.hint_topics}<small>項目</small>`, `ヒントページの開閉${S.hint_opens}回`],
+  ];
+  if (S.retries != null) tiles.push(["やり直し", `${S.retries}<small>回</small>`, S.retries_note || ""]);
+  if (EN) tiles.push(["回収したエンド", `${Object.keys(EN.ends).length}<small>/${EN.total_ends || Object.keys(EN.ends).length}</small>`, `リプレイ${EN.runs.length}回`]);
+  document.getElementById("tiles").innerHTML = tiles.map(([k,v,n]) => `<div class="tile"><span class="k">${k}</span><span class="v">${v}</span><span class="n">${esc(n)}</span></div>`).join("");
+
+  document.getElementById("activityText").textContent = (g.text && g.text.activity) || "検索窓への入力回数の合計（移動のための定型検索を含む）。";
+  document.getElementById("mapTitle").textContent = `${TOTAL}ページを何で見つけたか`;
+  const used = [...new Set(PAGES.map(p => p[3]))];
+  document.getElementById("mapLegend").innerHTML = used.map(m => `<span><i class="sw" style="background:var(--s-${m})"></i>${esc(METHOD[m] || m)}</span>`).join("") + `<span><i class="sw" style="background:var(--warn);border-radius:50%"></i>ヒント使用</span>`;
+
+  // stuck episodes
+  if (D.stuck && D.stuck.episodes && D.stuck.episodes.length) {
+    show("stuck");
+    const causes = D.stuck.causes || {};
+    const count = {}; D.stuck.episodes.forEach(e => count[e.cause] = (count[e.cause] || 0) + 1);
+    document.getElementById("causes").innerHTML = Object.entries(causes).filter(([k]) => count[k]).sort((a,b) => count[b[0]] - count[a[0]])
+      .map(([k,c]) => `<div><span class="n">${count[k]}</span><span class="k">${esc(c.label)}</span><span class="d">${esc(c.desc || "")}</span></div>`).join("");
+    document.getElementById("episodes").innerHTML = D.stuck.episodes.map(e => {
+      const tried = (e.tried || []).map(k => `<i class='x'>${esc(k)}</i>`).join("") + (e.tried_more ? `<i>…ほか${e.tried_more}語</i>` : "");
+      const hints = (e.hints || []).map(h => `<b>${esc(h.label)}</b>${esc(h.text)}`).join("");
+      const row = (k, v) => v ? `<div class="row"><span>${k}</span><div${k === "試したこと" ? ' class="chips"' : k === "見たヒント" ? ' class="hintq"' : ""}>${v}</div></div>` : "";
+      return `<article class="ep"><div class="when"><span class="t">${e.t_start.slice(0,5)} → ${e.t_end.slice(0,5)}</span><span class="dur">${e.minutes}<small>${esc(e.duration_note || "分")}</small></span><span class="cause">${esc((causes[e.cause] || {}).label || e.cause)}</span></div>`
+        + `<div class="body"><h3>${esc(e.id)} ${esc(e.title)}</h3>${row("状況", esc(e.situation))}${row("試したこと", tried)}${row("見たヒント", hints)}${row("突破", esc(e.breakthrough))}</div></article>`;
+    }).join("");
+    const solo = D.stuck.solved || [];
+    document.getElementById("solo").innerHTML = solo.map(s => `<li>${esc(s)}</li>`).join("");
+    if (!solo.length) document.getElementById("soloHead").hidden = true;
+  }
+
+  if (DP) { show("deps"); show("gates"); if (DP.note || (g.text && g.text.deps_note)) document.getElementById("gatesText").textContent += (DP.note || g.text.deps_note); }
+
+  if (EN && EN.route) {
+    show("ending");
+    document.getElementById("routeTitle").textContent = EN.route.title || "エンディングまでの手順";
+    document.getElementById("routeIntro").textContent = EN.route.intro || "";
+    document.getElementById("route").innerHTML = EN.route.steps.map(s => `<li${s.state ? ` class="${s.state}"` : ""}><span class="t">${esc(s.time)}</span><span class="s">${esc(s.label)}</span><span class="d">${esc(s.desc || "")}</span></li>`).join("");
+  }
+  if (EN) {
+    show("endings");
+    document.getElementById("endingsTitle").textContent = `${Object.keys(EN.ends).length}つのエンドの比較`;
+    document.getElementById("endingsIntro").textContent = EN.intro || "";
+    const c = EN.columns || {};
+    document.getElementById("endHead").innerHTML = `<th>試行</th><th>${esc(c.param || "条件")}</th><th>行動の順番</th><th>${esc(c.name || "報告")}</th><th>結果</th><th>${esc(c.fate || "結末")}</th>`;
+    document.getElementById("endNotes").innerHTML = (EN.notes || []).map(n => `<li>${n}</li>`).join("");
+  }
+  if ((g.caveats || []).length) { show("caveats"); document.getElementById("caveatList").innerHTML = g.caveats.map(c => `<li>${esc(c)}</li>`).join(""); }
+})();
+
+</script>
