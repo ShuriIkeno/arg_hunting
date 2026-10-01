@@ -132,5 +132,14 @@
   "method": "link",
   "keyword": "Wi-Fi接続後に再送信",
   "source": "#10 送信トレイ"
+ },
+ {
+  "id": "16",
+  "found": "2026-10-01T10:33:47",
+  "title": "END D「脱出」(強制解錠)",
+  "chapter": "エンディング",
+  "method": "login",
+  "keyword": "SUI4KEY",
+  "source": "SUI-AI手動入力モード。公式ヒント『エンドD 答え』で入手(自力ではスタッフポータルに到達できず)"
  }
 ]
