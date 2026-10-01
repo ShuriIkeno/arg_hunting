@@ -32,6 +32,16 @@ def load_game(game_dir):
     sys.exit(f"{game_dir}/game.json not found (run argkit/tools/new_game.sh first)")
 
 
+def goto(page, url):
+    """Navigate; blocked third-party requests can keep the network from going idle, so fall back."""
+    try:
+        page.goto(url, wait_until="networkidle")
+    except Exception as e:
+        if "Timeout" not in type(e).__name__ and "Timeout" not in str(e):
+            raise
+        page.goto(url, wait_until="domcontentloaded")
+
+
 def visible_frames(page):
     for f in page.frames:
         # only read what a player can see: skip frames inside hidden windows
@@ -98,13 +108,13 @@ def main():
         if cmd == "start" or page is None:
             page = page or (ctx.pages[0] if ctx.pages else ctx.new_page())
             page.set_viewport_size({"width": w, "height": h})
-            page.goto(game["url"], wait_until="networkidle")
+            goto(page, game["url"])
         page.bring_to_front()
         result = "ok"
         before = visible_text(page) if cmd in ("search", "typeat", "type") else ""
         try:
             if cmd == "goto":
-                page.goto(rest[0], wait_until="networkidle")
+                goto(page, rest[0])
             elif cmd == "click":
                 result = "NOT FOUND"
                 for f in reversed(list(visible_frames(page))):

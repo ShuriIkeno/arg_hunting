@@ -60,7 +60,7 @@ def main():
         return (parse(ts) - day0).total_seconds() / 60
 
     # pages: fill missing "found" from the progress counter in logged titles
-    prog = re.compile(game.get("progress_regex", r"\[(\d+|ex|EX)/\d+\]"))
+    prog = re.compile(game.get("progress_regex") or r"\[(\d+|ex|EX)/\d+\]")
     first_seen = {}
     for a in actions:
         m = prog.search(a.get("title") or a.get("browser_title") or "")

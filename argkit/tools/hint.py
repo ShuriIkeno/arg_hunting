@@ -21,7 +21,12 @@ with sync_playwright() as p:
     ctx = p.chromium.connect_over_cdp(game.get("cdp", "http://localhost:9222")).contexts[0]
     pg = next((x for x in ctx.pages if x.url.startswith(game["hint_url"].split("#")[0])), None) or ctx.new_page()
     pg.bring_to_front()
-    pg.goto(game["hint_url"], wait_until="networkidle")
+    try:
+        pg.goto(game["hint_url"], wait_until="networkidle")
+    except Exception as e:  # blocked third-party requests can keep the network from going idle
+        if "Timeout" not in str(e):
+            raise
+        pg.goto(game["hint_url"], wait_until="domcontentloaded")
     before = pg.evaluate("() => document.body.innerText")
     for label in labels:
         before = pg.evaluate("() => document.body.innerText")
