@@ -1,0 +1,5 @@
+{"time": "2026-09-26T07:44:00", "type": "contamination", "text": "下調べで docs/config.js のページ定義（ファイル名一覧）を見た。#12「在原業平」の発想に影響した可能性"}
+{"time": "2026-09-26T07:59:30", "type": "human", "text": "YouTube不可 → 許可を依頼"}
+{"time": "2026-09-26T07:59:30", "type": "environment", "text": "YouTubeがネットワークポリシーで遮断。許可後もボット判定で再生不可"}
+{"time": "2026-09-26T08:13:40", "type": "human", "text": "MV動画の提供"}
+{"time": "2026-09-26T08:24:30", "type": "human", "text": "歌詞の提供"}

@@ -31,7 +31,13 @@ URL: https://yoryormary.com/eidoLie/index.html
 - 155.5s の赤い画面に「ドキュメントマチ」と表示される。これをEIDOLieのサイト内検索に入れると、ページ5へ進めた。
 - 音声は解析していない。
 
-## 使い方
+## データ（argkit形式）
+このディレクトリは `argkit/FORMAT.md` の形式の見本でもある。
+`game.json`、`data/pages.json` `hints.jsonl` `events.jsonl` `phases.json` `stuck.json` `deps.json` `endings.json` は、
+プレイ後にこのログとダッシュボードから書き起こしたもの。ダッシュボードは
+`python argkit/tools/build_report.py eidolie` で `viz/index.html` に再生成できる。
+
+## 使い方（このゲーム専用の初期ツール）
 ```
 chrome --headless=new --no-sandbox --remote-debugging-port=9222 --user-data-dir=.profile ...
 python tools/play.py start | open <app> | search <kw> | click <text> | clickat x y | typeat x y <text> | scroll dy | login id pw | look

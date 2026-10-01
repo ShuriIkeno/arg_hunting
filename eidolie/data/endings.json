@@ -1,0 +1,237 @@
+{
+ "intro": "分岐前のセーブデータから、行動を1か所ずつ変えて9回リプレイした結果。条件を2つ同時に満たした場合の優先順位は未検証です。",
+ "ends": {
+  "A": {
+   "title": "EIDOLie is Alive",
+   "tone": "good",
+   "fate": "生存・活動再開。御子谷は現行犯で逮捕"
+  },
+  "B": {
+   "title": "EIDOLie is Bait",
+   "tone": "bad",
+   "fate": "入院先で殺害される。御子谷は国外逃亡"
+  },
+  "C": {
+   "title": "EIDOLie is Curse",
+   "tone": "bad",
+   "fate": "入院先で殺害される。御子谷は国外逃亡"
+  },
+  "D": {
+   "title": "EIDOLie is Deleted",
+   "tone": "bad",
+   "fate": "海で自ら命を絶つ。御子谷は国外逃亡"
+  },
+  "E": {
+   "title": "EIDOLie is Enigma",
+   "tone": "gray",
+   "fate": "死亡と報道。真相は闇の中"
+  },
+  "F": {
+   "title": "EIDOLie is Forsaken",
+   "tone": "gray",
+   "fate": "二階堂が契約を解除。結末は語られない"
+  }
+ },
+ "columns": {
+  "param": "V-Guard",
+  "name": "首謀者の報告",
+  "fate": "クルミの結末"
+ },
+ "tree": [
+  {
+   "cond": "首謀者として<b>二階堂玲</b>を報告した",
+   "end": "F"
+  },
+  {
+   "cond": "首謀者として<b>御子谷佑以外</b>を報告した（南野英二・在原憂次郎・在原来未で確認）",
+   "end": "E"
+  },
+  {
+   "cond": "V-Guardの励ましに<b>失敗</b>した（50番 → NO RESPONSE）",
+   "end": "D"
+  },
+  {
+   "cond": "taskに<b>反論しなかった</b>",
+   "end": "B"
+  },
+  {
+   "cond": "二階堂にクルミの居場所を<b>伝えなかった</b>",
+   "end": "C"
+  },
+  {
+   "cond": "上のどれにも当てはまらない（11番で励まし、伝え、反論し、御子谷佑を報告）",
+   "end": "A",
+   "default": true
+  }
+ ],
+ "runs": [
+  {
+   "label": "A",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "御子谷佑",
+   "end": "A",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "B",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論しない"
+   ],
+   "name": "御子谷佑",
+   "end": "B",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "C（1回目）",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "反論する",
+    "二階堂に伝える"
+   ],
+   "name": "御子谷佑",
+   "end": "A",
+   "surprise": true,
+   "file": null
+  },
+  {
+   "label": "C",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "反論する",
+    "（伝えない）"
+   ],
+   "name": "御子谷佑",
+   "end": "C",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "D",
+   "param": "50番",
+   "steps": [
+    "励ます（失敗）",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "御子谷佑",
+   "end": "D",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "E",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "南野英二",
+   "end": "E",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "F（1回目）",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "在原憂次郎",
+   "end": "E",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "F（2回目）",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "在原来未",
+   "end": "E",
+   "surprise": false,
+   "file": null
+  },
+  {
+   "label": "F",
+   "param": "11番",
+   "steps": [
+    "励ます",
+    "二階堂に伝える",
+    "反論する"
+   ],
+   "name": "二階堂玲",
+   "end": "F",
+   "surprise": false,
+   "file": null
+  }
+ ],
+ "notes": [
+  "公式ヒントでは「taskに反論した後で二階堂に伝える」とエンドCになるはずでしたが、実際にはエンドAになりました（黄色の行）。今回の検証では、Cになったのは二階堂に伝えなかった場合だけです。",
+  "二階堂の「調査状況の確認」メールは、taskのDMを開いてからニュース速報を見たあとに届きます。",
+  "各リプレイは約3〜4分。記録は <code>data/endings/*.json</code> とスクリーンショットです。"
+ ],
+ "route": {
+  "title": "エンドAまでの手順",
+  "intro": "分岐は「行動の順番」で決まります。取り返しのつかない操作の前にセーブし、失敗した1回はロードでやり直しました。",
+  "steps": [
+   {
+    "time": "10:01",
+    "label": "セーブ",
+    "desc": "分岐前の状態をファイルに保存"
+   },
+   {
+    "time": "10:05",
+    "label": "V-Guardへ50番",
+    "desc": "依頼文の「50」から推測。NO RESPONSE",
+    "state": "fail"
+   },
+   {
+    "time": "10:07",
+    "label": "ロード",
+    "desc": "セーブデータで分岐前に戻る"
+   },
+   {
+    "time": "10:08",
+    "label": "V-Guardへ11番",
+    "desc": "和歌ブログの「エールの歌」。来未が前を向く",
+    "state": "ok"
+   },
+   {
+    "time": "10:16",
+    "label": "二階堂に報告",
+    "desc": "依頼主＝在原来未、居場所＝中芽黒総合病院",
+    "state": "ok"
+   },
+   {
+    "time": "10:19",
+    "label": "taskに反論",
+    "desc": "目的＝復讐、悪い人物＝御子谷佑、証拠＝39番",
+    "state": "ok"
+   },
+   {
+    "time": "10:23",
+    "label": "首謀者を報告",
+    "desc": "御子谷佑 → END A",
+    "state": "ok"
+   }
+  ]
+ }
+}

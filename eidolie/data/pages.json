@@ -1,0 +1,443 @@
+[
+ {
+  "id": "1",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:45:29",
+  "method": "link",
+  "title": "ゲーム内ブラウザ",
+  "keyword": null,
+  "source": "起動時の画面",
+  "hint": false
+ },
+ {
+  "id": "4",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:46:52",
+  "method": "link",
+  "title": "Twintter",
+  "keyword": null,
+  "source": "ブックマーク",
+  "hint": false
+ },
+ {
+  "id": "3",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:46:59",
+  "method": "link",
+  "title": "EIDOLie公式サイト",
+  "keyword": null,
+  "source": "Twintterの投稿のリンク",
+  "hint": false
+ },
+ {
+  "id": "7",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:47:12",
+  "method": "web",
+  "title": "スティレットプロモーション",
+  "keyword": "スティレットプロモーション",
+  "source": "公式サイトの©表記",
+  "hint": false
+ },
+ {
+  "id": "37",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:47:19",
+  "method": "link",
+  "title": "パートナーログイン",
+  "keyword": null,
+  "source": "事務所サイトのPARTNERS",
+  "hint": false
+ },
+ {
+  "id": "10",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:47:54",
+  "method": "web",
+  "title": "クルミ応援スレ",
+  "keyword": "クルミ",
+  "source": "メンバー名",
+  "hint": false
+ },
+ {
+  "id": "2",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:48:03",
+  "method": "link",
+  "title": "JN News",
+  "keyword": null,
+  "source": "ブックマーク",
+  "hint": false
+ },
+ {
+  "id": "12",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:54:58",
+  "method": "web",
+  "title": "在原業平（J-Pedia）",
+  "keyword": "在原業平",
+  "source": "「ナリさん」＋社長の姓（事前情報の影響あり）",
+  "hint": false
+ },
+ {
+  "id": "8",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:55:35",
+  "method": "web",
+  "title": "小倉百人一首一覧",
+  "keyword": "百人一首",
+  "source": "業平のページ",
+  "hint": false
+ },
+ {
+  "id": "9",
+  "chapter": "序盤",
+  "found": "2026-09-26T07:55:49",
+  "method": "web",
+  "title": "ゆるっと和歌ライフ",
+  "keyword": "百人一首",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "5",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:15:46",
+  "method": "site",
+  "title": "マチ独占インタビュー",
+  "keyword": "ドキュメントマチ",
+  "source": "MVの155秒に一瞬出る文字",
+  "hint": true,
+  "human": true
+ },
+ {
+  "id": "15",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:17:44",
+  "method": "site",
+  "title": "ひだまりの少女（音源）",
+  "keyword": "ひだまりの少女",
+  "source": "インタビューのデビュー曲",
+  "hint": false
+ },
+ {
+  "id": "16",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:17:54",
+  "method": "web",
+  "title": "マチちゃん捜索隊",
+  "keyword": "ひだまりの少女",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "13",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:19:33",
+  "method": "site",
+  "title": "FC会報 Vol.5",
+  "keyword": "ひだまり通信",
+  "source": "ファンサイトの会報名",
+  "hint": false
+ },
+ {
+  "id": "17",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:19:49",
+  "method": "site",
+  "title": "週刊誌記事",
+  "keyword": "天城丈",
+  "source": "『伊豆の踊子』の峠＋「丈」",
+  "hint": false
+ },
+ {
+  "id": "18",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:20:15",
+  "method": "web",
+  "title": "天城丈（J-Pedia）",
+  "keyword": "天城丈",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "19",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:20:32",
+  "method": "site",
+  "title": "デモテープ",
+  "keyword": "妖精のくちづけ",
+  "source": "会報「妖精の◯◯◯◯」×週刊誌「◯◯のくちづけ」",
+  "hint": false
+ },
+ {
+  "id": "20",
+  "chapter": "マチ",
+  "found": "2026-09-26T08:21:48",
+  "method": "site",
+  "title": "新聞記事（1985）",
+  "keyword": "小野田町子",
+  "source": "デモテープの本名",
+  "hint": false
+ },
+ {
+  "id": "11",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:23:54",
+  "method": "site",
+  "title": "アヤの記事",
+  "keyword": "ドキュメントアヤ",
+  "source": "「ドキュメントマチ」からの類推",
+  "hint": false
+ },
+ {
+  "id": "21",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:25:01",
+  "method": "site",
+  "title": "コンテスト審査講評",
+  "keyword": "新時代ドリームシンガーコンテスト",
+  "source": "アヤの記事",
+  "hint": false
+ },
+ {
+  "id": "14",
+  "chapter": "クルミ",
+  "found": "2026-09-26T08:26:55",
+  "method": "site",
+  "title": "クルミの記事",
+  "keyword": "ドキュメントクルミ",
+  "source": "同じ類推",
+  "hint": false
+ },
+ {
+  "id": "23",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:27:23",
+  "method": "site",
+  "title": "Aya's Diary 1",
+  "keyword": "V-Guard",
+  "source": "審査講評の付箋画像",
+  "hint": false
+ },
+ {
+  "id": "22",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:30:24",
+  "method": "web",
+  "title": "V-Guard紹介記事",
+  "keyword": "V-Guard",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "24",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:30:46",
+  "method": "site",
+  "title": "プラチナスカイ（音源）",
+  "keyword": "プラチナスカイ",
+  "source": "日記1のデビュー曲",
+  "hint": false
+ },
+ {
+  "id": "25",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:31:50",
+  "method": "site",
+  "title": "内部調査記録",
+  "keyword": "南野英二",
+  "source": "V-Guard記事の人名",
+  "hint": false
+ },
+ {
+  "id": "26",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:32:11",
+  "method": "site",
+  "title": "Aya's Diary 2",
+  "keyword": "南野英二",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "27",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:44:16",
+  "method": "site",
+  "title": "手術パンフレット",
+  "keyword": "田山医科大学附属病院",
+  "source": "日記2の写真の看板（拡大して判読）",
+  "hint": true
+ },
+ {
+  "id": "29",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:49:32",
+  "method": "site",
+  "title": "警備の業務日誌",
+  "keyword": "小野田文",
+  "source": "パンフの「◯田文」＋マチの姓",
+  "hint": false
+ },
+ {
+  "id": "28",
+  "chapter": "アヤ",
+  "found": "2026-09-26T08:51:01",
+  "method": "site",
+  "title": "見つかったノート",
+  "keyword": "小野田文",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "30",
+  "chapter": "アヤ",
+  "found": "2026-09-26T09:00:07",
+  "method": "site",
+  "title": "Aya's Diary 最終",
+  "keyword": "マスターピース",
+  "source": "ノートの言葉",
+  "hint": false
+ },
+ {
+  "id": "31",
+  "chapter": "アヤ",
+  "found": "2026-09-26T09:01:29",
+  "method": "site",
+  "title": "ネットニュース・礼状",
+  "keyword": "マスターピース",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "32",
+  "chapter": "クルミ",
+  "found": "2026-09-26T09:10:16",
+  "method": "site",
+  "title": "母子健康手帳",
+  "keyword": "在原文",
+  "source": "礼状の名前",
+  "hint": false
+ },
+ {
+  "id": "33",
+  "chapter": "クルミ",
+  "found": "2026-09-26T09:16:14",
+  "method": "site",
+  "title": "鍵アカ過去ログ",
+  "keyword": "在原来未",
+  "source": "母子手帳の子の氏名",
+  "hint": false
+ },
+ {
+  "id": "34",
+  "chapter": "クルミ",
+  "found": "2026-09-26T09:16:35",
+  "method": "web",
+  "title": "港区ニュース",
+  "keyword": "在原来未",
+  "source": "同上",
+  "hint": false
+ },
+ {
+  "id": "35",
+  "chapter": "クルミ",
+  "found": "2026-09-26T09:18:16",
+  "method": "web",
+  "title": "くるみんラジオ",
+  "keyword": "くるらじ",
+  "source": "鍵アカのファンの言葉",
+  "hint": false
+ },
+ {
+  "id": "36",
+  "chapter": "クルミ",
+  "found": "2026-09-26T09:25:14",
+  "method": "site",
+  "title": "鍵アカ過去ログ2",
+  "keyword": "もっちゅむっちゅグミ",
+  "source": "ラジオで紹介したお菓子",
+  "hint": false
+ },
+ {
+  "id": "6",
+  "chapter": "マチ",
+  "found": "2026-09-26T09:27:46",
+  "method": "site",
+  "title": "Secret Voice 歌詞",
+  "keyword": "ナリさん",
+  "source": "公式サイトTOPの名前（文字化けした結果）",
+  "hint": true
+ },
+ {
+  "id": "38",
+  "chapter": "核心",
+  "found": "2026-09-26T09:40:57",
+  "method": "login",
+  "title": "クルミのポータル",
+  "keyword": "39865 / kimigatame",
+  "source": "腕時計写真のS-ID＋百人一首15・50の共通句",
+  "hint": true
+ },
+ {
+  "id": "40",
+  "chapter": "核心",
+  "found": "2026-09-26T09:41:55",
+  "method": "link",
+  "title": "個人フォルダ",
+  "keyword": null,
+  "source": "ポータル",
+  "hint": false
+ },
+ {
+  "id": "41",
+  "chapter": "核心",
+  "found": "2026-09-26T09:42:08",
+  "method": "link",
+  "title": "調査報告書",
+  "keyword": null,
+  "source": "個人フォルダ",
+  "hint": false
+ },
+ {
+  "id": "42",
+  "chapter": "核心",
+  "found": "2026-09-26T09:42:34",
+  "method": "link",
+  "title": "来未へ.txt",
+  "keyword": null,
+  "source": "個人フォルダ",
+  "hint": false
+ },
+ {
+  "id": "39",
+  "chapter": "核心",
+  "found": "2026-09-26T09:43:08",
+  "method": "link",
+  "title": "V-Guard管理画面",
+  "keyword": null,
+  "source": "ポータル",
+  "hint": false
+ },
+ {
+  "id": "43",
+  "chapter": "核心",
+  "found": "2026-09-26T09:46:36",
+  "method": "web",
+  "title": "中芽黒総合病院",
+  "keyword": "中芽黒総合病院",
+  "source": "V-GuardのGPS表示",
+  "hint": false
+ },
+ {
+  "id": "EX",
+  "chapter": "核心",
+  "found": "2026-09-26T09:51:53",
+  "method": "web",
+  "title": "二階堂探偵事務所",
+  "keyword": "二階堂探偵事務所",
+  "source": "調査報告書の調査機関",
+  "hint": false
+ }
+]
