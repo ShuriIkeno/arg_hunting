@@ -4,7 +4,7 @@
  "game": "アンティキティラの沈没船",
  "publisher": "Obachu / 第四境界",
  "url": "https://yumifuri-observatory.com",
- "match_url": "our-planetarium.net",
+ "match_url": "yumifuri-observatory.com",
  "hint_url": "https://yumifuri-observatory.com/hint.html",
  "date": "2026-10-01",
  "lede": "アンティキティラの沈没船（弓降岳天文台）を、画面操作だけで攻略した記録。商品ページ: https://shop.daiyonkyokai.net/products/26081303",
@@ -14,6 +14,10 @@
  "title_selector": ".arg-pager-badge",
  "search_boxes": {
   "site": {
+   "frame": "",
+   "selector": "#searchInput"
+  },
+  "hs": {
    "frame": "",
    "selector": "#searchInput"
   }
@@ -39,7 +43,8 @@
  "result": null,
  "milestones": [],
  "activity_notes": [
-  "導入記事(sgm-hs.com/monochro.html)の「調査ノウハウ」: ページ内検索は2ワードまで／右下の「現在No./総ページ数」から閲覧履歴ツール／進行度はブラウザに記録(シークレット不可)"
+  "導入記事(sgm-hs.com/monochro.html)の「調査ノウハウ」: ページ内検索は2ワードまで／右下の「現在No./総ページ数」から閲覧履歴ツール／進行度はブラウザに記録(シークレット不可)",
+  "高校サイト(sgm-hs.com)は独自の履歴ツール(n/13)。ページIDは hs1.. で記録(天文台サイトの1-43とは別体系)"
  ],
  "stats_override": {},
  "text": {},
