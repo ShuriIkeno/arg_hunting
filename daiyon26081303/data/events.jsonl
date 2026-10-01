@@ -1,0 +1,2 @@
+{"time": "2026-10-01T13:51:20", "type": "environment", "text": "Chromium NSSにCA未登録でERR_CERT_AUTHORITY_INVALID→certutilで登録。Shopifyでnetworkidleが終わらずplay.pyをwait_until=loadに変更"}
+{"time": "2026-10-01T13:53:26", "type": "environment", "text": "yumifuri-observatory.com がエグレスプロキシのネットワークポリシーで403(CONNECT拒否)。本編サイトに到達できず待機"}

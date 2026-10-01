@@ -1,0 +1,48 @@
+{
+ "slug": "daiyon26081303",
+ "title": "アンティキティラの沈没船 調査ログ",
+ "game": "アンティキティラの沈没船",
+ "publisher": "Obachu / 第四境界",
+ "url": "https://yumifuri-observatory.com",
+ "match_url": "yumifuri-observatory.com",
+ "hint_url": "",
+ "date": "2026-10-01",
+ "lede": "アンティキティラの沈没船（弓降岳天文台）を、画面操作だけで攻略した記録。商品ページ: https://shop.daiyonkyokai.net/products/26081303",
+ "total_pages": null,
+ "page_note": "",
+ "progress_regex": "",
+ "title_selector": "",
+ "search_boxes": {
+  "site": {
+   "frame": "",
+   "selector": "input[type=search], input[type=text]"
+  }
+ },
+ "miss_patterns": [
+  "一致する.*ありません",
+  "見つかりませんでした",
+  "No results"
+ ],
+ "apps": {},
+ "methods": {
+  "web": "ブラウザ検索",
+  "site": "サイト内検索",
+  "login": "ログイン・入力",
+  "link": "リンク"
+ },
+ "nav_keywords": [],
+ "viewport": [
+  1280,
+  800
+ ],
+ "settle_ms": 2500,
+ "play_end": null,
+ "result": null,
+ "milestones": [],
+ "activity_notes": [
+  "導入記事(sgm-hs.com/monochro.html)の「調査ノウハウ」: ページ内検索は2ワードまで／右下の「現在No./総ページ数」から閲覧履歴ツール／進行度はブラウザに記録(シークレット不可)"
+ ],
+ "stats_override": {},
+ "text": {},
+ "caveats": []
+}
