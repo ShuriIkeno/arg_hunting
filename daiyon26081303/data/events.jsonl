@@ -40,3 +40,11 @@
 {"time": "2026-10-01T23:06:54", "type": "note", "text": "分岐前セーブ2: data/saves/before_choice_monooto.json(物音: 引き返して/急いで/様子を見て)"}
 {"time": "2026-10-01T23:08:29", "type": "environment", "text": "チャットのボイスメッセージ(0:46, Render_LINE_insound_v2.mov)はヘッドレス環境で聴取不可。内容はヒント11-02(座標特定→照準コンソール入力の依頼)で補完"}
 {"time": "2026-10-02T00:17:28", "type": "note", "text": "照準: TARGET WINDOW 180°,+30°(ヒント12-01答え)に合わせた。ボタン1押下で5°刻みの目標へ約30秒かけて移動する仕様。CONFIRM前セーブ data/saves/before_confirm.json"}
+{"time": "2026-10-02T00:20:44", "type": "environment", "text": "監視カメラページが unpkg.com(react/react-dom/@babel/standalone)拒否で真っ暗。npmから同版を取得しrouteで差し替え(ゲーム側コードは読んでいない)"}
+{"time": "2026-10-02T00:21:40", "type": "note", "text": "福田日誌PW候補10通り(Guardians of Galaxy/Universe/Antikythera/Stars/Cosmos/Time/Worlds/Multiverse, Star Guardians Unit, Cosmic Guardian Unit)を入力→全て不正"}
+{"time": "2026-10-02T00:23:44", "type": "note", "text": "福田と關口のプロフィール写真は1枚の写真の左右。ワッペン PHERKAD(福田)/KOCHAB(關口)=こぐま座の『Guardians of the Pole』(北極星の守護者)"}
+{"time": "2026-10-02T00:26:46", "type": "environment", "text": "福田の日誌を開いた後、福田恒一から着信(音声通話)。応答したが音声のみで字幕なし、ヘッドレス環境では聴取不可"}
+{"time": "2026-10-02T00:28:38", "type": "note", "text": "チャットに水無瀬から監視カメラのパスワード『Von Neumann』と『またいつか、別の世界で。』"}
+{"time": "2026-10-02T00:29:18", "type": "note", "text": "監視カメラ PW『Von Neumann』でCAM-03 LIVE FEED(B8F Re:Antikythera)に入れた"}
+{"time": "2026-10-02T00:29:18", "type": "environment", "text": "監視カメラのLIVE FEED動画(Merge_sound_v01.mp4)がヘッドレスChromium(H.264非対応)で再生できず真っ暗(duration NaN)"}
+{"time": "2026-10-02T00:30:10", "type": "environment", "text": "H.264非対応の回避: ブラウザが要求する.mp4/.movをPlaywright routeで取得しffmpegでVP9(mp4)に変換して返す常駐プロセス(vidroute.py)。画面上で再生させて視聴"}
