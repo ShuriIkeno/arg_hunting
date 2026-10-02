@@ -1,0 +1,2 @@
+--- frame: https://yumifuri-observatory.com/pages/notfound-test.html
+upstream request failed

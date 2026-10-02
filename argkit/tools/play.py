@@ -98,13 +98,13 @@ def main():
         if cmd == "start" or page is None:
             page = page or (ctx.pages[0] if ctx.pages else ctx.new_page())
             page.set_viewport_size({"width": w, "height": h})
-            page.goto(game["url"], wait_until="networkidle")
+            page.goto(game["url"], wait_until="load")
         page.bring_to_front()
         result = "ok"
         before = visible_text(page) if cmd in ("search", "typeat", "type") else ""
         try:
             if cmd == "goto":
-                page.goto(rest[0], wait_until="networkidle")
+                page.goto(rest[0], wait_until="load")
             elif cmd == "click":
                 result = "NOT FOUND"
                 for f in reversed(list(visible_frames(page))):

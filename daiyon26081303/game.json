@@ -1,0 +1,98 @@
+{
+ "slug": "daiyon26081303",
+ "title": "アンティキティラの沈没船 調査ログ",
+ "game": "アンティキティラの沈没船",
+ "publisher": "Obachu / 第四境界",
+ "url": "https://yumifuri-observatory.com",
+ "match_url": "yumifuri-observatory.com",
+ "hint_url": "https://yumifuri-observatory.com/hint.html",
+ "date": "2026-10-01",
+ "lede": "アンティキティラの沈没船（弓降岳天文台）を、画面操作だけで攻略した記録。商品ページ: https://shop.daiyonkyokai.net/products/26081303",
+ "total_pages": 64,
+ "page_note": "記録した全ページ: 天文台サイト43(43/43・EXTRA CLEAR)+高校サイト13(13/13)+ブログ5+導入記事3。グラフの縦軸もこの合計",
+ "progress_regex": "(\\d+)\\s*/\\s*43",
+ "title_selector": ".arg-pager-badge",
+ "search_boxes": {
+  "site": {
+   "frame": "",
+   "selector": "#searchInput"
+  },
+  "hs": {
+   "frame": "",
+   "selector": "#searchInput"
+  }
+ },
+ "miss_patterns": [
+  "データが見つかりませんでした",
+  "一致する.*ありません"
+ ],
+ "apps": {},
+ "methods": {
+  "web": "ブラウザ検索",
+  "site": "サイト内検索",
+  "login": "ログイン・入力",
+  "link": "リンク"
+ },
+ "nav_keywords": [],
+ "viewport": [
+  1280,
+  800
+ ],
+ "settle_ms": 2500,
+ "play_end": "2026-10-02T03:26:00",
+ "result": {
+  "end": "universe82",
+  "title": "アンティキティラの沈没船",
+  "label": "でクリア(43/43・EXTRA CLEAR、高校サイト13/13)"
+ },
+ "milestones": [
+  {
+   "time": "2026-10-01T15:11:00",
+   "label": "職員専用サイト"
+  },
+  {
+   "time": "2026-10-01T17:18:00",
+   "label": "高校サイト"
+  },
+  {
+   "time": "2026-10-01T22:45:00",
+   "label": "照準コンソール"
+  },
+  {
+   "time": "2026-10-02T00:41:00",
+   "label": "エンディング"
+  },
+  {
+   "time": "2026-10-02T03:06:00",
+   "label": "EXTRA CLEAR"
+  }
+ ],
+ "activity_notes": [
+  {
+   "time": "2026-10-01T15:50:00",
+   "label": "高校サイトURL待ち(Web検索不可)"
+  },
+  {
+   "time": "2026-10-01T17:51:00",
+   "label": "S-クリアランスで長考・総当たり"
+  },
+  {
+   "time": "2026-10-02T01:30:00",
+   "label": "クリア後: 別結末の確認と回収"
+  }
+ ],
+ "stats_override": {},
+ "text": {
+  "deps_note": "依存関係は、ページ内の手がかりと公式ヒントから読み取れる『想定ルート』。天文台・高校・ブログの3サイトをまたぐ。一部の語の出どころは推定(note参照)。",
+  "activity": "天文台サイト内検索・高校サイト内検索・ログイン入力の合計。導入記事(sgm-hs.com/monochro.html)の「調査ノウハウ」: ページ内検索は2ワードまで／右下の「現在No./総ページ数」から閲覧履歴ツール／進行度はブラウザに記録(シークレット不可) / 高校サイト(sgm-hs.com)は独自の履歴ツール(n/13)。ページIDは hs1.. で記録(天文台サイトの1-43とは別体系)"
+ },
+ "caveats": [
+  "ヘッドレス環境のため音声(ボイスメッセージ/福田の通話/universe96・82の音声)は聴取できず、ヒントで補完",
+  "H.264動画とjsdelivr/unpkgのライブラリは、npm版の差し替え・ffmpegのVP9変換で画面再生した(ゲームのコードは読んでいない)",
+  "検索エンジンが使えず、高校サイトURLはユーザー提供(human)",
+  "自作ヒント取得スクリプトの不具合で、08-01等の後半ヒント(答え②③含む)を一括で閲覧した",
+  "S-クリアランスで900+625通り程度の総当たりを試した(いずれも外れ)",
+  "クリア後の回収(エクストラ・必須8-11/22・高校ページ5)ではエクストラヒントと本編ヒントを使った"
+ ],
+ "hint_url_extra": "https://yumifuri-observatory.com/hint_extra.html"
+}

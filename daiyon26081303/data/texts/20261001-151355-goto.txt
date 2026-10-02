@@ -1,0 +1,2 @@
+--- frame: https://yumifuri-observatory.com/pages/hidden/tensho-diary.html
+upstream request failed

@@ -1,0 +1,105 @@
+{
+ "intro": "結末は1つ(universe82)。チャットの分岐はセーブから試して合流を確認し、公式ヒント12-04の答えも universe82 だった。",
+ "total_ends": 1,
+ "ends": {
+  "82": {
+   "title": "universe82",
+   "tone": "gray",
+   "fate": "世界線を移動した先で水無瀬凪沙の声(nagisa_end.mp3)とセレモニー動画"
+  }
+ },
+ "columns": {
+  "param": "分岐",
+  "name": "選んだ返答",
+  "fate": "結末"
+ },
+ "tree": [
+  {
+   "cond": "照準 180°,+30° → CONFIRM → 監視カメラ(Von Neumann) → universe96 → 世界線方程式 ℓ=96→82",
+   "end": "82",
+   "default": true
+  }
+ ],
+ "runs": [
+  {
+   "label": "本編",
+   "param": "チャット①",
+   "steps": [
+    "うん",
+    "ピザ注文(99枚・着払い)",
+    "CONFIRM"
+   ],
+   "name": "うん",
+   "end": "82",
+   "surprise": false
+  },
+  {
+   "label": "確認",
+   "param": "チャット①",
+   "steps": [
+    "やめて",
+    "（同じ流れに合流）"
+   ],
+   "name": "やめて",
+   "end": "82",
+   "surprise": false
+  },
+  {
+   "label": "確認",
+   "param": "物音",
+   "steps": [
+    "様子を見て",
+    "（同じ流れに合流）"
+   ],
+   "name": "様子を見て",
+   "end": "82",
+   "surprise": false
+  }
+ ],
+ "notes": [
+  "分岐の前に localStorage を data/saves/ に保存(before_choice_un_yamete / before_choice_monooto / before_confirm)。確認後は after_clear に戻した。",
+  "universe96・universe82の音声はこの環境で聞けず、内容はヒントで補った。"
+ ],
+ "route": {
+  "title": "エンディングまでの手順",
+  "intro": "S-クリアランス通過後の流れ",
+  "steps": [
+   {
+    "time": "22:42",
+    "label": "S-クリアランス",
+    "desc": "2114-2351-2512-3445 で機密概要書(#31)",
+    "state": "ok"
+   },
+   {
+    "time": "22:45",
+    "label": "照準コンソール",
+    "desc": "月齢を2011-12-10にして月をクリック(#40)",
+    "state": "ok"
+   },
+   {
+    "time": "22:52",
+    "label": "チャット",
+    "desc": "↑↑↓↓←→←→ + Manual×2 で水無瀬とのチャット(#38)",
+    "state": "ok"
+   },
+   {
+    "time": "00:19",
+    "label": "CONFIRM",
+    "desc": "照準 180°,+30° → 監視カメラ(#41)",
+    "state": "ok"
+   },
+   {
+    "time": "00:36",
+    "label": "universe96",
+    "desc": "カメラPW Von Neumann、映像の後に自動遷移(#42)",
+    "state": "ok"
+   },
+   {
+    "time": "00:41",
+    "label": "universe82",
+    "desc": "世界線方程式 ℓ=96→82(#43)",
+    "state": "ok"
+   }
+  ]
+ }
+}

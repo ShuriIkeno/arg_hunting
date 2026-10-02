@@ -1,0 +1,611 @@
+{
+ "items": {
+  "start": {
+   "label": "導入記事(商品ページから)",
+   "from": []
+  },
+  "url_obs": {
+   "label": "天文台サイトのURL",
+   "from": [
+    "intro1"
+   ]
+  },
+  "nav": {
+   "label": "天文台サイトのナビ",
+   "from": [
+    "1"
+   ]
+  },
+  "kw_gear": {
+   "label": "「歯車」(歯車型の星座)",
+   "from": [
+    "intro2"
+   ],
+   "gate": "字幕メッセージの『歯車型の星座』"
+  },
+  "kw_anti": {
+   "label": "「アンティキティラ」",
+   "from": [
+    "intro1"
+   ]
+  },
+  "kw_ishiki": {
+   "label": "「意識フィールド」",
+   "from": [
+    "20"
+   ]
+  },
+  "kw_tasekai": {
+   "label": "「多世界解釈」",
+   "any": [
+    "2",
+    "20"
+   ]
+  },
+  "kw_granage": {
+   "label": "「グラナージ」",
+   "from": [
+    "32"
+   ]
+  },
+  "kw_zankyo": {
+   "label": "「残響意識」",
+   "from": [
+    "25"
+   ]
+  },
+  "kw_yumifuri": {
+   "label": "「ゆみふり」",
+   "any": [
+    "4",
+    "5"
+   ]
+  },
+  "kw_jihei": {
+   "label": "「事象の地平面」",
+   "from": [
+    "5"
+   ],
+   "gate": "ニュースの新番組名で検索"
+  },
+  "url_floor": {
+   "label": "URL ?f=B3",
+   "from": [
+    "21"
+   ],
+   "gate": "メールの指示でURLを書き換える"
+  },
+  "kw_aoyama": {
+   "label": "「青山建築設計事務所」",
+   "from": [
+    "3"
+   ]
+  },
+  "cassio": {
+   "label": "カシオペアをなぞる",
+   "from": [
+    "2"
+   ],
+   "gate": "職員紹介の5人をW字にドラッグ"
+  },
+  "pw_asu": {
+   "label": "明日峰の座右の銘",
+   "from": [
+    "12"
+   ]
+  },
+  "pw_ten": {
+   "label": "天章のPW『password』",
+   "from": [
+    "12"
+   ]
+  },
+  "pw_et": {
+   "label": "水無瀬のPW『E.T.』",
+   "any": [
+    "14",
+    "17"
+   ],
+   "gate": "『自転車で空を飛べる』＝映画E.T."
+  },
+  "url_blog": {
+   "label": "our-planetarium.net/universe24",
+   "from": [
+    "16"
+   ],
+   "gate": "付箋で隠れたURLを補う"
+  },
+  "kw_school": {
+   "label": "「日本一、銀河に近い高校」",
+   "from": [
+    "b9"
+   ],
+   "gate": "ブログの手がかりからWeb検索"
+  },
+  "kw_tenmon": {
+   "label": "「天文部」(顧問の關口先生)",
+   "from": [
+    "b9"
+   ]
+  },
+  "kw_noboru": {
+   "label": "「水無瀬 昇」",
+   "from": [
+    "hs9"
+   ],
+   "gate": "日誌①の予告=水無瀬の父"
+  },
+  "kw_antares": {
+   "label": "「アンタレス」",
+   "from": [
+    "hs10"
+   ],
+   "gate": "赤い星=アンタレス"
+  },
+  "kw_kenichi": {
+   "label": "「關口研一」",
+   "from": [
+    "hs11"
+   ],
+   "gate": "父=天文台台長"
+  },
+  "pw0611": {
+   "label": "誕生日 0611",
+   "from": [
+    "28"
+   ]
+  },
+  "wl_eq": {
+   "label": "世界線方程式(−,×,+)",
+   "from": [
+    "29"
+   ],
+   "gate": "演算子を埋めて ℓ'=41"
+  },
+  "pw_b41": {
+   "label": "p8のPW(私が起動するもの)",
+   "from": [
+    "b41-7"
+   ],
+   "gate": "私が起動するもの=リ・アンティキティラ"
+  },
+  "kw_methanol": {
+   "label": "「メチルアルコール」",
+   "from": [
+    "b41-7"
+   ],
+   "gate": "失明の原因=メタノール"
+  },
+  "kw_sch": {
+   "label": "「シュワルツシルト・クリアランス」",
+   "from": [
+    "29"
+   ],
+   "gate": "略称でなく正式名称で検索"
+  },
+  "scode": {
+   "label": "S-クリアランス 2114-2351-2512-3445",
+   "from": [
+    "b41-8",
+    "hs13",
+    "28"
+   ],
+   "gate": "16桁の出典を組み立てる"
+  },
+  "kw_incident": {
+   "label": "「インシデント報告書」",
+   "from": [
+    "31"
+   ]
+  },
+  "moon": {
+   "label": "月齢 2011-12-10",
+   "from": [
+    "39"
+   ],
+   "gate": "月の画像付近のデバッグ表示で日付指定"
+  },
+  "konami": {
+   "label": "隠しコマンド ↑↑↓↓←→←→+Manual×2",
+   "from": [
+    "40"
+   ],
+   "gate": "コンソールの隠しメッセージ"
+  },
+  "pizza": {
+   "label": "ピザ注文(99枚・2丁目2番・着払い)",
+   "from": [
+    "38"
+   ]
+  },
+  "coord": {
+   "label": "照準 180°,+30°",
+   "from": [
+    "26",
+    "38",
+    "39"
+   ],
+   "gate": "はぐるま座の座標を特定"
+  },
+  "pw_guard": {
+   "label": "PW『Guardians of Pole』",
+   "from": [
+    "39"
+   ],
+   "gate": "ワッペン PHERKAD+KOCHAB"
+  },
+  "cam_pw": {
+   "label": "カメラPW『Von Neumann』",
+   "from": [
+    "15"
+   ],
+   "gate": "福田の通話(音声)を聞く"
+  },
+  "wl96": {
+   "label": "世界線方程式 ℓ=96→82",
+   "from": [
+    "42",
+    "29"
+   ],
+   "gate": "ユズキの音声『世界線方程式を使って』"
+  },
+  "kw_seiki": {
+   "label": "「惺機院」",
+   "from": [
+    "39"
+   ]
+  },
+  "kw_apply": {
+   "label": "「アプライヤー」",
+   "from": [
+    "31"
+   ]
+  },
+  "kw_reit": {
+   "label": "「レイトレール大学」",
+   "from": [
+    "2"
+   ]
+  },
+  "kw_gokurei": {
+   "label": "「極例処分」",
+   "from": [
+    "31"
+   ]
+  },
+  "kw_hinamura": {
+   "label": "「雛村医院」",
+   "from": [
+    "hs1"
+   ]
+  },
+  "kw_er": {
+   "label": "「アインシュタイン＝ローゼンの橋」",
+   "from": [
+    "31"
+   ]
+  },
+  "pw_fomal": {
+   "label": "PW『フォーマルハウト』",
+   "from": [
+    "2"
+   ],
+   "gate": "404ページの『0』→みなみのうお座"
+  },
+  "kw_atara": {
+   "label": "「弓降連峰の可惜夜」",
+   "from": [
+    "7"
+   ]
+  },
+  "pw_mail": {
+   "label": "PW 936256",
+   "from": [
+    "7"
+   ],
+   "gate": "年齢欄の十の位"
+  },
+  "tako": {
+   "label": "飛んでいるだーくま(タコ)",
+   "from": [
+    "22"
+   ]
+  },
+  "kw_ginboshi": {
+   "label": "「ぎんぼし交流会」",
+   "any": [
+    "hs2",
+    "hs3"
+   ]
+  },
+  "kw_shimo": {
+   "label": "「霜ヶ峯」",
+   "from": [
+    "hs5",
+    "hs3"
+   ],
+   "gate": "感想文の『霜』＋オフライン沿革の写真の『〇ヶ峯』"
+  },
+  "kw_manabi": {
+   "label": "「マナビセッション報告書 水無瀬凪沙」",
+   "from": [
+    "hs6"
+   ]
+  },
+  "kw_manabi2": {
+   "label": "「マナビセッション報告書 緋田柚希」",
+   "from": [
+    "hs6",
+    "b41-7"
+   ]
+  },
+  "kw_mikasa": {
+   "label": "「みかさ」",
+   "from": [
+    "hs11"
+   ]
+  },
+  "link_intro1": {
+   "label": "#intro1 のリンク",
+   "from": [
+    "intro1"
+   ]
+  },
+  "link_intro2": {
+   "label": "#intro2 のリンク",
+   "from": [
+    "intro2"
+   ]
+  },
+  "link_5": {
+   "label": "#5 のリンク",
+   "from": [
+    "5"
+   ]
+  },
+  "link_b1": {
+   "label": "#b1 のリンク",
+   "from": [
+    "b1"
+   ]
+  },
+  "link_hs1": {
+   "label": "#hs1 のリンク",
+   "from": [
+    "hs1"
+   ]
+  },
+  "link_b41-1": {
+   "label": "#b41-1 のリンク",
+   "from": [
+    "b41-1"
+   ]
+  },
+  "link_30": {
+   "label": "#30 のリンク",
+   "from": [
+    "30"
+   ]
+  },
+  "link_41": {
+   "label": "#41 のリンク",
+   "from": [
+    "41"
+   ]
+  }
+ },
+ "deps": {
+  "intro1": [
+   "start"
+  ],
+  "intro2": [
+   "link_intro1"
+  ],
+  "intro3": [
+   "link_intro2"
+  ],
+  "1": [
+   "url_obs"
+  ],
+  "2": [
+   "nav"
+  ],
+  "4": [
+   "nav"
+  ],
+  "5": [
+   "nav"
+  ],
+  "6": [
+   "nav"
+  ],
+  "7": [
+   "nav"
+  ],
+  "9": [
+   "link_5"
+  ],
+  "10": [
+   "link_5"
+  ],
+  "11": [
+   "link_5"
+  ],
+  "26": [
+   "kw_gear"
+  ],
+  "20": [
+   "kw_anti"
+  ],
+  "25": [
+   "kw_ishiki"
+  ],
+  "32": [
+   "kw_tasekai"
+  ],
+  "33": [
+   "kw_granage"
+  ],
+  "36": [
+   "kw_zankyo"
+  ],
+  "18": [
+   "kw_yumifuri"
+  ],
+  "21": [
+   "kw_jihei"
+  ],
+  "3": [
+   "url_floor"
+  ],
+  "23": [
+   "kw_aoyama"
+  ],
+  "12": [
+   "cassio"
+  ],
+  "14": [
+   "cassio",
+   "pw_asu"
+  ],
+  "17": [
+   "cassio",
+   "pw_ten"
+  ],
+  "16": [
+   "cassio",
+   "pw_et"
+  ],
+  "b1": [
+   "url_blog"
+  ],
+  "b9": [
+   "link_b1"
+  ],
+  "hs1": [
+   "kw_school"
+  ],
+  "hs2": [
+   "link_hs1"
+  ],
+  "hs3": [
+   "link_hs1"
+  ],
+  "hs4": [
+   "link_hs1"
+  ],
+  "hs9": [
+   "kw_tenmon",
+   "link_hs1"
+  ],
+  "hs10": [
+   "kw_noboru"
+  ],
+  "hs11": [
+   "kw_antares"
+  ],
+  "28": [
+   "kw_kenichi"
+  ],
+  "29": [
+   "pw0611"
+  ],
+  "b41-1": [
+   "wl_eq",
+   "url_blog"
+  ],
+  "b41-7": [
+   "link_b41-1"
+  ],
+  "b41-8": [
+   "pw_b41"
+  ],
+  "hs13": [
+   "kw_methanol"
+  ],
+  "30": [
+   "kw_sch"
+  ],
+  "31": [
+   "link_30",
+   "scode"
+  ],
+  "39": [
+   "kw_incident"
+  ],
+  "40": [
+   "scode",
+   "moon"
+  ],
+  "38": [
+   "konami"
+  ],
+  "41": [
+   "coord",
+   "pizza"
+  ],
+  "15": [
+   "pw_guard",
+   "cassio"
+  ],
+  "42": [
+   "link_41",
+   "cam_pw"
+  ],
+  "43": [
+   "wl96"
+  ],
+  "19": [
+   "kw_seiki"
+  ],
+  "35": [
+   "kw_apply"
+  ],
+  "24": [
+   "kw_reit"
+  ],
+  "37": [
+   "kw_gokurei"
+  ],
+  "27": [
+   "kw_hinamura"
+  ],
+  "34": [
+   "kw_er"
+  ],
+  "13": [
+   "pw_fomal",
+   "cassio"
+  ],
+  "22": [
+   "kw_atara",
+   "pw_mail"
+  ],
+  "8": [
+   "tako"
+  ],
+  "hs5": [
+   "kw_ginboshi"
+  ],
+  "hs6": [
+   "kw_shimo"
+  ],
+  "hs7": [
+   "kw_manabi"
+  ],
+  "hs8": [
+   "kw_manabi2"
+  ],
+  "hs12": [
+   "kw_mikasa"
+  ]
+ },
+ "end_nodes": [
+  "43"
+ ],
+ "end_titles": {
+  "43": "universe82 で水無瀬の声を聞く(エンディング)"
+ },
+ "focus": "40",
+ "note": "ページ内の手がかりと公式ヒントから組んだ想定ルート。S-クリアランス16桁の出典(from)、ぎんぼし交流会・みかさ・マナビセッション緋田の語の出どころは、自分では画面上で確かめきれず推定で置いている。天文台(1-43)・高校サイト(hs1-13)・ブログ(b*)の3サイトをまたぐ。"
+}
