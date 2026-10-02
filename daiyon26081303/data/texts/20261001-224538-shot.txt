@@ -1,0 +1,80 @@
+--- frame: https://yumifuri-observatory.com/pages/hidden/rant-console-wireframe.html
+R-ANT LINK
+
+LOADING 0%
+RE:ANTIKYTHERA
+TARGETING CONSOLE
+INITIALIZING
+GALACTIC LON
+---.-°
+GALACTIC LAT
+--.-°
+OPERATION MANUAL
+
+VERTICAL GIMBAL
+
+GALACTIC LATITUDE
+
+RESET
+
+SCAN TO ACCESS
+SUPPLEMENTAL DATA FEED
+
+AZIMUTH RING
+
+GALACTIC LONGITUDE
+
+RESET
+
+OPERATION MANUAL
+
+本書は、世界線補正機構 リ・アンティキティラ の起動に際し、
+照準対象 グラナージ（はぐるま座） へ照準機構を一致させるための操作手順を示す。
+
+本操作の実施に先立ち、アプライヤー により対象の銀河座標が算出済みであることを確認すること。
+
+1. AZIMUTH RING を操作し、銀経（座標系横軸）を所定値に合わせる。
+
+2. VERTICAL GIMBAL を操作し、銀緯（座標系縦軸）を所定値に合わせる。
+
+3. TARGET WINDOW 上の表示を確認し、照準値がグラナージの銀河座標と一致していることを確認する。
+
+4. 座標一致を確認後、CONFIRM ボタンを押下し、リ・アンティキティラの起動シーケンスを実行する。
+
+
+
+
+（参考）銀河座標系の見方  例：グラナージの座標が(30°,+60°）の場合
+
+UNIDENTIFIED MESSAGE
+
+ここまでたどり着いてくれてありがとう
+お願い、ナギサ先輩に連絡して
+
+FRAME
+SYNC
+TRACK
+READY
+GATE
+OPEN
+NODE
+LIVE
+
+SIGNAL AMPLITUDE
+
+CONSOLE LOCKED TO PANEL INPUT
+
+TARGET WINDOW
+
+120°, +10°
+
+ALIGN THE SAUCER TO THE ”GEAR”
+
+CONFIRM
+閲覧済みページ
+×
+ヒントページを見る
+
+クリアに必須のページ
+エクストラページ
+40 / 43

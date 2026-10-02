@@ -342,5 +342,39 @@
   "method": "site",
   "keyword": "インシデント報告書",
   "source": "ヒント11-01"
+ },
+ {
+  "id": "31",
+  "found": "2026-10-01T22:42:54",
+  "title": "R-ANT 内部文書(リ・アンティキティラ機密概要書)。S-クリアランス 2114-2351-2512-3445 で到達",
+  "chapter": "S-クリアランス",
+  "method": "login",
+  "keyword": "2114235125123445",
+  "source": "ヒント08-01答え③"
+ },
+ {
+  "id": "40",
+  "found": "2026-10-01T22:45:49",
+  "title": "照準コンソール RE:ANTIKYTHERA TARGETING CONSOLE(UNIDENTIFIED MESSAGE: ここまでたどり着いてくれてありがとう/お願い、ナギサ先輩に連絡して)",
+  "chapter": "照準コンソール",
+  "method": "link",
+  "keyword": "月齢2011-12-10の月クリック",
+  "source": "ヒント09-02(S-クリアランス通過後)"
+ },
+ {
+  "id": "38",
+  "found": "2026-10-01T22:52:46",
+  "title": "水無瀬凪沙とのチャット(LIME風・サイト内)",
+  "chapter": "水無瀬とのメッセージ",
+  "method": "link",
+  "source": "#40 照準コンソールの隠しメッセージ"
+ },
+ {
+  "id": "41",
+  "found": "2026-10-02T00:19:16",
+  "title": "監視カメラ CCTV-03(照準180°,+30°でCONFIRM後)",
+  "chapter": "リ・アンティキティラ起動",
+  "method": "link",
+  "source": "#40 照準コンソールCONFIRM"
  }
 ]
