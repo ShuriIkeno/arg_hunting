@@ -385,5 +385,22 @@
   "method": "login",
   "keyword": "Guardians of Pole",
   "source": "#39報告書の印刷部分+ヒント11-02(08-10)"
+ },
+ {
+  "id": "42",
+  "found": "2026-10-02T00:36:48",
+  "title": "universe96: 世界線移動の検出(エラーウィンドウ多数、ユズキの音声yuzuki_end.mp3)",
+  "chapter": "リ・アンティキティラ起動",
+  "method": "link",
+  "source": "#41 監視カメラ映像の終了後に自動遷移"
+ },
+ {
+  "id": "43",
+  "found": "2026-10-02T00:41:38",
+  "title": "universe82(最終ページ): 水無瀬の音声nagisa_end.mp3(7:17)+エンディング動画end_pv_v1.mp4",
+  "chapter": "エンディング",
+  "method": "login",
+  "keyword": "世界線方程式 ℓ=96→82",
+  "source": "#42『世界線方程式を使って 私の声を聞いて』"
  }
 ]
