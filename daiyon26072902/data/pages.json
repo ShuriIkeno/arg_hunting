@@ -591,5 +591,62 @@
   "chapter": "広告",
   "method": "link",
   "source": "#50"
+ },
+ {
+  "id": "20",
+  "found": "2026-10-03T13:32:35",
+  "title": "行方不明者詳細 門脇恵子(fumei6)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#14"
+ },
+ {
+  "id": "19",
+  "found": "2026-10-03T13:33:03",
+  "title": "行方不明者詳細 鹿沼準(fumei3)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#14"
+ },
+ {
+  "id": "22",
+  "found": "2026-10-03T13:33:03",
+  "title": "行方不明者詳細 長谷川まいな(fumei4)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#14"
+ },
+ {
+  "id": "24",
+  "found": "2026-10-03T13:33:43",
+  "title": "行方不明者詳細 佐藤さくら(fumei11)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#14"
+ },
+ {
+  "id": "25",
+  "found": "2026-10-03T13:33:43",
+  "title": "行方不明者詳細 岩永瑞穂(fumei12)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#14"
+ },
+ {
+  "id": "89",
+  "found": "2026-10-03T13:33:57",
+  "title": "プロフィール MK(prof14)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#48"
+ },
+ {
+  "id": "44",
+  "found": "2026-10-03T13:36:59",
+  "title": "てんてんの本棚(tana5, ホッピーマン)",
+  "chapter": "探索",
+  "method": "site",
+  "keyword": "てんてん",
+  "source": "#46 無人販売所の本棚(ラーメン屋てんてん横)"
  }
 ]
