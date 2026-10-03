@@ -648,5 +648,29 @@
   "method": "site",
   "keyword": "てんてん",
   "source": "#46 無人販売所の本棚(ラーメン屋てんてん横)"
+ },
+ {
+  "id": "10",
+  "found": "2026-10-03T14:34:47",
+  "title": "星ヶ丘団地内女性殺人事件(jiken_1)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#8"
+ },
+ {
+  "id": "13",
+  "found": "2026-10-03T14:34:47",
+  "title": "虹里町久保谷中学生交通死亡事件(jiken_5)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#8"
+ },
+ {
+  "id": "7",
+  "found": "2026-10-03T14:35:37",
+  "title": "各種情報提供フォーム(report)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#6"
  }
 ]

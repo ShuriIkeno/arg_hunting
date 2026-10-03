@@ -7,5 +7,7 @@ with sync_playwright() as p:
     ctx=p.chromium.connect_over_cdp("http://localhost:9222").contexts[0]
     page=[pg for pg in ctx.pages if "siosaigame" in pg.url][0]
     s=ctx.new_cdp_session(page)
-    r=s.send("Page.captureScreenshot",{"format":"png","clip":{"x":x,"y":y,"width":w,"height":h,"scale":sc}})
+    sx,sy=page.evaluate("()=>[scrollX,scrollY]")
+    x+=sx; y+=sy
+    r=s.send("Page.captureScreenshot",{"format":"png","clip":{"x":x,"y":y,"width":w,"height":h,"scale":sc},"captureBeyondViewport":False})
     open(out,"wb").write(base64.b64decode(r["data"]))
