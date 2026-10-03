@@ -518,5 +518,21 @@
   "chapter": "警察署",
   "method": "link",
   "source": "#8"
+ },
+ {
+  "id": "107",
+  "found": "2026-10-03T13:14:19",
+  "title": "六体複合霊の儀(rokutai)",
+  "chapter": "復活の儀",
+  "method": "login",
+  "source": "#38 復活させる(名前6つ入力)"
+ },
+ {
+  "id": "108",
+  "found": "2026-10-03T13:15:42",
+  "title": "呪い代行 恨晴堂(noroikai, 儀式失敗『いいえ』後)",
+  "chapter": "復活の儀",
+  "method": "link",
+  "source": "#107 いいえ"
  }
 ]
