@@ -130,10 +130,10 @@
  {
   "id": "50",
   "found": "2026-10-03T11:42:42",
-  "title": "Scene Stock(広告)",
-  "chapter": "便利屋",
+  "title": "冴木の本棚(tana11)",
+  "chapter": "コメント者",
   "method": "link",
-  "source": "トップの広告2(sozai_main)"
+  "source": "#72"
  },
  {
   "id": "103",
@@ -326,5 +326,69 @@
   "chapter": "核心",
   "method": "link",
   "source": "#90"
+ },
+ {
+  "id": "46",
+  "found": "2026-10-03T12:58:08",
+  "title": "無人販売所の本棚(tana7)",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#90 和泉家のお気に入り"
+ },
+ {
+  "id": "43",
+  "found": "2026-10-03T12:58:37",
+  "title": "まいなの本棚(tana4)",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#72 冴木のお気に入り"
+ },
+ {
+  "id": "66",
+  "found": "2026-10-03T12:58:55",
+  "title": "プロフィール 長谷川(prof4)",
+  "chapter": "コメント者",
+  "method": "link",
+  "source": "#43"
+ },
+ {
+  "id": "56",
+  "found": "2026-10-03T12:59:17",
+  "title": "図書館分類を巡る旅の本棚(tana17)",
+  "chapter": "わたしのほんだな",
+  "method": "link",
+  "source": "#77 そら"
+ },
+ {
+  "id": "58",
+  "found": "2026-10-03T12:59:17",
+  "title": "雨の日に読みたい本の本棚(tana19)",
+  "chapter": "わたしのほんだな",
+  "method": "link",
+  "source": "#77 そらのお気に入り"
+ },
+ {
+  "id": "63",
+  "found": "2026-10-03T13:00:32",
+  "title": "プロフィール 砂糖水(prof1)",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#40"
+ },
+ {
+  "id": "51",
+  "found": "2026-10-03T13:00:42",
+  "title": "恨み晴らし堂の本棚(tana12)",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#63 砂糖水のお気に入り"
+ },
+ {
+  "id": "93",
+  "found": "2026-10-03T13:01:05",
+  "title": "読書メモ『ミュンヘン降霊術手稿』(kansou3)",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#51"
  }
 ]
