@@ -94,5 +94,29 @@
   "chapter": "名無しの本棚",
   "method": "link",
   "source": "#39 左足です(kansou06)"
+ },
+ {
+  "id": "2",
+  "found": "2026-10-03T11:40:39",
+  "title": "誰かの本棚とは",
+  "chapter": "導入",
+  "method": "link",
+  "source": "ヘッダー(about)"
+ },
+ {
+  "id": "3",
+  "found": "2026-10-03T11:40:39",
+  "title": "利用規約",
+  "chapter": "導入",
+  "method": "link",
+  "source": "ヘッダー(kiyaku)"
+ },
+ {
+  "id": "4",
+  "found": "2026-10-03T11:40:39",
+  "title": "お問合せ",
+  "chapter": "導入",
+  "method": "link",
+  "source": "ヘッダー(contact)"
  }
 ]
