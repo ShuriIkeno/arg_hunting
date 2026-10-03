@@ -430,5 +430,93 @@
   "chapter": "被害者",
   "method": "link",
   "source": "#74 佐々木のお気に入り"
+ },
+ {
+  "id": "54",
+  "found": "2026-10-03T13:07:52",
+  "title": "佐々木の本棚(tana15)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#74"
+ },
+ {
+  "id": "52",
+  "found": "2026-10-03T13:08:05",
+  "title": "文化会館の本棚(tana13)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#71 nonoのお気に入り"
+ },
+ {
+  "id": "55",
+  "found": "2026-10-03T13:08:32",
+  "title": "子どもセンターの本棚(tana16)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#71"
+ },
+ {
+  "id": "79",
+  "found": "2026-10-03T13:08:49",
+  "title": "プロフィール あ！野生のかものはしが飛び出してきた！(prof20)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#52"
+ },
+ {
+  "id": "86",
+  "found": "2026-10-03T13:09:04",
+  "title": "プロフィール めそめそ羊(prof27)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#58"
+ },
+ {
+  "id": "62",
+  "found": "2026-10-03T13:09:17",
+  "title": "プロフィール 名無し(prof00): 本を作る人",
+  "chapter": "核心",
+  "method": "link",
+  "source": "#95 感想の投稿者名"
+ },
+ {
+  "id": "92",
+  "found": "2026-10-03T13:09:40",
+  "title": "読書メモ『大好き！海外ドラマ1000』(kansou2)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#47"
+ },
+ {
+  "id": "6",
+  "found": "2026-10-03T13:11:08",
+  "title": "各種情報提供窓口｜八頭警察署(police)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#5 お知らせの警察署リンク"
+ },
+ {
+  "id": "14",
+  "found": "2026-10-03T13:11:30",
+  "title": "行方不明者情報(missing.html)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#6 行方不明者一覧"
+ },
+ {
+  "id": "8",
+  "found": "2026-10-03T13:12:00",
+  "title": "未解決凶悪事件(jiken)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#6"
+ },
+ {
+  "id": "9",
+  "found": "2026-10-03T13:12:26",
+  "title": "八頭ニュータウン一家失踪事件(jiken_3)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#8"
  }
 ]
