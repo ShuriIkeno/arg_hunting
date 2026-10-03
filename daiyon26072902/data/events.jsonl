@@ -1,1 +1,3 @@
 {"time": "2026-10-03T11:29:13", "type": "environment", "text": "ChromiumがCA未信頼でERR_CERT_AUTHORITY_INVALID。libnss3-toolsをaptで導入しNSSにCAを登録して解消(ゲーム内容とは無関係)"}
+{"time": "2026-10-03T11:40:49", "type": "environment", "text": "x.com がエグレス制限で開けない(ERR_TUNNEL_CONNECTION_FAILED)。#わたしのほんだな のX検索は不可。回避はしない"}
+{"time": "2026-10-03T11:44:22", "type": "environment", "text": "WebSearchで『#わたしのほんだな』を検索したが架空の街のため該当なし(実在の八頭町の図書館がヒットするのみ)。ネタバレ記事等は見ていない"}

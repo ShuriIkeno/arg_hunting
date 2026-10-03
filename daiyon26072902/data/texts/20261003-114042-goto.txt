@@ -1,0 +1,6 @@
+--- frame: chrome-error://chromewebdata/
+This site can’t be reached
+
+The webpage at https://x.com/search?q=%23わたしのほんだな&f=live might be temporarily down or it may have moved permanently to a new web address.
+
+ERR_TUNNEL_CONNECTION_FAILED

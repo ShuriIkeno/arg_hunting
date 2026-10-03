@@ -118,5 +118,45 @@
   "chapter": "導入",
   "method": "link",
   "source": "ヘッダー(contact)"
+ },
+ {
+  "id": "27",
+  "found": "2026-10-03T11:41:25",
+  "title": "便利屋ニコニコワーク",
+  "chapter": "便利屋",
+  "method": "link",
+  "source": "トップの広告"
+ },
+ {
+  "id": "50",
+  "found": "2026-10-03T11:42:42",
+  "title": "Scene Stock(広告)",
+  "chapter": "便利屋",
+  "method": "link",
+  "source": "トップの広告2(sozai_main)"
+ },
+ {
+  "id": "103",
+  "found": "2026-10-03T11:42:54",
+  "title": "ログイン",
+  "chapter": "導入",
+  "method": "link",
+  "source": "トップ(login)"
+ },
+ {
+  "id": "104",
+  "found": "2026-10-03T11:43:03",
+  "title": "ID確認(キーワード入力)",
+  "chapter": "導入",
+  "method": "link",
+  "source": "ログイン→IDを忘れた方(idgo)"
+ },
+ {
+  "id": "105",
+  "found": "2026-10-03T11:43:17",
+  "title": "PASSWORD確認(ID入力)",
+  "chapter": "導入",
+  "method": "link",
+  "source": "ログイン→PASSWORDを忘れた方(passgo)"
  }
 ]
