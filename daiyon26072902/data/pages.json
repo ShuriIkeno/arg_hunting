@@ -154,10 +154,10 @@
  {
   "id": "105",
   "found": "2026-10-03T11:43:17",
-  "title": "PASSWORD確認(ID入力)",
-  "chapter": "導入",
-  "method": "link",
-  "source": "ログイン→PASSWORDを忘れた方(passgo)"
+  "title": "PASSWORD確認: hon000923 → sa******1",
+  "chapter": "ログイン",
+  "method": "login",
+  "source": "#59 佐々木のIDがドクターイエロー(923)と同じ"
  },
  {
   "id": "65",
@@ -266,10 +266,10 @@
  {
   "id": "74",
   "found": "2026-10-03T12:55:21",
-  "title": "プロフィール iwanaga(prof8)",
-  "chapter": "コメント者",
+  "title": "プロフィール 佐々木(prof13)",
+  "chapter": "探索",
   "method": "link",
-  "source": "各本棚のコメント者"
+  "source": "#50"
  },
  {
   "id": "75",
@@ -406,5 +406,29 @@
   "chapter": "復活の儀",
   "method": "link",
   "source": "#35 恨晴堂ページのバナー『復活の儀メーカー』"
+ },
+ {
+  "id": "71",
+  "found": "2026-10-03T13:06:04",
+  "title": "プロフィール nono(prof10)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#49"
+ },
+ {
+  "id": "69",
+  "found": "2026-10-03T13:06:04",
+  "title": "プロフィール ゆゆぽん(prof7)",
+  "chapter": "探索",
+  "method": "link",
+  "source": "#46"
+ },
+ {
+  "id": "59",
+  "found": "2026-10-03T13:06:19",
+  "title": "大好きな電車の本棚(tana20, 鹿沼)",
+  "chapter": "被害者",
+  "method": "link",
+  "source": "#74 佐々木のお気に入り"
  }
 ]

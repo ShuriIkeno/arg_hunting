@@ -1,0 +1,7 @@
+--- frame: https://siosaigame.sakura.ne.jp/arg4/passgo.html
+PASSWORD確認
+ログインIDを入力してください。
+一致した場合、PASSWORDの一部を表示します。
+ 確認する
+このWebサイトの内容はフィクションです。実在の人物・団体とは一切関係がありません。
+©2026 siosai 105/112
