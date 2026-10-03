@@ -7,3 +7,4 @@
 {"time": "2026-10-03T13:31:42", "type": "note", "text": "ログイン試行: hon000923 / sakaki001, sasaki001 → 不一致(推測)"}
 {"time": "2026-10-03T14:38:33", "type": "note", "text": "tools/solve_board.py(自動盤面解き)を作成。画像比較で同パーツをペアにするだけ"}
 {"time": "2026-10-03T17:19:26", "type": "note", "text": "全ページ番号マップ作成: 未発見=12,13(jiken_2/4),26(access?),31-33,37,57(tana18),60(tana21),67/83/85(prof5/24/26),101,102,106(rokutai),109-112"}
+{"time": "2026-10-03T18:43:15", "type": "environment", "text": "公式ヒントは商品ページの『攻略ヒントページ』→ https://note.com/siosiorrr/n/n002292410dd2 (note.com)。エグレス制限(403 CONNECT)で開けない。回避はしない。ユーザーにヒント本文の提供を依頼する"}
