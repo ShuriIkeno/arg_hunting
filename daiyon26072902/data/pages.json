@@ -146,10 +146,10 @@
  {
   "id": "104",
   "found": "2026-10-03T11:43:03",
-  "title": "ID確認(キーワード入力)",
-  "chapter": "導入",
+  "title": "ID確認(idgo)",
+  "chapter": "ログイン",
   "method": "link",
-  "source": "ログイン→IDを忘れた方(idgo)"
+  "source": "再訪"
  },
  {
   "id": "105",
@@ -550,5 +550,46 @@
   "chapter": "復活の儀",
   "method": "link",
   "source": "#108 無料相談フォームを開く"
+ },
+ {
+  "id": "48",
+  "found": "2026-10-03T13:27:36",
+  "title": "nijiiroの本棚(tana9, MK)",
+  "chapter": "犯人特定",
+  "method": "site",
+  "keyword": "nijiiro",
+  "source": "日記/門脇の台所本棚でカフェnijiiro→検索ボタン"
+ },
+ {
+  "id": "88",
+  "found": "2026-10-03T13:27:46",
+  "title": "プロフィール 福すけ(prof29)",
+  "chapter": "犯人特定",
+  "method": "link",
+  "source": "#48"
+ },
+ {
+  "id": "53",
+  "found": "2026-10-03T13:28:05",
+  "title": "ココパチ虹里の本棚(tana14)",
+  "chapter": "犯人特定",
+  "method": "link",
+  "source": "#88 福すけ"
+ },
+ {
+  "id": "29",
+  "found": "2026-10-03T13:30:43",
+  "title": "Scene Stockとは(sozai_about)",
+  "chapter": "広告",
+  "method": "link",
+  "source": "#50"
+ },
+ {
+  "id": "30",
+  "found": "2026-10-03T13:30:43",
+  "title": "Scene Stock 利用規約(sozai_kiyaku)",
+  "chapter": "広告",
+  "method": "link",
+  "source": "#50"
  }
 ]

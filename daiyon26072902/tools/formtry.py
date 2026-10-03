@@ -11,7 +11,8 @@ with sync_playwright() as p:
     page.on("dialog", lambda d:(msgs.append(d.message), d.accept()))
     ins=page.locator("input:visible")
     for i,v in enumerate(vals): ins.nth(i).fill(v)
-    page.get_by_text(btn,exact=False).first.click()
+    b=page.get_by_role("button",name=btn)
+    (b.first if b.count() else page.get_by_text(btn,exact=False).first).click()
     page.wait_for_timeout(1500)
     f=root/"data"/"screenshots"/f"{datetime.datetime.now():%Y%m%d-%H%M%S}-form.png"
     page.screenshot(path=str(f))
