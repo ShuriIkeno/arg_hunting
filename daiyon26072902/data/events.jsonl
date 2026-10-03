@@ -1,0 +1,1 @@
+{"time": "2026-10-03T11:29:13", "type": "environment", "text": "ChromiumがCA未信頼でERR_CERT_AUTHORITY_INVALID。libnss3-toolsをaptで導入しNSSにCAを登録して解消(ゲーム内容とは無関係)"}
