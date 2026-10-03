@@ -1,0 +1,3 @@
+--- frame: https://siosaigame.sakura.ne.jp/arg4/rokutai.html
+儀式失敗、再度実行しますか？
+はい / いいえ
