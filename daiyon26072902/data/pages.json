@@ -660,7 +660,7 @@
  {
   "id": "13",
   "found": "2026-10-03T14:34:47",
-  "title": "虹里町久保谷中学生交通死亡事件(jiken_5)",
+  "title": "jiken_6 虹里駅北口無差別殺傷事件",
   "chapter": "警察署",
   "method": "link",
   "source": "#8"
@@ -669,6 +669,22 @@
   "id": "7",
   "found": "2026-10-03T14:35:37",
   "title": "各種情報提供フォーム(report)",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#6"
+ },
+ {
+  "id": "12",
+  "found": "2026-10-03T17:21:35",
+  "title": "jiken_2 キャンプ場男性殺人事件",
+  "chapter": "警察署",
+  "method": "link",
+  "source": "#8"
+ },
+ {
+  "id": "26",
+  "found": "2026-10-03T17:21:50",
+  "title": "警察署へのアクセス(map)",
   "chapter": "警察署",
   "method": "link",
   "source": "#6"
